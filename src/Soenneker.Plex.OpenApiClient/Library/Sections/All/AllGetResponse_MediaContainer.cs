@@ -14,7 +14,13 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.All
     #pragma warning restore CS1591
     {
         /// <summary>The allowSync property</summary>
-        public bool? AllowSync { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Plex.OpenApiClient.Models.AllowSync? AllowSync { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Plex.OpenApiClient.Models.AllowSync AllowSync { get; set; }
+#endif
         /// <summary>The Directory property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,7 +55,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.All
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "allowSync", n => { AllowSync = n.GetBoolValue(); } },
+                { "allowSync", n => { AllowSync = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.AllowSync>(global::Soenneker.Plex.OpenApiClient.Models.AllowSync.CreateFromDiscriminatorValue); } },
                 { "Directory", n => { Directory = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.LibrarySection>(global::Soenneker.Plex.OpenApiClient.Models.LibrarySection.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "title1", n => { Title1 = n.GetStringValue(); } },
             };
@@ -62,7 +68,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.All
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteBoolValue("allowSync", AllowSync);
+            writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.AllowSync>("allowSync", AllowSync);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.LibrarySection>("Directory", Directory);
             writer.WriteStringValue("title1", Title1);
         }
