@@ -29,19 +29,6 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs
                 return new global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.WithDvrItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.livetv.dvrs.item collection</summary>
-        /// <param name="position">The ID of the DVR.</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.WithDvrItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.WithDvrItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("dvrId", position);
-                return new global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.WithDvrItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -66,34 +53,15 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsGetResponse?> GetAsDvrsGetResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsGetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsGetResponse> GetAsDvrsGetResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsGetResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Get the list of all available DVRs
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use GetAsDvrsGetResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creation of a DVR, after creation of a devcie and a lineup is selected
@@ -103,34 +71,15 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsPostResponse?> PostAsDvrsPostResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsRequestBuilder.DvrsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsPostResponse?> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsRequestBuilder.DvrsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsPostResponse> PostAsDvrsPostResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsRequestBuilder.DvrsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsPostResponse> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsRequestBuilder.DvrsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsPostResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Creation of a DVR, after creation of a devcie and a lineup is selected
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use PostAsDvrsPostResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsResponse?> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsRequestBuilder.DvrsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsResponse> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsRequestBuilder.DvrsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get the list of all available DVRs
@@ -180,14 +129,6 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs
             return new global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DvrsRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
-        {
-        }
-        /// <summary>
         /// Creation of a DVR, after creation of a devcie and a lineup is selected
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
@@ -223,14 +164,6 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs
             [QueryParameter("lineup")]
             public string Lineup { get; set; }
 #endif
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DvrsRequestBuilderPostRequestConfiguration : RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsRequestBuilder.DvrsRequestBuilderPostQueryParameters>
-        {
         }
     }
 }

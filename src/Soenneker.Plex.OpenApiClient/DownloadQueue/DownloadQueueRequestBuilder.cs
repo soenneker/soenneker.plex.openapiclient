@@ -29,19 +29,6 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue
                 return new global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.WithQueueItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.downloadQueue.item collection</summary>
-        /// <param name="position">The queue id</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.WithQueueItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.WithQueueItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("queueId", position);
-                return new global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.WithQueueItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueueRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -66,34 +53,15 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueuePostResponse?> PostAsDownloadQueuePostResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueuePostResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueuePostResponse> PostAsDownloadQueuePostResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueuePostResponse> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueuePostResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueuePostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Available: 0.2.0Creates a download queue for this client if one doesn&apos;t exist, or returns the existing queue for this client and user.
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueueResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use PostAsDownloadQueuePostResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueueResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueueResponse> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueueResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueueResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Available: 0.2.0Creates a download queue for this client if one doesn&apos;t exist, or returns the existing queue for this client and user.
@@ -122,14 +90,6 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue
         public global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueueRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueueRequestBuilder(rawUrl, RequestAdapter);
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DownloadQueueRequestBuilderPostRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
-        {
         }
     }
 }

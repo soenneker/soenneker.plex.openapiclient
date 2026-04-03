@@ -27,19 +27,6 @@ namespace Soenneker.Plex.OpenApiClient.Library.Media.Item.ChapterImages
                 return new global::Soenneker.Plex.OpenApiClient.Library.Media.Item.ChapterImages.Item.WithChapterItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.library.media.item.chapterImages.item collection</summary>
-        /// <param name="position">The index of the chapter</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Library.Media.Item.ChapterImages.Item.WithChapterItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.Library.Media.Item.ChapterImages.Item.WithChapterItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("chapter", position);
-                return new global::Soenneker.Plex.OpenApiClient.Library.Media.Item.ChapterImages.Item.WithChapterItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Library.Media.Item.ChapterImages.ChapterImagesRequestBuilder"/> and sets the default values.
         /// </summary>

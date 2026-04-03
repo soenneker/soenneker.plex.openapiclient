@@ -48,19 +48,6 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions
                 return new global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.Item.WithSubscriptionItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.media.subscriptions.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.Item.WithSubscriptionItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.Item.WithSubscriptionItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("subscriptionId", position);
-                return new global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.Item.WithSubscriptionItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -103,34 +90,15 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsPostResponse?> PostAsSubscriptionsPostResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsRequestBuilder.SubscriptionsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsPostResponse?> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsRequestBuilder.SubscriptionsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsPostResponse> PostAsSubscriptionsPostResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsRequestBuilder.SubscriptionsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsPostResponse> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsRequestBuilder.SubscriptionsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsPostResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Create a subscription. The query parameters should be mostly derived from the [template](#tag/Subscriptions/operation/mediaSubscriptionsGetTemplate)
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use PostAsSubscriptionsPostResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsResponse?> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsRequestBuilder.SubscriptionsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsResponse> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsRequestBuilder.SubscriptionsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get all subscriptions and potentially the grabs too
@@ -193,14 +161,6 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions
             public int? IncludeStorage { get; set; }
         }
         /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class SubscriptionsRequestBuilderGetRequestConfiguration : RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsRequestBuilder.SubscriptionsRequestBuilderGetQueryParameters>
-        {
-        }
-        /// <summary>
         /// Create a subscription. The query parameters should be mostly derived from the [template](#tag/Subscriptions/operation/mediaSubscriptionsGetTemplate)
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
@@ -245,14 +205,6 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions
             /// <summary>The type of the thing we&apos;re subscribing too (e.g. show, season).</summary>
             [QueryParameter("type")]
             public int? Type { get; set; }
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class SubscriptionsRequestBuilderPostRequestConfiguration : RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsRequestBuilder.SubscriptionsRequestBuilderPostQueryParameters>
-        {
         }
     }
 }

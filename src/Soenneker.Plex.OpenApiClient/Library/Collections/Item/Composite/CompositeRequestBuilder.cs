@@ -27,19 +27,6 @@ namespace Soenneker.Plex.OpenApiClient.Library.Collections.Item.Composite
                 return new global::Soenneker.Plex.OpenApiClient.Library.Collections.Item.Composite.Item.WithUpdatedAtItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.library.collections.item.composite.item collection</summary>
-        /// <param name="position">The update time of the image.  Used for busting cache.</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Library.Collections.Item.Composite.Item.WithUpdatedAtItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.Library.Collections.Item.Composite.Item.WithUpdatedAtItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("updatedAt", position);
-                return new global::Soenneker.Plex.OpenApiClient.Library.Collections.Item.Composite.Item.WithUpdatedAtItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Library.Collections.Item.Composite.CompositeRequestBuilder"/> and sets the default values.
         /// </summary>

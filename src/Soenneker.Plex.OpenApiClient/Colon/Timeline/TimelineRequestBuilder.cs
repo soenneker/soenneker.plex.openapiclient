@@ -40,34 +40,15 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse?> PostAsTimelinePostResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelineRequestBuilder.TimelineRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse?> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelineRequestBuilder.TimelineRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse> PostAsTimelinePostResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelineRequestBuilder.TimelineRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelineRequestBuilder.TimelineRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// This endpoint is hit during media playback for an item. It must be hit whenever the play state changes, or in the absence of a play state change, in a regular fashion (generally this means every 10 seconds on a LAN/WAN, and every 20 seconds over cellular).
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelineResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use PostAsTimelinePostResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelineResponse?> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelineRequestBuilder.TimelineRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelineResponse> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelineRequestBuilder.TimelineRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelineResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelineResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// This endpoint is hit during media playback for an item. It must be hit whenever the play state changes, or in the absence of a play state change, in a regular fashion (generally this means every 10 seconds on a LAN/WAN, and every 20 seconds over cellular).
@@ -152,19 +133,8 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
             public string RatingKey { get; set; }
 #endif
             /// <summary>The current state of the media.</summary>
-            [Obsolete("This property is deprecated, use StateAsPostStateQueryParameterType instead")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("state")]
-            public string? State { get; set; }
-#nullable restore
-#else
-            [QueryParameter("state")]
-            public string State { get; set; }
-#endif
-            /// <summary>The current state of the media.</summary>
-            [QueryParameter("state")]
-            public global::Soenneker.Plex.OpenApiClient.Colon.Timeline.PostStateQueryParameterType? StateAsPostStateQueryParameterType { get; set; }
+            public global::Soenneker.Plex.OpenApiClient.Colon.Timeline.PostStateQueryParameterType? State { get; set; }
             /// <summary>The current time offset of playback in ms.</summary>
             [QueryParameter("time")]
             public int? Time { get; set; }
@@ -177,14 +147,6 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
             /// <summary>Used when a sync client comes online and is syncing media timelines, holds the time at which the playback state was last updated.</summary>
             [QueryParameter("updated")]
             public int? Updated { get; set; }
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class TimelineRequestBuilderPostRequestConfiguration : RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelineRequestBuilder.TimelineRequestBuilderPostQueryParameters>
-        {
         }
     }
 }

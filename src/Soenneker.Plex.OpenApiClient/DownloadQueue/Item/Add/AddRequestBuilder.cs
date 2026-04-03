@@ -40,34 +40,15 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddPostResponse?> PostAsAddPostResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddRequestBuilder.AddRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddPostResponse?> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddRequestBuilder.AddRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddPostResponse> PostAsAddPostResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddRequestBuilder.AddRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddPostResponse> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddRequestBuilder.AddRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddPostResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Available: 0.2.0Add items to the download queue
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use PostAsAddPostResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddResponse?> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddRequestBuilder.AddRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddResponse> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddRequestBuilder.AddRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Available: 0.2.0Add items to the download queue
@@ -104,19 +85,8 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add
         public partial class AddRequestBuilderPostQueryParameters 
         {
             /// <summary>Indicates how incompatible advanced subtitles (such as ass/ssa) should be included: * &apos;burn&apos; - Burn incompatible advanced text subtitles into the video stream * &apos;text&apos; - Transcode incompatible advanced text subtitles to a compatible text format, even if some markup is lost</summary>
-            [Obsolete("This property is deprecated, use AdvancedSubtitlesAsPostAdvancedSubtitlesQueryParameterType instead")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("advancedSubtitles")]
-            public string? AdvancedSubtitles { get; set; }
-#nullable restore
-#else
-            [QueryParameter("advancedSubtitles")]
-            public string AdvancedSubtitles { get; set; }
-#endif
-            /// <summary>Indicates how incompatible advanced subtitles (such as ass/ssa) should be included: * &apos;burn&apos; - Burn incompatible advanced text subtitles into the video stream * &apos;text&apos; - Transcode incompatible advanced text subtitles to a compatible text format, even if some markup is lost</summary>
-            [QueryParameter("advancedSubtitles")]
-            public global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.PostAdvancedSubtitlesQueryParameterType? AdvancedSubtitlesAsPostAdvancedSubtitlesQueryParameterType { get; set; }
+            public global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.PostAdvancedSubtitlesQueryParameterType? AdvancedSubtitles { get; set; }
             /// <summary>Percentage of original audio loudness to use when transcoding (100 is equivalent to original volume, 50 is half, 200 is double, etc)</summary>
             [QueryParameter("audioBoost")]
             public int? AudioBoost { get; set; }
@@ -155,19 +125,8 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add
             public string[] Keys { get; set; }
 #endif
             /// <summary>Network type of the client, can be used to help determine target bitrate.</summary>
-            [Obsolete("This property is deprecated, use LocationAsPostLocationQueryParameterType instead")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("location")]
-            public string? Location { get; set; }
-#nullable restore
-#else
-            [QueryParameter("location")]
-            public string Location { get; set; }
-#endif
-            /// <summary>Network type of the client, can be used to help determine target bitrate.</summary>
-            [QueryParameter("location")]
-            public global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.PostLocationQueryParameterType? LocationAsPostLocationQueryParameterType { get; set; }
+            public global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.PostLocationQueryParameterType? Location { get; set; }
             /// <summary>Buffer size used in playback (in KB). Clients should specify a lower bound if not known exactly. This value could make the difference between transcoding and direct play on bandwidth constrained networks.</summary>
             [QueryParameter("mediaBufferSize")]
             public int? MediaBufferSize { get; set; }
@@ -207,36 +166,14 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add
             public string PhotoResolution { get; set; }
 #endif
             /// <summary>Indicates the network streaming protocol to be used for the transcode session: * &apos;http&apos; - include the file in the http response such as MKV streaming * &apos;hls&apos; - hls stream (RFC 8216) * &apos;dash&apos; - dash stream (ISO/IEC 23009-1:2022)</summary>
-            [Obsolete("This property is deprecated, use ProtocolAsPostProtocolQueryParameterType instead")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("protocol")]
-            public string? Protocol { get; set; }
-#nullable restore
-#else
-            [QueryParameter("protocol")]
-            public string Protocol { get; set; }
-#endif
-            /// <summary>Indicates the network streaming protocol to be used for the transcode session: * &apos;http&apos; - include the file in the http response such as MKV streaming * &apos;hls&apos; - hls stream (RFC 8216) * &apos;dash&apos; - dash stream (ISO/IEC 23009-1:2022)</summary>
-            [QueryParameter("protocol")]
-            public global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.PostProtocolQueryParameterType? ProtocolAsPostProtocolQueryParameterType { get; set; }
+            public global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.PostProtocolQueryParameterType? Protocol { get; set; }
             /// <summary>Number of seconds to include in each transcoded segment</summary>
             [QueryParameter("secondsPerSegment")]
             public int? SecondsPerSegment { get; set; }
             /// <summary>Indicates how subtitles should be included: * &apos;auto&apos; - Compute the appropriate subtitle setting automatically * &apos;burn&apos; - Burn the selected subtitle; auto if no selected subtitle * &apos;none&apos; - Ignore all subtitle streams * &apos;sidecar&apos; - The selected subtitle should be provided as a sidecar * &apos;embedded&apos; - The selected subtitle should be provided as an embedded stream * &apos;segmented&apos; - The selected subtitle should be provided as a segmented stream</summary>
-            [Obsolete("This property is deprecated, use SubtitlesAsPostSubtitlesQueryParameterType instead")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("subtitles")]
-            public string? Subtitles { get; set; }
-#nullable restore
-#else
-            [QueryParameter("subtitles")]
-            public string Subtitles { get; set; }
-#endif
-            /// <summary>Indicates how subtitles should be included: * &apos;auto&apos; - Compute the appropriate subtitle setting automatically * &apos;burn&apos; - Burn the selected subtitle; auto if no selected subtitle * &apos;none&apos; - Ignore all subtitle streams * &apos;sidecar&apos; - The selected subtitle should be provided as a sidecar * &apos;embedded&apos; - The selected subtitle should be provided as an embedded stream * &apos;segmented&apos; - The selected subtitle should be provided as a segmented stream</summary>
-            [QueryParameter("subtitles")]
-            public global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.PostSubtitlesQueryParameterType? SubtitlesAsPostSubtitlesQueryParameterType { get; set; }
+            public global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.PostSubtitlesQueryParameterType? Subtitles { get; set; }
             /// <summary>Percentage of original subtitle size to use when burning subtitles (100 is equivalent to original size, 50 is half, ect)</summary>
             [QueryParameter("subtitleSize")]
             public int? SubtitleSize { get; set; }
@@ -256,14 +193,6 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add
             [QueryParameter("videoResolution")]
             public string VideoResolution { get; set; }
 #endif
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class AddRequestBuilderPostRequestConfiguration : RequestConfiguration<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddRequestBuilder.AddRequestBuilderPostQueryParameters>
-        {
         }
     }
 }

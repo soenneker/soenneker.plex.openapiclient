@@ -27,19 +27,6 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Sections
                 return new global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.WithSectionItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.hubs.sections.item collection</summary>
-        /// <param name="position">The section ID for the hubs to fetch</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.WithSectionItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.WithSectionItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("sectionId", position);
-                return new global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.WithSectionItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Hubs.Sections.SectionsRequestBuilder"/> and sets the default values.
         /// </summary>

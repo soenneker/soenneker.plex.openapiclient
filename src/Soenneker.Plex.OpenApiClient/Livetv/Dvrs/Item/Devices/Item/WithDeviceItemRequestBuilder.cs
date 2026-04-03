@@ -40,34 +40,15 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceDeleteResponse?> DeleteAsWithDeviceDeleteResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceDeleteResponse?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceDeleteResponse> DeleteAsWithDeviceDeleteResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceDeleteResponse> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceDeleteResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceDeleteResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Remove a device from an existing DVR
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use DeleteAsWithDeviceDeleteResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceResponse?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceResponse> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Add a device to an existing DVR
@@ -77,34 +58,15 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDevicePutResponse?> PutAsWithDevicePutResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDevicePutResponse?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDevicePutResponse> PutAsWithDevicePutResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDevicePutResponse> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPutRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDevicePutResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDevicePutResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Add a device to an existing DVR
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use PutAsWithDevicePutResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceResponse?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceResponse> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToPutRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Remove a device from an existing DVR
@@ -152,22 +114,6 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item
         public global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceItemRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceItemRequestBuilder(rawUrl, RequestAdapter);
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class WithDeviceItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
-        {
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class WithDeviceItemRequestBuilderPutRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
-        {
         }
     }
 }

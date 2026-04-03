@@ -86,19 +86,8 @@ namespace Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision
         public partial class DecisionRequestBuilderGetQueryParameters 
         {
             /// <summary>Indicates how incompatible advanced subtitles (such as ass/ssa) should be included: * &apos;burn&apos; - Burn incompatible advanced text subtitles into the video stream * &apos;text&apos; - Transcode incompatible advanced text subtitles to a compatible text format, even if some markup is lost</summary>
-            [Obsolete("This property is deprecated, use AdvancedSubtitlesAsGetAdvancedSubtitlesQueryParameterType instead")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("advancedSubtitles")]
-            public string? AdvancedSubtitles { get; set; }
-#nullable restore
-#else
-            [QueryParameter("advancedSubtitles")]
-            public string AdvancedSubtitles { get; set; }
-#endif
-            /// <summary>Indicates how incompatible advanced subtitles (such as ass/ssa) should be included: * &apos;burn&apos; - Burn incompatible advanced text subtitles into the video stream * &apos;text&apos; - Transcode incompatible advanced text subtitles to a compatible text format, even if some markup is lost</summary>
-            [QueryParameter("advancedSubtitles")]
-            public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision.GetAdvancedSubtitlesQueryParameterType? AdvancedSubtitlesAsGetAdvancedSubtitlesQueryParameterType { get; set; }
+            public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision.GetAdvancedSubtitlesQueryParameterType? AdvancedSubtitles { get; set; }
             /// <summary>Percentage of original audio loudness to use when transcoding (100 is equivalent to original volume, 50 is half, 200 is double, etc)</summary>
             [QueryParameter("audioBoost")]
             public int? AudioBoost { get; set; }
@@ -127,19 +116,8 @@ namespace Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision
             [QueryParameter("hasMDE")]
             public int? HasMDE { get; set; }
             /// <summary>Network type of the client, can be used to help determine target bitrate.</summary>
-            [Obsolete("This property is deprecated, use LocationAsGetLocationQueryParameterType instead")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("location")]
-            public string? Location { get; set; }
-#nullable restore
-#else
-            [QueryParameter("location")]
-            public string Location { get; set; }
-#endif
-            /// <summary>Network type of the client, can be used to help determine target bitrate.</summary>
-            [QueryParameter("location")]
-            public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision.GetLocationQueryParameterType? LocationAsGetLocationQueryParameterType { get; set; }
+            public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision.GetLocationQueryParameterType? Location { get; set; }
             /// <summary>Buffer size used in playback (in KB). Clients should specify a lower bound if not known exactly. This value could make the difference between transcoding and direct play on bandwidth constrained networks.</summary>
             [QueryParameter("mediaBufferSize")]
             public int? MediaBufferSize { get; set; }
@@ -179,36 +157,14 @@ namespace Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision
             public string PhotoResolution { get; set; }
 #endif
             /// <summary>Indicates the network streaming protocol to be used for the transcode session: * &apos;http&apos; - include the file in the http response such as MKV streaming * &apos;hls&apos; - hls stream (RFC 8216) * &apos;dash&apos; - dash stream (ISO/IEC 23009-1:2022)</summary>
-            [Obsolete("This property is deprecated, use ProtocolAsGetProtocolQueryParameterType instead")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("protocol")]
-            public string? Protocol { get; set; }
-#nullable restore
-#else
-            [QueryParameter("protocol")]
-            public string Protocol { get; set; }
-#endif
-            /// <summary>Indicates the network streaming protocol to be used for the transcode session: * &apos;http&apos; - include the file in the http response such as MKV streaming * &apos;hls&apos; - hls stream (RFC 8216) * &apos;dash&apos; - dash stream (ISO/IEC 23009-1:2022)</summary>
-            [QueryParameter("protocol")]
-            public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision.GetProtocolQueryParameterType? ProtocolAsGetProtocolQueryParameterType { get; set; }
+            public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision.GetProtocolQueryParameterType? Protocol { get; set; }
             /// <summary>Number of seconds to include in each transcoded segment</summary>
             [QueryParameter("secondsPerSegment")]
             public int? SecondsPerSegment { get; set; }
             /// <summary>Indicates how subtitles should be included: * &apos;auto&apos; - Compute the appropriate subtitle setting automatically * &apos;burn&apos; - Burn the selected subtitle; auto if no selected subtitle * &apos;none&apos; - Ignore all subtitle streams * &apos;sidecar&apos; - The selected subtitle should be provided as a sidecar * &apos;embedded&apos; - The selected subtitle should be provided as an embedded stream * &apos;segmented&apos; - The selected subtitle should be provided as a segmented stream</summary>
-            [Obsolete("This property is deprecated, use SubtitlesAsGetSubtitlesQueryParameterType instead")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("subtitles")]
-            public string? Subtitles { get; set; }
-#nullable restore
-#else
-            [QueryParameter("subtitles")]
-            public string Subtitles { get; set; }
-#endif
-            /// <summary>Indicates how subtitles should be included: * &apos;auto&apos; - Compute the appropriate subtitle setting automatically * &apos;burn&apos; - Burn the selected subtitle; auto if no selected subtitle * &apos;none&apos; - Ignore all subtitle streams * &apos;sidecar&apos; - The selected subtitle should be provided as a sidecar * &apos;embedded&apos; - The selected subtitle should be provided as an embedded stream * &apos;segmented&apos; - The selected subtitle should be provided as a segmented stream</summary>
-            [QueryParameter("subtitles")]
-            public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision.GetSubtitlesQueryParameterType? SubtitlesAsGetSubtitlesQueryParameterType { get; set; }
+            public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision.GetSubtitlesQueryParameterType? Subtitles { get; set; }
             /// <summary>Percentage of original subtitle size to use when burning subtitles (100 is equivalent to original size, 50 is half, ect)</summary>
             [QueryParameter("subtitleSize")]
             public int? SubtitleSize { get; set; }
@@ -238,14 +194,6 @@ namespace Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision
             [QueryParameter("videoResolution")]
             public string VideoResolution { get; set; }
 #endif
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DecisionRequestBuilderGetRequestConfiguration : RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision.DecisionRequestBuilder.DecisionRequestBuilderGetQueryParameters>
-        {
         }
     }
 }

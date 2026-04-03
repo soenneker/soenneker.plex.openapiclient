@@ -27,19 +27,6 @@ namespace Soenneker.Plex.OpenApiClient.Library.Media
                 return new global::Soenneker.Plex.OpenApiClient.Library.Media.Item.WithMediaItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.library.media.item collection</summary>
-        /// <param name="position">The id of the media item</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Library.Media.Item.WithMediaItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.Library.Media.Item.WithMediaItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("mediaId", position);
-                return new global::Soenneker.Plex.OpenApiClient.Library.Media.Item.WithMediaItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Library.Media.MediaRequestBuilder"/> and sets the default values.
         /// </summary>

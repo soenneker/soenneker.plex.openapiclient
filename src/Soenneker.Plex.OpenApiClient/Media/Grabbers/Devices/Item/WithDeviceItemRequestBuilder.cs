@@ -71,34 +71,15 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceDeleteResponse?> DeleteAsWithDeviceDeleteResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceDeleteResponse?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceDeleteResponse> DeleteAsWithDeviceDeleteResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceDeleteResponse> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceDeleteResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceDeleteResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Remove a devices by its id along with its channel mappings
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use DeleteAsWithDeviceDeleteResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceResponse?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceResponse> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a device&apos;s details by its id
@@ -126,34 +107,15 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDevicePutResponse?> PutAsWithDevicePutResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceItemRequestBuilder.WithDeviceItemRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDevicePutResponse?> PutAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceItemRequestBuilder.WithDeviceItemRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDevicePutResponse> PutAsWithDevicePutResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceItemRequestBuilder.WithDeviceItemRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDevicePutResponse> PutAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceItemRequestBuilder.WithDeviceItemRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPutRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDevicePutResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDevicePutResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Enable or disable a device by its id
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use PutAsWithDevicePutResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceResponse?> PutAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceItemRequestBuilder.WithDeviceItemRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceResponse> PutAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceItemRequestBuilder.WithDeviceItemRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToPutRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Remove a devices by its id along with its channel mappings
@@ -222,22 +184,6 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item
             return new global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class WithDeviceItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
-        {
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class WithDeviceItemRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
-        {
-        }
-        /// <summary>
         /// Enable or disable a device by its id
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
@@ -246,14 +192,6 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item
             /// <summary>Whether to enable the device</summary>
             [QueryParameter("enabled")]
             public int? Enabled { get; set; }
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class WithDeviceItemRequestBuilderPutRequestConfiguration : RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceItemRequestBuilder.WithDeviceItemRequestBuilderPutQueryParameters>
-        {
         }
     }
 }

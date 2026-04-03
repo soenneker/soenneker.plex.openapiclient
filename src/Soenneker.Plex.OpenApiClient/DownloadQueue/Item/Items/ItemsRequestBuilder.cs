@@ -29,19 +29,6 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items
                 return new global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.Item.WithItemItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.downloadQueue.item.items.item collection</summary>
-        /// <param name="position">The item id</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.Item.WithItemItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.Item.WithItemItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("itemId", position);
-                return new global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.Item.WithItemItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -66,34 +53,15 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsGetResponse?> GetAsItemsGetResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsGetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsGetResponse> GetAsItemsGetResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsGetResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Available: 0.2.0Get items from a download queue
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use GetAsItemsGetResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Available: 0.2.0Get items from a download queue
@@ -122,14 +90,6 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items
         public global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items.ItemsRequestBuilder(rawUrl, RequestAdapter);
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ItemsRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
-        {
         }
     }
 }

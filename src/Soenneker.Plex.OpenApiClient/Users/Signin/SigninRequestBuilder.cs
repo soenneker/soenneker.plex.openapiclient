@@ -43,11 +43,11 @@ namespace Soenneker.Plex.OpenApiClient.Users.Signin
         /// <exception cref="global::Soenneker.Plex.OpenApiClient.Users.Signin.Signin401Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostResponse?> PostAsSigninPostResponseAsync(global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostResponse?> PostAsync(global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostResponse> PostAsSigninPostResponseAsync(global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostResponse> PostAsync(global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -58,34 +58,6 @@ namespace Soenneker.Plex.OpenApiClient.Users.Signin
                 { "401", global::Soenneker.Plex.OpenApiClient.Users.Signin.Signin401Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Sign in user with username and password and return user data with Plex authentication token
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninResponse"/></returns>
-        /// <param name="body">The request body</param>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Users.Signin.Signin400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Users.Signin.Signin401Error">When receiving a 401 status code</exception>
-        [Obsolete("This method is obsolete. Use PostAsSigninPostResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninResponse?> PostAsync(global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninResponse> PostAsync(global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
-            {
-                { "400", global::Soenneker.Plex.OpenApiClient.Users.Signin.Signin400Error.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Plex.OpenApiClient.Users.Signin.Signin401Error.CreateFromDiscriminatorValue },
-            };
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Sign in user with username and password and return user data with Plex authentication token
@@ -117,14 +89,6 @@ namespace Soenneker.Plex.OpenApiClient.Users.Signin
         public global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninRequestBuilder(rawUrl, RequestAdapter);
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class SigninRequestBuilderPostRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
-        {
         }
     }
 }

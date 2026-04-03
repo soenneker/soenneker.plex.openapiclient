@@ -40,34 +40,15 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersGetResponse?> GetAsFirstCharactersGetResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersRequestBuilder.FirstCharactersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersRequestBuilder.FirstCharactersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersGetResponse> GetAsFirstCharactersGetResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersRequestBuilder.FirstCharactersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersRequestBuilder.FirstCharactersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Get list of first characters in this section
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use GetAsFirstCharactersGetResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersRequestBuilder.FirstCharactersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersRequestBuilder.FirstCharactersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get list of first characters in this section
@@ -119,14 +100,6 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters
             /// <summary>The metadata type to filter on</summary>
             [QueryParameter("type")]
             public int? Type { get; set; }
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class FirstCharactersRequestBuilderGetRequestConfiguration : RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersRequestBuilder.FirstCharactersRequestBuilderGetQueryParameters>
-        {
         }
     }
 }

@@ -40,34 +40,15 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsDeleteResponse?> DeleteAsLineupsDeleteResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsDeleteResponse?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsDeleteResponse> DeleteAsLineupsDeleteResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsDeleteResponse> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsDeleteResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsDeleteResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Deletes a DVR device&apos;s lineup.
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use DeleteAsLineupsDeleteResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsResponse?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsResponse> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Add a lineup to a DVR device&apos;s set of lineups.
@@ -77,34 +58,15 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsPutResponse?> PutAsLineupsPutResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsPutResponse?> PutAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsPutResponse> PutAsLineupsPutResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsPutResponse> PutAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPutRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsPutResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsPutResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Add a lineup to a DVR device&apos;s set of lineups.
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use PutAsLineupsPutResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsResponse?> PutAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsResponse> PutAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToPutRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deletes a DVR device&apos;s lineup.
@@ -171,14 +133,6 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups
 #endif
         }
         /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class LineupsRequestBuilderDeleteRequestConfiguration : RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderDeleteQueryParameters>
-        {
-        }
-        /// <summary>
         /// Add a lineup to a DVR device&apos;s set of lineups.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
@@ -194,14 +148,6 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups
             [QueryParameter("lineup")]
             public string Lineup { get; set; }
 #endif
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class LineupsRequestBuilderPutRequestConfiguration : RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder.LineupsRequestBuilderPutQueryParameters>
-        {
         }
     }
 }

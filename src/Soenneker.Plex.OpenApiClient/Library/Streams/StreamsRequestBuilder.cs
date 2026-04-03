@@ -28,19 +28,6 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams
                 return new global::Soenneker.Plex.OpenApiClient.Library.Streams.Item.WithStreamItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.library.streams.item collection</summary>
-        /// <param name="position">The id of the stream</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Library.Streams.Item.WithStreamItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.Library.Streams.Item.WithStreamItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("streamId", position);
-                return new global::Soenneker.Plex.OpenApiClient.Library.Streams.Item.WithStreamItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Library.Streams.StreamsRequestBuilder"/> and sets the default values.
         /// </summary>

@@ -40,34 +40,15 @@ namespace Soenneker.Plex.OpenApiClient.Security.Token
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenPostResponse?> PostAsTokenPostResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenPostResponse?> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenPostResponse> PostAsTokenPostResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenPostResponse> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenPostResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Security.Token.TokenPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// This endpoint provides the caller with a temporary token with the same access level as the caller&apos;s token. These tokens are valid for up to 48 hours and are destroyed if the server instance is restarted.Note: This endpoint responds to all HTTP verbs but POST in preferred
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Security.Token.TokenResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use PostAsTokenPostResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenResponse?> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenResponse> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Security.Token.TokenResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// This endpoint provides the caller with a temporary token with the same access level as the caller&apos;s token. These tokens are valid for up to 48 hours and are destroyed if the server instance is restarted.Note: This endpoint responds to all HTTP verbs but POST in preferred
@@ -104,41 +85,11 @@ namespace Soenneker.Plex.OpenApiClient.Security.Token
         public partial class TokenRequestBuilderPostQueryParameters 
         {
             /// <summary>The value `all` is the only supported `scope` parameter.</summary>
-            [Obsolete("This property is deprecated, use ScopeAsPostScopeQueryParameterType instead")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("scope")]
-            public string? Scope { get; set; }
-#nullable restore
-#else
-            [QueryParameter("scope")]
-            public string Scope { get; set; }
-#endif
-            /// <summary>The value `all` is the only supported `scope` parameter.</summary>
-            [QueryParameter("scope")]
-            public global::Soenneker.Plex.OpenApiClient.Security.Token.PostScopeQueryParameterType? ScopeAsPostScopeQueryParameterType { get; set; }
-            /// <summary>The value `delegation` is the only supported `type` parameter.</summary>
-            [Obsolete("This property is deprecated, use TypeAsPostTypeQueryParameterType instead")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("type")]
-            public string? Type { get; set; }
-#nullable restore
-#else
-            [QueryParameter("type")]
-            public string Type { get; set; }
-#endif
+            public global::Soenneker.Plex.OpenApiClient.Security.Token.PostScopeQueryParameterType? Scope { get; set; }
             /// <summary>The value `delegation` is the only supported `type` parameter.</summary>
             [QueryParameter("type")]
-            public global::Soenneker.Plex.OpenApiClient.Security.Token.PostTypeQueryParameterType? TypeAsPostTypeQueryParameterType { get; set; }
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class TokenRequestBuilderPostRequestConfiguration : RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Security.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>
-        {
+            public global::Soenneker.Plex.OpenApiClient.Security.Token.PostTypeQueryParameterType? Type { get; set; }
         }
     }
 }

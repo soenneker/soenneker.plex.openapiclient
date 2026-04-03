@@ -27,19 +27,6 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Thumb
                 return new global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Thumb.Item.WithVersionItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.media.grabbers.devices.item.thumb.item collection</summary>
-        /// <param name="position">A version number of the thumb used for busting cache</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Thumb.Item.WithVersionItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Thumb.Item.WithVersionItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("version", position);
-                return new global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Thumb.Item.WithVersionItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Thumb.ThumbRequestBuilder"/> and sets the default values.
         /// </summary>

@@ -27,19 +27,6 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Metadata
                 return new global::Soenneker.Plex.OpenApiClient.Hubs.Metadata.Item.WithMetadataItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.hubs.metadata.item collection</summary>
-        /// <param name="position">The metadata ID for the hubs to fetch</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Hubs.Metadata.Item.WithMetadataItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.Hubs.Metadata.Item.WithMetadataItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("metadataId", position);
-                return new global::Soenneker.Plex.OpenApiClient.Hubs.Metadata.Item.WithMetadataItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Hubs.Metadata.MetadataRequestBuilder"/> and sets the default values.
         /// </summary>

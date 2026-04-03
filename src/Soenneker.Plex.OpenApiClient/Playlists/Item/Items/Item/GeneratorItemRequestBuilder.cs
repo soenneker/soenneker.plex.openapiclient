@@ -42,19 +42,6 @@ namespace Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item
                 return new global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.Item.WithMetadataItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.playlists.item.items.item.item collection</summary>
-        /// <param name="position">The metadata item ID to act on</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.Item.WithMetadataItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.Item.WithMetadataItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("metadataId", position);
-                return new global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.Item.WithMetadataItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorItemRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -97,34 +84,15 @@ namespace Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorGetResponse?> GetAsGeneratorGetResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorGetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorGetResponse> GetAsGeneratorGetResponseAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorGetResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Get a playlist&apos;s generator.  Only used for optimized versions
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use GetAsGeneratorGetResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Modify a playlist generator.  Only used for optimizer
@@ -211,22 +179,6 @@ namespace Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item
             return new global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class GeneratorItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
-        {
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class GeneratorItemRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
-        {
-        }
-        /// <summary>
         /// Modify a playlist generator.  Only used for optimizer
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
@@ -240,14 +192,6 @@ namespace Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item
 #else
             public string Item { get; set; }
 #endif
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class GeneratorItemRequestBuilderPutRequestConfiguration : RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorItemRequestBuilder.GeneratorItemRequestBuilderPutQueryParameters>
-        {
         }
     }
 }

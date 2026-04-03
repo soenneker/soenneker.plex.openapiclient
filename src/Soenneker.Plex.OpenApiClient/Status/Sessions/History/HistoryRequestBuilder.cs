@@ -33,19 +33,6 @@ namespace Soenneker.Plex.OpenApiClient.Status.Sessions.History
                 return new global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.Item.WithHistoryItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.status.sessions.history.item collection</summary>
-        /// <param name="position">The id of the history item (the `historyKey` from above)</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.Item.WithHistoryItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.Item.WithHistoryItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("historyId", position);
-                return new global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.Item.WithHistoryItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.HistoryRequestBuilder"/> and sets the default values.
         /// </summary>

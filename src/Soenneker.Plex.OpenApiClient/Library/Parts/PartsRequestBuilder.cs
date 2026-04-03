@@ -27,19 +27,6 @@ namespace Soenneker.Plex.OpenApiClient.Library.Parts
                 return new global::Soenneker.Plex.OpenApiClient.Library.Parts.Item.WithPartItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.library.parts.item collection</summary>
-        /// <param name="position">The id of the part to select streams on</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Library.Parts.Item.WithPartItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.Library.Parts.Item.WithPartItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("partId", position);
-                return new global::Soenneker.Plex.OpenApiClient.Library.Parts.Item.WithPartItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Library.Parts.PartsRequestBuilder"/> and sets the default values.
         /// </summary>

@@ -27,19 +27,6 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices
                 return new global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.livetv.dvrs.item.devices.item collection</summary>
-        /// <param name="position">The ID of the device to add.</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceItemRequestBuilder"/></returns>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceItemRequestBuilder this[string position]
-        {
-            get
-            {
-                var urlTplParams = new Dictionary<string, object>(PathParameters);
-                if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("deviceId", position);
-                return new global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.Item.WithDeviceItemRequestBuilder(urlTplParams, RequestAdapter);
-            }
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.DevicesRequestBuilder"/> and sets the default values.
         /// </summary>

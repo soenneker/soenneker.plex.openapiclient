@@ -40,34 +40,15 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Search.Voice
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceGetResponse?> GetAsVoiceGetResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceRequestBuilder.VoiceRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceRequestBuilder.VoiceRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceGetResponse> GetAsVoiceGetResponseAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceRequestBuilder.VoiceRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceRequestBuilder.VoiceRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Perform a search tailored to voice input and get the result as hubsThis endpoint performs a search specifically tailored towards voice or other imprecise input which may work badly with the substring and spell-checking heuristics used by the `/hubs/search` endpoint. It uses a [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) heuristic to search titles, and as such is much slower than the other search endpoint. Whenever possible, clients should limit the search to the appropriate type.Results, as well as their containing per-type hubs, contain a `distance` attribute which can be used to judge result quality.
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceResponse"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("This method is obsolete. Use GetAsVoiceGetResponseAsync instead.")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceRequestBuilder.VoiceRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceRequestBuilder.VoiceRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Perform a search tailored to voice input and get the result as hubsThis endpoint performs a search specifically tailored towards voice or other imprecise input which may work badly with the substring and spell-checking heuristics used by the `/hubs/search` endpoint. It uses a [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) heuristic to search titles, and as such is much slower than the other search endpoint. Whenever possible, clients should limit the search to the appropriate type.Results, as well as their containing per-type hubs, contain a `distance` attribute which can be used to judge result quality.
@@ -119,14 +100,6 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Search.Voice
             /// <summary>The type of media to retrieve or filter by.1 = movie2 = show3 = season4 = episode5 = artist6 = album7 = track8 = photo_album9 = photoE.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries</summary>
             [QueryParameter("type")]
             public int? Type { get; set; }
-        }
-        /// <summary>
-        /// Configuration for the request such as headers, query parameters, and middleware options.
-        /// </summary>
-        [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class VoiceRequestBuilderGetRequestConfiguration : RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceRequestBuilder.VoiceRequestBuilderGetQueryParameters>
-        {
         }
     }
 }
