@@ -1,16 +1,15 @@
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Plex.OpenApiClient.Tests;
 
-[Collection("Collection")]
-public sealed class PlexOpenApiClientTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public sealed class PlexOpenApiClientTests : HostedUnitTest
 {
-    public PlexOpenApiClientTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public PlexOpenApiClientTests(Host host) : base(host)
     {
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
