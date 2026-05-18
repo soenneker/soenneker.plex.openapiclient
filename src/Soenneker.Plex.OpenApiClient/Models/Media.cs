@@ -62,7 +62,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
         /// <summary>The id property</summary>
         public long? Id { get; set; }
         /// <summary>The optimizedForStreaming property</summary>
-        public bool? OptimizedForStreaming { get; set; }
+        public int? OptimizedForStreaming { get; set; }
         /// <summary>The Part property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -141,7 +141,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "hasVoiceActivity", n => { HasVoiceActivity = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.Media.Media_hasVoiceActivity>(global::Soenneker.Plex.OpenApiClient.Models.Media.Media_hasVoiceActivity.CreateFromDiscriminatorValue); } },
                 { "height", n => { Height = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
-                { "optimizedForStreaming", n => { OptimizedForStreaming = n.GetBoolValue(); } },
+                { "optimizedForStreaming", n => { OptimizedForStreaming = n.GetIntValue(); } },
                 { "Part", n => { Part = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Part>(global::Soenneker.Plex.OpenApiClient.Models.Part.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "videoCodec", n => { VideoCodec = n.GetStringValue(); } },
                 { "videoFrameRate", n => { VideoFrameRate = n.GetStringValue(); } },
@@ -168,7 +168,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.Media.Media_hasVoiceActivity>("hasVoiceActivity", HasVoiceActivity);
             writer.WriteIntValue("height", Height);
             writer.WriteLongValue("id", Id);
-            writer.WriteBoolValue("optimizedForStreaming", OptimizedForStreaming);
+            writer.WriteIntValue("optimizedForStreaming", OptimizedForStreaming);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Part>("Part", Part);
             writer.WriteStringValue("videoCodec", VideoCodec);
             writer.WriteStringValue("videoFrameRate", VideoFrameRate);
