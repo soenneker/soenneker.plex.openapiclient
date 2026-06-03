@@ -93,6 +93,13 @@ namespace Soenneker.Plex.OpenApiClient.Users.Signin
         public SigninPostResponse_pastSubscriptions()
         {
             AdditionalData = new Dictionary<string, object>();
+            Canceled = false;
+            CanConvert = false;
+            CanDowngrade = false;
+            CanReactivate = false;
+            CanUpgrade = false;
+            GracePeriod = false;
+            OnHold = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -185,14 +192,6 @@ namespace Soenneker.Plex.OpenApiClient.Users.Signin
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostResponse_pastSubscriptions.SigninPostResponse_pastSubscriptions_endsAt();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.PlexDateTime = new global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.SigninPostResponsePastSubscriptionsEndsAtMember1 = new global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostResponse_pastSubscriptions_endsAtMember1();
-                }
                 return result;
             }
             /// <summary>
@@ -260,14 +259,6 @@ namespace Soenneker.Plex.OpenApiClient.Users.Signin
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostResponse_pastSubscriptions.SigninPostResponse_pastSubscriptions_renewsAt();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.PlexDateTime = new global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.SigninPostResponsePastSubscriptionsRenewsAtMember1 = new global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostResponse_pastSubscriptions_renewsAtMember1();
-                }
                 return result;
             }
             /// <summary>

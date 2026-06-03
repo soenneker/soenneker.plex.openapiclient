@@ -21,7 +21,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithMarkerItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/marker/{marker}?startTimeOffset={startTimeOffset}&type={type}{&attributes,endTimeOffset*}", pathParameters)
+        public WithMarkerItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithMarkerItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/marker/{marker}?startTimeOffset={startTimeOffset}&type={type}{&attributes,endTimeOffset*}", rawUrl)
+        public WithMarkerItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
         {
         }
         /// <summary>
@@ -101,7 +101,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item.WithMarkerItemRequestBuilder.WithMarkerItemRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/library/metadata/{ids}/marker/{marker}?startTimeOffset={startTimeOffset}&type={type}{&attributes,endTimeOffset*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

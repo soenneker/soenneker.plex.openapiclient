@@ -23,7 +23,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         /// <param name="streamId">The id of the stream</param>
-        public WithStreamIdWithExtRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter, string ext = "", int? streamId = default) : base(requestAdapter, "{+baseurl}/library/streams/{streamId}.{ext}{?autoAdjustSubtitle*,encoding*,format*,offset*}", pathParameters)
+        public WithStreamIdWithExtRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter, string ext = "", int? streamId = default) : base(requestAdapter, "", pathParameters)
         {
             if (!string.IsNullOrWhiteSpace(ext)) PathParameters.Add("ext", ext);
             if (streamId != null) PathParameters.Add("streamId", streamId);
@@ -33,7 +33,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithStreamIdWithExtRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/streams/{streamId}.{ext}{?autoAdjustSubtitle*,encoding*,format*,offset*}", rawUrl)
+        public WithStreamIdWithExtRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
         {
         }
         /// <summary>

@@ -74,6 +74,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
         public UserProfile()
         {
             AdditionalData = new Dictionary<string, object>();
+            AutoSelectAudio = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

@@ -22,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,field%2Elocked*,field%2Evalue*,filters*,includeGuids*,includeMeta*,mediaQuery*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*}", pathParameters)
+        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,field%2Elocked*,field%2Evalue*,filters*,includeGuids*,includeMeta*,mediaQuery*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*}", rawUrl)
+        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
         {
         }
         /// <summary>

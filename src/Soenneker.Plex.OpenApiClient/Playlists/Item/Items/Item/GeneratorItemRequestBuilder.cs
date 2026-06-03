@@ -47,7 +47,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GeneratorItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists/{playlistId}/items/{generator%2Did}{?Item*}", pathParameters)
+        public GeneratorItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists/{playlistId}/items/{generator%2Did}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GeneratorItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists/{playlistId}/items/{generator%2Did}{?Item*}", rawUrl)
+        public GeneratorItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists/{playlistId}/items/{generator%2Did}", rawUrl)
         {
         }
         /// <summary>

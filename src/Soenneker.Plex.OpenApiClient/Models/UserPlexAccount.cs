@@ -229,6 +229,19 @@ namespace Soenneker.Plex.OpenApiClient.Models
         public UserPlexAccount()
         {
             AdditionalData = new Dictionary<string, object>();
+            Anonymous = false;
+            BackupCodesCreated = false;
+            Confirmed = false;
+            EmailOnlyAuth = false;
+            ExperimentalFeatures = false;
+            Guest = false;
+            HasPassword = true;
+            Home = false;
+            HomeAdmin = false;
+            MailingListActive = false;
+            Protected = false;
+            Restricted = false;
+            TwoFactorEnabled = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -373,14 +386,6 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentReminderAt();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.PlexDateTime = new global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.UserPlexAccountAdsConsentReminderAtMember1 = new global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount_adsConsentReminderAtMember1();
-                }
                 return result;
             }
             /// <summary>
@@ -448,14 +453,6 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentSetAt();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.PlexDateTime = new global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.UserPlexAccountAdsConsentSetAtMember1 = new global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount_adsConsentSetAtMember1();
-                }
                 return result;
             }
             /// <summary>

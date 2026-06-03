@@ -27,7 +27,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.All
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/all?agent={agent}&language={language}&name={name}&type={type}{&importFromiTunes*,locations*,metadataAgentProviderGroupId*,prefs,relative*,scanner*}", pathParameters)
+        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
         {
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.All
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/all?agent={agent}&language={language}&name={name}&type={type}{&importFromiTunes*,locations*,metadataAgentProviderGroupId*,prefs,relative*,scanner*}", rawUrl)
+        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
         {
         }
         /// <summary>
@@ -107,7 +107,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.All
         public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.All.AllRequestBuilder.AllRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/library/sections/all?agent={agent}&language={language}&name={name}&type={type}{&importFromiTunes*,locations*,metadataAgentProviderGroupId*,prefs,relative*,scanner*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

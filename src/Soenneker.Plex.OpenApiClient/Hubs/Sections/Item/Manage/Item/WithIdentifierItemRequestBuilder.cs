@@ -21,7 +21,7 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithIdentifierItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/hubs/sections/{sectionId}/manage/{identifier}{?promotedToOwnHome*,promotedToRecommended*,promotedToSharedHome*}", pathParameters)
+        public WithIdentifierItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithIdentifierItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/hubs/sections/{sectionId}/manage/{identifier}{?promotedToOwnHome*,promotedToRecommended*,promotedToSharedHome*}", rawUrl)
+        public WithIdentifierItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
         {
         }
         /// <summary>

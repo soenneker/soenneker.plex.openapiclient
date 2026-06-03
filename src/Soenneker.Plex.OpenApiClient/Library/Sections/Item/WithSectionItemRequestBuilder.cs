@@ -165,7 +165,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSectionItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}?agent={agent}{&async*,includeDetails*,language*,locations*,metadataAgentProviderGroupId*,name*,prefs,scanner*}", pathParameters)
+        public WithSectionItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
         {
         }
         /// <summary>
@@ -173,7 +173,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSectionItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}?agent={agent}{&async*,includeDetails*,language*,locations*,metadataAgentProviderGroupId*,name*,prefs,scanner*}", rawUrl)
+        public WithSectionItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
         {
         }
         /// <summary>
