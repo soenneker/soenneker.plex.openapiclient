@@ -83,7 +83,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.All.AllRequestBuilder.AllRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,includeGuids*,includeMeta*,mediaQuery*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -102,7 +102,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.All.AllRequestBuilder.AllRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/library/sections/{sectionId}/all{?album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,field%2Elocked*,field%2Evalue*,filters*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             return requestInfo;

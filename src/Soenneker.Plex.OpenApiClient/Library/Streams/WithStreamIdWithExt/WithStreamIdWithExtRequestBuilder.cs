@@ -104,7 +104,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/library/streams/{streamId}.{ext}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             return requestInfo;
@@ -123,7 +123,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt.WithStreamIdWithExtRequestBuilder.WithStreamIdWithExtRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/library/streams/{streamId}.{ext}{?autoAdjustSubtitle*,encoding*,format*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             return requestInfo;
         }
@@ -141,7 +141,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt.WithStreamIdWithExtRequestBuilder.WithStreamIdWithExtRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/library/streams/{streamId}.{ext}{?offset*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             return requestInfo;
         }

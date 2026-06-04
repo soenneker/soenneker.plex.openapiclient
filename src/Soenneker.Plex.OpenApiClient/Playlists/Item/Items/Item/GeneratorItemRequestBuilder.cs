@@ -164,7 +164,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorItemRequestBuilder.GeneratorItemRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/playlists/{playlistId}/items/{generator%2Did}{?Item*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

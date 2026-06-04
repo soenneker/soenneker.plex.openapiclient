@@ -82,7 +82,7 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage.Item
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/hubs/sections/{sectionId}/manage/{identifier}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             return requestInfo;
@@ -101,7 +101,7 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage.Item
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage.Item.WithIdentifierItemRequestBuilder.WithIdentifierItemRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/hubs/sections/{sectionId}/manage/{identifier}{?promotedToOwnHome*,promotedToRecommended*,promotedToSharedHome*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             return requestInfo;
