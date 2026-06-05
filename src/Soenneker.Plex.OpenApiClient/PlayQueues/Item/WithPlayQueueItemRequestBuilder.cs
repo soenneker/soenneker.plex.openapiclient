@@ -46,7 +46,7 @@ namespace Soenneker.Plex.OpenApiClient.PlayQueues.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithPlayQueueItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
+        public WithPlayQueueItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playQueues/{playQueueId}{?center*,includeAfter*,includeBefore*,next*,own*,playlistID*,uri*,window*}", pathParameters)
         {
         }
         /// <summary>
@@ -54,7 +54,7 @@ namespace Soenneker.Plex.OpenApiClient.PlayQueues.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithPlayQueueItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
+        public WithPlayQueueItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playQueues/{playQueueId}{?center*,includeAfter*,includeBefore*,next*,own*,playlistID*,uri*,window*}", rawUrl)
         {
         }
         /// <summary>
@@ -107,7 +107,7 @@ namespace Soenneker.Plex.OpenApiClient.PlayQueues.Item
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.PlayQueues.Item.WithPlayQueueItemRequestBuilder.WithPlayQueueItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/playQueues/{playQueueId}{?center*,includeAfter*,includeBefore*,own*,window*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -126,7 +126,7 @@ namespace Soenneker.Plex.OpenApiClient.PlayQueues.Item
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.PlayQueues.Item.WithPlayQueueItemRequestBuilder.WithPlayQueueItemRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/playQueues/{playQueueId}{?next*,playlistID*,uri*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

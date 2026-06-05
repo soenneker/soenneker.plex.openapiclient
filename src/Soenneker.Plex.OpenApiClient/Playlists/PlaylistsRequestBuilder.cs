@@ -41,7 +41,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PlaylistsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
+        public PlaylistsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists{?playQueueID*,playlistType*,smart*,uri*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PlaylistsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
+        public PlaylistsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists{?playQueueID*,playlistType*,smart*,uri*}", rawUrl)
         {
         }
         /// <summary>
@@ -102,7 +102,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Playlists.PlaylistsRequestBuilder.PlaylistsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/playlists{?playlistType*,smart*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -121,7 +121,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists
         public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Playlists.PlaylistsRequestBuilder.PlaylistsRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/playlists{?playQueueID*,uri*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

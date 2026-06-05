@@ -27,7 +27,7 @@ namespace Soenneker.Plex.OpenApiClient.Log
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LogRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
+        public LogRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/log{?level*,message*,source*}", pathParameters)
         {
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.Plex.OpenApiClient.Log
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LogRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
+        public LogRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/log{?level*,message*,source*}", rawUrl)
         {
         }
         /// <summary>
@@ -92,7 +92,7 @@ namespace Soenneker.Plex.OpenApiClient.Log
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/log", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             requestInfo.SetStreamContent(body, "text/plain");
@@ -112,7 +112,7 @@ namespace Soenneker.Plex.OpenApiClient.Log
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Log.LogRequestBuilder.LogRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/log{?level*,message*,source*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             return requestInfo;

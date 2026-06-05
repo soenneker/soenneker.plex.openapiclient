@@ -23,7 +23,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         /// <param name="streamId">The id of the stream</param>
-        public WithStreamIdWithExtRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter, string ext = "", int? streamId = default) : base(requestAdapter, "", pathParameters)
+        public WithStreamIdWithExtRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter, string ext = "", int? streamId = default) : base(requestAdapter, "{+baseurl}/library/streams/{streamId}.{ext}{?autoAdjustSubtitle*,encoding*,format*,offset*}", pathParameters)
         {
             if (!string.IsNullOrWhiteSpace(ext)) PathParameters.Add("ext", ext);
             if (streamId != null) PathParameters.Add("streamId", streamId);
@@ -33,7 +33,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithStreamIdWithExtRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
+        public WithStreamIdWithExtRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/streams/{streamId}.{ext}{?autoAdjustSubtitle*,encoding*,format*,offset*}", rawUrl)
         {
         }
         /// <summary>
@@ -104,7 +104,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/library/streams/{streamId}.{ext}", PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             return requestInfo;
@@ -123,7 +123,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt.WithStreamIdWithExtRequestBuilder.WithStreamIdWithExtRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/library/streams/{streamId}.{ext}{?autoAdjustSubtitle*,encoding*,format*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             return requestInfo;
         }
@@ -141,7 +141,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt.WithStreamIdWithExtRequestBuilder.WithStreamIdWithExtRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/library/streams/{streamId}.{ext}{?offset*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             return requestInfo;
         }

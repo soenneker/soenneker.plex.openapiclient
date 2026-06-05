@@ -27,7 +27,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.All
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
+        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/all{?importFromiTunes*,locations*,metadataAgentProviderGroupId*,prefs,relative*,scanner*}", pathParameters)
         {
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.All
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
+        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/all{?importFromiTunes*,locations*,metadataAgentProviderGroupId*,prefs,relative*,scanner*}", rawUrl)
         {
         }
         /// <summary>
@@ -88,7 +88,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.All
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/library/sections/all", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

@@ -34,7 +34,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DvrsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
+        public DvrsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/livetv/dvrs{?device*,language*,lineup*}", pathParameters)
         {
         }
         /// <summary>
@@ -42,7 +42,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DvrsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
+        public DvrsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/livetv/dvrs{?device*,language*,lineup*}", rawUrl)
         {
         }
         /// <summary>
@@ -95,7 +95,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/livetv/dvrs", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -114,7 +114,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs
         public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsRequestBuilder.DvrsRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/livetv/dvrs{?device*,language*,lineup*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

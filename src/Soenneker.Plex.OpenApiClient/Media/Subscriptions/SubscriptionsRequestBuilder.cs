@@ -53,7 +53,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubscriptionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
+        public SubscriptionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/subscriptions{?hints,includeGrabs*,includeStorage*,params,prefs,targetLibrarySectionID*,targetSectionLocationID*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubscriptionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
+        public SubscriptionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/subscriptions{?hints,includeGrabs*,includeStorage*,params,prefs,targetLibrarySectionID*,targetSectionLocationID*,type*}", rawUrl)
         {
         }
         /// <summary>
@@ -114,7 +114,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsRequestBuilder.SubscriptionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/media/subscriptions{?includeGrabs*,includeStorage*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -133,7 +133,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions
         public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.SubscriptionsRequestBuilder.SubscriptionsRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/media/subscriptions{?hints,params,prefs,targetLibrarySectionID*,targetSectionLocationID*,type*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

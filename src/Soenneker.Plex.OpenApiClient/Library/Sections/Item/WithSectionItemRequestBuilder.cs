@@ -165,7 +165,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSectionItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
+        public WithSectionItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}{?async*,includeDetails*,language*,locations*,metadataAgentProviderGroupId*,name*,prefs,scanner*}", pathParameters)
         {
         }
         /// <summary>
@@ -173,7 +173,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSectionItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
+        public WithSectionItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}{?async*,includeDetails*,language*,locations*,metadataAgentProviderGroupId*,name*,prefs,scanner*}", rawUrl)
         {
         }
         /// <summary>
@@ -244,7 +244,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.WithSectionItemRequestBuilder.WithSectionItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/library/sections/{sectionId}{?async*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             return requestInfo;
@@ -263,7 +263,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.WithSectionItemRequestBuilder.WithSectionItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/library/sections/{sectionId}{?includeDetails*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

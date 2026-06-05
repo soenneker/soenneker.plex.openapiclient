@@ -47,7 +47,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GeneratorItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists/{playlistId}/items/{generator%2Did}", pathParameters)
+        public GeneratorItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists/{playlistId}/items/{generator%2Did}{?Item*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GeneratorItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists/{playlistId}/items/{generator%2Did}", rawUrl)
+        public GeneratorItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists/{playlistId}/items/{generator%2Did}{?Item*}", rawUrl)
         {
         }
         /// <summary>
@@ -164,7 +164,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorItemRequestBuilder.GeneratorItemRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/playlists/{playlistId}/items/{generator%2Did}{?Item*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

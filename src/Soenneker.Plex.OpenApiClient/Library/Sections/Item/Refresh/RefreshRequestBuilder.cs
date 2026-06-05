@@ -21,7 +21,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Refresh
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RefreshRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
+        public RefreshRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/refresh{?force*,path*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Refresh
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RefreshRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
+        public RefreshRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/refresh{?force*,path*}", rawUrl)
         {
         }
         /// <summary>
@@ -82,7 +82,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Refresh
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/library/sections/{sectionId}/refresh", PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             return requestInfo;
@@ -101,7 +101,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Refresh
         public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Refresh.RefreshRequestBuilder.RefreshRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/library/sections/{sectionId}/refresh{?force*,path*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             return requestInfo;

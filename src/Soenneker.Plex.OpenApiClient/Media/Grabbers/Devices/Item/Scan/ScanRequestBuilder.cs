@@ -22,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Scan
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ScanRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
+        public ScanRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/grabbers/devices/{deviceId}/scan{?source*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Scan
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ScanRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
+        public ScanRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/grabbers/devices/{deviceId}/scan{?source*}", rawUrl)
         {
         }
         /// <summary>
@@ -83,7 +83,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Scan
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/media/grabbers/devices/{deviceId}/scan", PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -102,7 +102,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Scan
         public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Scan.ScanRequestBuilder.ScanRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/media/grabbers/devices/{deviceId}/scan{?source*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

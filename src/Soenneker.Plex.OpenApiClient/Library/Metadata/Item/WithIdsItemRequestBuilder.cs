@@ -185,7 +185,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithIdsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
+        public WithIdsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}{?args*,asyncAugmentMetadata*,asyncCheckFiles*,asyncRefreshAnalysis*,asyncRefreshLocalMediaAgent*,augmentCount*,checkFileAvailability*,checkFiles*,proxy*,skipRefresh*}", pathParameters)
         {
         }
         /// <summary>
@@ -193,7 +193,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithIdsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
+        public WithIdsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}{?args*,asyncAugmentMetadata*,asyncCheckFiles*,asyncRefreshAnalysis*,asyncRefreshLocalMediaAgent*,augmentCount*,checkFileAvailability*,checkFiles*,proxy*,skipRefresh*}", rawUrl)
         {
         }
         /// <summary>
@@ -264,7 +264,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.WithIdsItemRequestBuilder.WithIdsItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/library/metadata/{ids}{?proxy*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             return requestInfo;
@@ -283,7 +283,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.WithIdsItemRequestBuilder.WithIdsItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/library/metadata/{ids}{?asyncAugmentMetadata*,asyncCheckFiles*,asyncRefreshAnalysis*,asyncRefreshLocalMediaAgent*,augmentCount*,checkFileAvailability*,checkFiles*,skipRefresh*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -302,7 +302,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.WithIdsItemRequestBuilder.WithIdsItemRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/library/metadata/{ids}{?args*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             return requestInfo;

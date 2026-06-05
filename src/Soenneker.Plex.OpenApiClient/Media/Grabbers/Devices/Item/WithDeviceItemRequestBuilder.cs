@@ -52,7 +52,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithDeviceItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/grabbers/devices/{deviceId}", pathParameters)
+        public WithDeviceItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/grabbers/devices/{deviceId}{?enabled*}", pathParameters)
         {
         }
         /// <summary>
@@ -60,7 +60,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithDeviceItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/grabbers/devices/{deviceId}", rawUrl)
+        public WithDeviceItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/grabbers/devices/{deviceId}{?enabled*}", rawUrl)
         {
         }
         /// <summary>
@@ -169,7 +169,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.WithDeviceItemRequestBuilder.WithDeviceItemRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/media/grabbers/devices/{deviceId}{?enabled*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

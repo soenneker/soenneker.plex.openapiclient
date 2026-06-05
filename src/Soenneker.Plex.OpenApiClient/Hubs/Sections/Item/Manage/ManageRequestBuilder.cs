@@ -40,7 +40,7 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ManageRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
+        public ManageRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/hubs/sections/{sectionId}/manage{?metadataItemId*,promotedToOwnHome*,promotedToRecommended*,promotedToSharedHome*}", pathParameters)
         {
         }
         /// <summary>
@@ -48,7 +48,7 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ManageRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
+        public ManageRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/hubs/sections/{sectionId}/manage{?metadataItemId*,promotedToOwnHome*,promotedToRecommended*,promotedToSharedHome*}", rawUrl)
         {
         }
         /// <summary>
@@ -119,7 +119,7 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/hubs/sections/{sectionId}/manage", PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             return requestInfo;
@@ -138,7 +138,7 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage.ManageRequestBuilder.ManageRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/hubs/sections/{sectionId}/manage{?metadataItemId*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
