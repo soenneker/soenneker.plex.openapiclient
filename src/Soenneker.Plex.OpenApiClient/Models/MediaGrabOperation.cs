@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Plex.OpenApiClient.Models
 {
     /// <summary>
-    /// A media grab opration represents a scheduled or active recording of media
+    /// A media grab operation represents a scheduled or active recording of media
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MediaGrabOperation : IAdditionalDataHolder, IParsable

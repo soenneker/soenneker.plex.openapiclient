@@ -12,8 +12,12 @@ namespace Soenneker.Plex.OpenApiClient.Models
     public partial class MediaContainerWithPlaylistMetadata_MediaContainer_Metadata : global::Soenneker.Plex.OpenApiClient.Models.Metadata, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Total duration in seconds (redundant but present in XML).</summary>
+        public int? DurationInSeconds { get; set; }
         /// <summary>The type of the playlist.</summary>
         public global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata_MediaContainer_Metadata_playlistType? PlaylistType { get; set; }
+        /// <summary>Whether this is a generated radio playlist.</summary>
+        public bool? Radio { get; set; }
         /// <summary>If we return this as true then this playlist cannot be altered or deleted directly by the client.</summary>
         public bool? ReadOnly { get; set; }
         /// <summary>Whether or not the playlist is smart.</summary>
@@ -44,7 +48,9 @@ namespace Soenneker.Plex.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
+                { "durationInSeconds", n => { DurationInSeconds = n.GetIntValue(); } },
                 { "playlistType", n => { PlaylistType = n.GetEnumValue<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata_MediaContainer_Metadata_playlistType>(); } },
+                { "radio", n => { Radio = n.GetBoolValue(); } },
                 { "readOnly", n => { ReadOnly = n.GetBoolValue(); } },
                 { "smart", n => { Smart = n.GetBoolValue(); } },
                 { "specialPlaylistType", n => { SpecialPlaylistType = n.GetStringValue(); } },
@@ -58,7 +64,9 @@ namespace Soenneker.Plex.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
+            writer.WriteIntValue("durationInSeconds", DurationInSeconds);
             writer.WriteEnumValue<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata_MediaContainer_Metadata_playlistType>("playlistType", PlaylistType);
+            writer.WriteBoolValue("radio", Radio);
             writer.WriteBoolValue("readOnly", ReadOnly);
             writer.WriteBoolValue("smart", Smart);
             writer.WriteStringValue("specialPlaylistType", SpecialPlaylistType);

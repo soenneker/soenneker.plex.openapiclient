@@ -52,6 +52,7 @@ namespace Soenneker.Plex.OpenApiClient.PlayQueues.Item.Items
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -62,7 +63,11 @@ namespace Soenneker.Plex.OpenApiClient.PlayQueues.Item.Items
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deletes all items in the play queue, and increases the version of the play queue.

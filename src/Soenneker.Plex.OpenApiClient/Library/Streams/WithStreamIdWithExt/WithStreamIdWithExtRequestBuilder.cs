@@ -125,6 +125,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/octet-stream");
             return requestInfo;
         }
         /// <summary>
@@ -143,6 +144,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.WithStreamIdWithExt
 #endif
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/octet-stream");
             return requestInfo;
         }
         /// <summary>

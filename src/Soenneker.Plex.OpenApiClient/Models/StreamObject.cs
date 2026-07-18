@@ -15,6 +15,12 @@ namespace Soenneker.Plex.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>ReplayGain album gain in dB.</summary>
+        public double? AlbumGain { get; set; }
+        /// <summary>ReplayGain album peak amplitude.</summary>
+        public double? AlbumPeak { get; set; }
+        /// <summary>ReplayGain album dynamic range in dB.</summary>
+        public double? AlbumRange { get; set; }
         /// <summary>Audio channel layout.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -27,6 +33,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
         public int? BitDepth { get; set; }
         /// <summary>Bitrate of the stream.</summary>
         public int? Bitrate { get; set; }
+        /// <summary>Audio bitrate mode (cbr or vbr).</summary>
+        public global::Soenneker.Plex.OpenApiClient.Models.Stream_bitrateMode? BitrateMode { get; set; }
         /// <summary>Indicates if the stream can auto-sync.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -141,6 +149,14 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string EmbeddedInVideo { get; set; }
 #endif
+        /// <summary>Loudness ramp end type.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EndRamp { get; set; }
+#nullable restore
+#else
+        public string EndRamp { get; set; }
+#endif
         /// <summary>Extended display title for the stream.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -161,6 +177,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #endif
         /// <summary>Frame rate of the stream.</summary>
         public float? FrameRate { get; set; }
+        /// <summary>Track replay gain in dB.</summary>
+        public double? Gain { get; set; }
         /// <summary>The hasScalingMatrix property</summary>
         public bool? HasScalingMatrix { get; set; }
         /// <summary>Indicates whether header compression is enabled.</summary>
@@ -207,8 +225,18 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #endif
         /// <summary>Video level.</summary>
         public int? Level { get; set; }
+        /// <summary>Integrated loudness in LUFS.</summary>
+        public double? Loudness { get; set; }
+        /// <summary>Loudness range in LU.</summary>
+        public double? Lra { get; set; }
+        /// <summary>Minimum lines in the lyric file.</summary>
+        public int? MinLines { get; set; }
         /// <summary>Indicates if this is the original stream.</summary>
         public bool? Original { get; set; }
+        /// <summary>Track peak amplitude.</summary>
+        public double? Peak { get; set; }
+        /// <summary>Whether the subtitle is an exact match.</summary>
+        public bool? PerfectMatch { get; set; }
         /// <summary>Video profile.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -216,6 +244,22 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #nullable restore
 #else
         public string Profile { get; set; }
+#endif
+        /// <summary>Lyric or subtitle provider name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Provider { get; set; }
+#nullable restore
+#else
+        public string Provider { get; set; }
+#endif
+        /// <summary>Subtitle provider display name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ProviderTitle { get; set; }
+#nullable restore
+#else
+        public string ProviderTitle { get; set; }
 #endif
         /// <summary>Number of reference frames.</summary>
         public int? RefFrames { get; set; }
@@ -229,12 +273,32 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string ScanType { get; set; }
 #endif
+        /// <summary>Subtitle match confidence score (0-100).</summary>
+        public double? Score { get; set; }
         /// <summary>Indicates if this stream is selected (applicable for audio streams).</summary>
         public bool? Selected { get; set; }
+        /// <summary>Source identifier for the subtitle.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SourceKey { get; set; }
+#nullable restore
+#else
+        public string SourceKey { get; set; }
+#endif
+        /// <summary>Loudness ramp start type.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StartRamp { get; set; }
+#nullable restore
+#else
+        public string StartRamp { get; set; }
+#endif
         /// <summary>The streamIdentifier property</summary>
         public int? StreamIdentifier { get; set; }
         /// <summary>The streamType property</summary>
         public int? StreamType { get; set; }
+        /// <summary>Whether lyrics are timestamped.</summary>
+        public bool? Timed { get; set; }
         /// <summary>Optional title for the stream (e.g., language variant).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -243,6 +307,12 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string Title { get; set; }
 #endif
+        /// <summary>Whether the subtitle is temporary or downloaded.</summary>
+        public bool? Transient { get; set; }
+        /// <summary>ID of the user who added the subtitle.</summary>
+        public int? UserID { get; set; }
+        /// <summary>Whether this audio track is an audio description track.</summary>
+        public bool? VisualImpaired { get; set; }
         /// <summary>Width of the video stream.</summary>
         public int? Width { get; set; }
         /// <summary>
@@ -270,9 +340,13 @@ namespace Soenneker.Plex.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "albumGain", n => { AlbumGain = n.GetDoubleValue(); } },
+                { "albumPeak", n => { AlbumPeak = n.GetDoubleValue(); } },
+                { "albumRange", n => { AlbumRange = n.GetDoubleValue(); } },
                 { "audioChannelLayout", n => { AudioChannelLayout = n.GetStringValue(); } },
                 { "bitDepth", n => { BitDepth = n.GetIntValue(); } },
                 { "bitrate", n => { Bitrate = n.GetIntValue(); } },
+                { "bitrateMode", n => { BitrateMode = n.GetEnumValue<global::Soenneker.Plex.OpenApiClient.Models.Stream_bitrateMode>(); } },
                 { "canAutoSync", n => { CanAutoSync = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_canAutoSync>(global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_canAutoSync.CreateFromDiscriminatorValue); } },
                 { "channels", n => { Channels = n.GetIntValue(); } },
                 { "chromaLocation", n => { ChromaLocation = n.GetStringValue(); } },
@@ -297,10 +371,12 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "displayTitle", n => { DisplayTitle = n.GetStringValue(); } },
                 { "dub", n => { Dub = n.GetBoolValue(); } },
                 { "embeddedInVideo", n => { EmbeddedInVideo = n.GetStringValue(); } },
+                { "endRamp", n => { EndRamp = n.GetStringValue(); } },
                 { "extendedDisplayTitle", n => { ExtendedDisplayTitle = n.GetStringValue(); } },
                 { "forced", n => { Forced = n.GetBoolValue(); } },
                 { "format", n => { Format = n.GetStringValue(); } },
                 { "frameRate", n => { FrameRate = n.GetFloatValue(); } },
+                { "gain", n => { Gain = n.GetDoubleValue(); } },
                 { "hasScalingMatrix", n => { HasScalingMatrix = n.GetBoolValue(); } },
                 { "headerCompression", n => { HeaderCompression = n.GetBoolValue(); } },
                 { "hearingImpaired", n => { HearingImpaired = n.GetBoolValue(); } },
@@ -312,15 +388,29 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "languageCode", n => { LanguageCode = n.GetStringValue(); } },
                 { "languageTag", n => { LanguageTag = n.GetStringValue(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
+                { "loudness", n => { Loudness = n.GetDoubleValue(); } },
+                { "lra", n => { Lra = n.GetDoubleValue(); } },
+                { "minLines", n => { MinLines = n.GetIntValue(); } },
                 { "original", n => { Original = n.GetBoolValue(); } },
+                { "peak", n => { Peak = n.GetDoubleValue(); } },
+                { "perfectMatch", n => { PerfectMatch = n.GetBoolValue(); } },
                 { "profile", n => { Profile = n.GetStringValue(); } },
+                { "provider", n => { Provider = n.GetStringValue(); } },
+                { "providerTitle", n => { ProviderTitle = n.GetStringValue(); } },
                 { "refFrames", n => { RefFrames = n.GetIntValue(); } },
                 { "samplingRate", n => { SamplingRate = n.GetIntValue(); } },
                 { "scanType", n => { ScanType = n.GetStringValue(); } },
+                { "score", n => { Score = n.GetDoubleValue(); } },
                 { "selected", n => { Selected = n.GetBoolValue(); } },
+                { "sourceKey", n => { SourceKey = n.GetStringValue(); } },
+                { "startRamp", n => { StartRamp = n.GetStringValue(); } },
                 { "streamIdentifier", n => { StreamIdentifier = n.GetIntValue(); } },
                 { "streamType", n => { StreamType = n.GetIntValue(); } },
+                { "timed", n => { Timed = n.GetBoolValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
+                { "transient", n => { Transient = n.GetBoolValue(); } },
+                { "userID", n => { UserID = n.GetIntValue(); } },
+                { "visualImpaired", n => { VisualImpaired = n.GetBoolValue(); } },
                 { "width", n => { Width = n.GetIntValue(); } },
             };
         }
@@ -331,9 +421,13 @@ namespace Soenneker.Plex.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDoubleValue("albumGain", AlbumGain);
+            writer.WriteDoubleValue("albumPeak", AlbumPeak);
+            writer.WriteDoubleValue("albumRange", AlbumRange);
             writer.WriteStringValue("audioChannelLayout", AudioChannelLayout);
             writer.WriteIntValue("bitDepth", BitDepth);
             writer.WriteIntValue("bitrate", Bitrate);
+            writer.WriteEnumValue<global::Soenneker.Plex.OpenApiClient.Models.Stream_bitrateMode>("bitrateMode", BitrateMode);
             writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_canAutoSync>("canAutoSync", CanAutoSync);
             writer.WriteIntValue("channels", Channels);
             writer.WriteStringValue("chromaLocation", ChromaLocation);
@@ -358,10 +452,12 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteStringValue("DOVIVersion", DOVIVersion);
             writer.WriteBoolValue("dub", Dub);
             writer.WriteStringValue("embeddedInVideo", EmbeddedInVideo);
+            writer.WriteStringValue("endRamp", EndRamp);
             writer.WriteStringValue("extendedDisplayTitle", ExtendedDisplayTitle);
             writer.WriteBoolValue("forced", Forced);
             writer.WriteStringValue("format", Format);
             writer.WriteFloatValue("frameRate", FrameRate);
+            writer.WriteDoubleValue("gain", Gain);
             writer.WriteBoolValue("hasScalingMatrix", HasScalingMatrix);
             writer.WriteBoolValue("headerCompression", HeaderCompression);
             writer.WriteBoolValue("hearingImpaired", HearingImpaired);
@@ -373,15 +469,29 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteStringValue("languageCode", LanguageCode);
             writer.WriteStringValue("languageTag", LanguageTag);
             writer.WriteIntValue("level", Level);
+            writer.WriteDoubleValue("loudness", Loudness);
+            writer.WriteDoubleValue("lra", Lra);
+            writer.WriteIntValue("minLines", MinLines);
             writer.WriteBoolValue("original", Original);
+            writer.WriteDoubleValue("peak", Peak);
+            writer.WriteBoolValue("perfectMatch", PerfectMatch);
             writer.WriteStringValue("profile", Profile);
+            writer.WriteStringValue("provider", Provider);
+            writer.WriteStringValue("providerTitle", ProviderTitle);
             writer.WriteIntValue("refFrames", RefFrames);
             writer.WriteIntValue("samplingRate", SamplingRate);
             writer.WriteStringValue("scanType", ScanType);
+            writer.WriteDoubleValue("score", Score);
             writer.WriteBoolValue("selected", Selected);
+            writer.WriteStringValue("sourceKey", SourceKey);
+            writer.WriteStringValue("startRamp", StartRamp);
             writer.WriteIntValue("streamIdentifier", StreamIdentifier);
             writer.WriteIntValue("streamType", StreamType);
+            writer.WriteBoolValue("timed", Timed);
             writer.WriteStringValue("title", Title);
+            writer.WriteBoolValue("transient", Transient);
+            writer.WriteIntValue("userID", UserID);
+            writer.WriteBoolValue("visualImpaired", VisualImpaired);
             writer.WriteIntValue("width", Width);
             writer.WriteAdditionalData(AdditionalData);
         }

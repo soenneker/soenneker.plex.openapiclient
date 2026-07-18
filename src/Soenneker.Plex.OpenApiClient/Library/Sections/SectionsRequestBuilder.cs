@@ -6,6 +6,7 @@ using Soenneker.Plex.OpenApiClient.Library.Sections.All;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Prefs;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Refresh;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Watchlist;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -23,6 +24,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.All.AllRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The EmptyPathSegment property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.EmptyPathSegmentRequestBuilder EmptyPathSegment
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The prefs property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Prefs.PrefsRequestBuilder Prefs
         {
@@ -32,6 +38,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Refresh.RefreshRequestBuilder Refresh
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Refresh.RefreshRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The watchlist property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Watchlist.WatchlistRequestBuilder Watchlist
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Watchlist.WatchlistRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.library.sections.item collection</summary>
         /// <param name="position">The section identifier</param>

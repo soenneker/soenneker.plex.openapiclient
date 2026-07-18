@@ -16,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Channels
         /// <summary>The DeviceChannel property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Channels.ChannelsGetResponse_MediaContainer_DeviceChannel>? DeviceChannel { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.DeviceChannel>? DeviceChannel { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Channels.ChannelsGetResponse_MediaContainer_DeviceChannel> DeviceChannel { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.DeviceChannel> DeviceChannel { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Channels
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "DeviceChannel", n => { DeviceChannel = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Channels.ChannelsGetResponse_MediaContainer_DeviceChannel>(global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Channels.ChannelsGetResponse_MediaContainer_DeviceChannel.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "DeviceChannel", n => { DeviceChannel = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.DeviceChannel>(global::Soenneker.Plex.OpenApiClient.Models.DeviceChannel.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Channels
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Channels.ChannelsGetResponse_MediaContainer_DeviceChannel>("DeviceChannel", DeviceChannel);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.DeviceChannel>("DeviceChannel", DeviceChannel);
         }
     }
 }

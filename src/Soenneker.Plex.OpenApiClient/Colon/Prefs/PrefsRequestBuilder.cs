@@ -45,6 +45,7 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Prefs
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithSettings"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithSettings?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -55,7 +56,11 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Prefs
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithSettings>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithSettings.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithSettings>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithSettings.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Set a set of preferences in query parameters
@@ -128,6 +133,7 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Prefs
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PrefsRequestBuilderPutQueryParameters 
         {
+            /// <summary>The preference key to retrieve or set</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("prefs")]

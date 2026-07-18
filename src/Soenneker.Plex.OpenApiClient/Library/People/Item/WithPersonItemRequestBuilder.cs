@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Plex.OpenApiClient.Library.People.Item.Media;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -41,20 +42,20 @@ namespace Soenneker.Plex.OpenApiClient.Library.People.Item
         /// <summary>
         /// Get details for a single actor.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Library.People.Item.WithPersonGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithTags"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Library.People.Item.WithPersonGetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithTags?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Library.People.Item.WithPersonGetResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithTags> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Library.People.Item.WithPersonGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Library.People.Item.WithPersonGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithTags>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithTags.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get details for a single actor.

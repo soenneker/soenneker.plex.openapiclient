@@ -35,7 +35,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Sessions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/livetv/sessions", pathParameters)
+        public SessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/livetv/sessions{?channel*,dvrId*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Sessions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/livetv/sessions", rawUrl)
+        public SessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/livetv/sessions{?channel*,dvrId*}", rawUrl)
         {
         }
         /// <summary>
@@ -52,17 +52,22 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Sessions
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Sessions.SessionsRequestBuilder.SessionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Sessions.SessionsRequestBuilder.SessionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get all livetv sessions and metadata
@@ -71,11 +76,11 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Sessions
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Sessions.SessionsRequestBuilder.SessionsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Sessions.SessionsRequestBuilder.SessionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -91,6 +96,19 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Sessions
         public global::Soenneker.Plex.OpenApiClient.Livetv.Sessions.SessionsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Plex.OpenApiClient.Livetv.Sessions.SessionsRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Get all livetv sessions and metadata
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class SessionsRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Filter by channel ID.</summary>
+            [QueryParameter("channel")]
+            public int? Channel { get; set; }
+            /// <summary>Filter by DVR ID.</summary>
+            [QueryParameter("dvrId")]
+            public int? DvrId { get; set; }
         }
     }
 }

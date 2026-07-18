@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,9 +9,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class WithMarkerPutResponse_MediaContainer : global::Soenneker.Plex.OpenApiClient.Models.MediaContainer, IParsable
+    public partial class WithMarkerPutResponse_MediaContainer : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The color property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,6 +26,18 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item
         public int? EndTimeOffset { get; set; }
         /// <summary>The id property</summary>
         public int? Id { get; set; }
+        /// <summary>The identifier property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Identifier { get; set; }
+#nullable restore
+#else
+        public string Identifier { get; set; }
+#endif
+        /// <summary>The offset of where this container page starts among the total objects available. Also provided in the `X-Plex-Container-Start` header.</summary>
+        public int? Offset { get; set; }
+        /// <summary>The size property</summary>
+        public int? Size { get; set; }
         /// <summary>The startTimeOffset property</summary>
         public int? StartTimeOffset { get; set; }
         /// <summary>The title property</summary>
@@ -35,14 +48,23 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item
 #else
         public string Title { get; set; }
 #endif
+        /// <summary>The total size of objects available. Also provided in the `X-Plex-Container-Total-Size` header.</summary>
+        public int? TotalSize { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item.WithMarkerPutResponse_MediaContainer_type? Type { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item.WithMarkerPutResponse_MediaContainer"/> and sets the default values.
+        /// </summary>
+        public WithMarkerPutResponse_MediaContainer()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item.WithMarkerPutResponse_MediaContainer"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item.WithMarkerPutResponse_MediaContainer CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item.WithMarkerPutResponse_MediaContainer CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item.WithMarkerPutResponse_MediaContainer();
@@ -51,15 +73,19 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
+            return new Dictionary<string, Action<IParseNode>>
             {
                 { "color", n => { Color = n.GetStringValue(); } },
                 { "endTimeOffset", n => { EndTimeOffset = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
+                { "identifier", n => { Identifier = n.GetStringValue(); } },
+                { "offset", n => { Offset = n.GetIntValue(); } },
+                { "size", n => { Size = n.GetIntValue(); } },
                 { "startTimeOffset", n => { StartTimeOffset = n.GetIntValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
+                { "totalSize", n => { TotalSize = n.GetIntValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item.WithMarkerPutResponse_MediaContainer_type>(); } },
             };
         }
@@ -67,16 +93,20 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public override void Serialize(ISerializationWriter writer)
+        public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);
             writer.WriteStringValue("color", Color);
             writer.WriteIntValue("endTimeOffset", EndTimeOffset);
             writer.WriteIntValue("id", Id);
+            writer.WriteStringValue("identifier", Identifier);
+            writer.WriteIntValue("offset", Offset);
+            writer.WriteIntValue("size", Size);
             writer.WriteIntValue("startTimeOffset", StartTimeOffset);
             writer.WriteStringValue("title", Title);
+            writer.WriteIntValue("totalSize", TotalSize);
             writer.WriteEnumValue<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item.WithMarkerPutResponse_MediaContainer_type>("type", Type);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

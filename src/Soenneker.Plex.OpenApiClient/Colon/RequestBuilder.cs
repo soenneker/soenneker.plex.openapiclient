@@ -4,11 +4,13 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Plex.OpenApiClient.Colon.Eventsource;
 using Soenneker.Plex.OpenApiClient.Colon.Prefs;
+using Soenneker.Plex.OpenApiClient.Colon.Progress;
 using Soenneker.Plex.OpenApiClient.Colon.Rate;
 using Soenneker.Plex.OpenApiClient.Colon.Scrobble;
 using Soenneker.Plex.OpenApiClient.Colon.Timeline;
 using Soenneker.Plex.OpenApiClient.Colon.Unscrobble;
 using Soenneker.Plex.OpenApiClient.Colon.Websocket;
+using Soenneker.Plex.OpenApiClient.Colon.Websockets;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -30,6 +32,11 @@ namespace Soenneker.Plex.OpenApiClient.Colon
         public global::Soenneker.Plex.OpenApiClient.Colon.Prefs.PrefsRequestBuilder Prefs
         {
             get => new global::Soenneker.Plex.OpenApiClient.Colon.Prefs.PrefsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The progress property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Colon.Progress.ProgressRequestBuilder Progress
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Colon.Progress.ProgressRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The rate property</summary>
         public global::Soenneker.Plex.OpenApiClient.Colon.Rate.RateRequestBuilder Rate
@@ -55,6 +62,11 @@ namespace Soenneker.Plex.OpenApiClient.Colon
         public global::Soenneker.Plex.OpenApiClient.Colon.Websocket.WebsocketRequestBuilder Websocket
         {
             get => new global::Soenneker.Plex.OpenApiClient.Colon.Websocket.WebsocketRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The websockets property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Colon.Websockets.WebsocketsRequestBuilder Websockets
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Colon.Websockets.WebsocketsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Colon.RequestBuilder"/> and sets the default values.

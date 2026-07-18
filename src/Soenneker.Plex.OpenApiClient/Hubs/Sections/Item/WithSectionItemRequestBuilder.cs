@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -41,20 +42,20 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Sections.Item
         /// <summary>
         /// Get the hubs for a single section
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.WithSectionGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.WithSectionGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.WithSectionItemRequestBuilder.WithSectionItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.WithSectionItemRequestBuilder.WithSectionItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.WithSectionGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.WithSectionItemRequestBuilder.WithSectionItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.WithSectionItemRequestBuilder.WithSectionItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.WithSectionGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.WithSectionGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get the hubs for a single section

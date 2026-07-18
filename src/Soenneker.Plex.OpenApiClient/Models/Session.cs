@@ -27,6 +27,32 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #endif
         /// <summary>The location of the client</summary>
         public global::Soenneker.Plex.OpenApiClient.Models.Session_location? Location { get; set; }
+        /// <summary>Unique session key for this playback session.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SessionKey { get; set; }
+#nullable restore
+#else
+        public string SessionKey { get; set; }
+#endif
+        /// <summary>Title of the media being played.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Title { get; set; }
+#nullable restore
+#else
+        public string Title { get; set; }
+#endif
+        /// <summary>ID of the user owning this session.</summary>
+        public int? UserID { get; set; }
+        /// <summary>UUID of the playback session.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Uuid { get; set; }
+#nullable restore
+#else
+        public string Uuid { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Models.Session"/> and sets the default values.
         /// </summary>
@@ -55,6 +81,10 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "bandwidth", n => { Bandwidth = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "location", n => { Location = n.GetEnumValue<global::Soenneker.Plex.OpenApiClient.Models.Session_location>(); } },
+                { "sessionKey", n => { SessionKey = n.GetStringValue(); } },
+                { "title", n => { Title = n.GetStringValue(); } },
+                { "userID", n => { UserID = n.GetIntValue(); } },
+                { "uuid", n => { Uuid = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -67,6 +97,10 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteIntValue("bandwidth", Bandwidth);
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.Plex.OpenApiClient.Models.Session_location>("location", Location);
+            writer.WriteStringValue("sessionKey", SessionKey);
+            writer.WriteStringValue("title", Title);
+            writer.WriteIntValue("userID", UserID);
+            writer.WriteStringValue("uuid", Uuid);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

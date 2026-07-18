@@ -3,7 +3,9 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Plex.OpenApiClient.Models;
 using Soenneker.Plex.OpenApiClient.PlayQueues.Item;
+using Soenneker.Plex.OpenApiClient.PlayQueues.One;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -17,6 +19,11 @@ namespace Soenneker.Plex.OpenApiClient.PlayQueues
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PlayQueuesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The One property</summary>
+        public global::Soenneker.Plex.OpenApiClient.PlayQueues.One.OneRequestBuilder One
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.PlayQueues.One.OneRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.playQueues.item collection</summary>
         /// <param name="position">The ID of the play queue.</param>
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.PlayQueues.Item.WithPlayQueueItemRequestBuilder"/></returns>
@@ -48,20 +55,20 @@ namespace Soenneker.Plex.OpenApiClient.PlayQueues
         /// <summary>
         /// Makes a new play queue for a device. The source of the playqueue can either be a URI, or a playlist. The response is a media container with the initial items in the queue. Each item in the queue will be a regular item but with `playQueueItemID` - a unique ID since the queue could have repeated items with the same `ratingKey`.Note: Either `uri` or `playlistID` must be specified
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.PlayQueues.PlayQueuesPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlayQueue"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.PlayQueues.PlayQueuesPostResponse?> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.PlayQueues.PlayQueuesRequestBuilder.PlayQueuesRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlayQueue?> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.PlayQueues.PlayQueuesRequestBuilder.PlayQueuesRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.PlayQueues.PlayQueuesPostResponse> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.PlayQueues.PlayQueuesRequestBuilder.PlayQueuesRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlayQueue> PostAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.PlayQueues.PlayQueuesRequestBuilder.PlayQueuesRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.PlayQueues.PlayQueuesPostResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.PlayQueues.PlayQueuesPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlayQueue>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlayQueue.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Makes a new play queue for a device. The source of the playqueue can either be a URI, or a playlist. The response is a media container with the initial items in the queue. Each item in the queue will be a regular item but with `playQueueItemID` - a unique ID since the queue could have repeated items with the same `ratingKey`.Note: Either `uri` or `playlistID` must be specified

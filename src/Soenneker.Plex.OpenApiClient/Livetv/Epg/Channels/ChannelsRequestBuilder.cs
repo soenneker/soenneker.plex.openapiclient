@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -35,20 +36,20 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Epg.Channels
         /// <summary>
         /// Get channels for a lineup within an EPG provider
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Channels.ChannelsGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.ChannelResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Channels.ChannelsGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Channels.ChannelsRequestBuilder.ChannelsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.ChannelResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Channels.ChannelsRequestBuilder.ChannelsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Channels.ChannelsGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Channels.ChannelsRequestBuilder.ChannelsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.ChannelResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Channels.ChannelsRequestBuilder.ChannelsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Channels.ChannelsGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Channels.ChannelsGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.ChannelResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.ChannelResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get channels for a lineup within an EPG provider

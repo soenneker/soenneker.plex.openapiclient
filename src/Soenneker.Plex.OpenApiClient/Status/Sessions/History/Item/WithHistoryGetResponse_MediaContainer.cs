@@ -16,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.Status.Sessions.History.Item
         /// <summary>The Metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.Item.WithHistoryGetResponse_MediaContainer_Metadata>? Metadata { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.PlaybackHistoryMetadata>? Metadata { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.Item.WithHistoryGetResponse_MediaContainer_Metadata> Metadata { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.PlaybackHistoryMetadata> Metadata { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Status.Sessions.History.Item
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "Metadata", n => { Metadata = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.Item.WithHistoryGetResponse_MediaContainer_Metadata>(global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.Item.WithHistoryGetResponse_MediaContainer_Metadata.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Metadata", n => { Metadata = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.PlaybackHistoryMetadata>(global::Soenneker.Plex.OpenApiClient.Models.PlaybackHistoryMetadata.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Plex.OpenApiClient.Status.Sessions.History.Item
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.Item.WithHistoryGetResponse_MediaContainer_Metadata>("Metadata", Metadata);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.PlaybackHistoryMetadata>("Metadata", Metadata);
         }
     }
 }

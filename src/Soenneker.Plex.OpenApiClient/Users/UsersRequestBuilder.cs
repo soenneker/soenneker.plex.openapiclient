@@ -3,7 +3,12 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Plex.OpenApiClient.Models;
+using Soenneker.Plex.OpenApiClient.Users.Account;
+using Soenneker.Plex.OpenApiClient.Users.AccountJson;
+using Soenneker.Plex.OpenApiClient.Users.Password;
 using Soenneker.Plex.OpenApiClient.Users.Signin;
+using Soenneker.Plex.OpenApiClient.Users.Signout;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -17,10 +22,30 @@ namespace Soenneker.Plex.OpenApiClient.Users
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UsersRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The account property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Users.Account.AccountRequestBuilder Account
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Users.Account.AccountRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The accountJson property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Users.AccountJson.AccountJsonRequestBuilder AccountJson
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Users.AccountJson.AccountJsonRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The password property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Users.Password.PasswordRequestBuilder Password
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Users.Password.PasswordRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The signin property</summary>
         public global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninRequestBuilder Signin
         {
             get => new global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The signout property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Users.Signout.SignoutRequestBuilder Signout
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Users.Signout.SignoutRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Users.UsersRequestBuilder"/> and sets the default values.
@@ -44,8 +69,8 @@ namespace Soenneker.Plex.OpenApiClient.Users
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Users.UsersGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Users.Users400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Users.Users401Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.BadRequestErrorResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.UnauthorizedErrorResponse">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Users.UsersGetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -58,8 +83,8 @@ namespace Soenneker.Plex.OpenApiClient.Users
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Plex.OpenApiClient.Users.Users400Error.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Plex.OpenApiClient.Users.Users401Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Plex.OpenApiClient.Models.BadRequestErrorResponse.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.UnauthorizedErrorResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Users.UsersGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Users.UsersGetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

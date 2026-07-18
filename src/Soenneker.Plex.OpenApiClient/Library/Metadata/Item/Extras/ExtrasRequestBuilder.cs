@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Extras
 {
     /// <summary>
-    /// Builds and executes requests for operations under \library\metadata\{ids}\extras
+    /// Builds and executes requests for operations under \library\metadata\{ids-id}\extras
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExtrasRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Extras
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ExtrasRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/extras{?extraType*,title*}", pathParameters)
+        public ExtrasRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/extras{?extraType*,title*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Extras
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ExtrasRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/extras{?extraType*,title*}", rawUrl)
+        public ExtrasRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/extras{?extraType*,title*}", rawUrl)
         {
         }
         /// <summary>
@@ -39,6 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Extras
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +50,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Extras
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Add an extra to a metadata item
@@ -102,7 +107,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Extras
         public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Extras.ExtrasRequestBuilder.ExtrasRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/library/metadata/{ids}/extras?url={url}{&extraType*,title*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/library/metadata/{ids%2Did}/extras?url={url}{&extraType*,title*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "text/html");
             return requestInfo;

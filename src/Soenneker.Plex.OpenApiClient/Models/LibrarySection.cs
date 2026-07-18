@@ -48,9 +48,9 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #endif
         /// <summary>The content property</summary>
         public bool? Content { get; set; }
-        /// <summary>The contentChangedAt property</summary>
+        /// <summary>Unix epoch datetime in seconds</summary>
         public long? ContentChangedAt { get; set; }
-        /// <summary>The createdAt property</summary>
+        /// <summary>Unix epoch datetime in seconds</summary>
         public long? CreatedAt { get; set; }
         /// <summary>The directory property</summary>
         public bool? Directory { get; set; }
@@ -84,7 +84,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #endif
         /// <summary>Indicates whether this library section is currently scanning</summary>
         public bool? Refreshing { get; set; }
-        /// <summary>The scannedAt property</summary>
+        /// <summary>Unix epoch datetime in seconds</summary>
         public long? ScannedAt { get; set; }
         /// <summary>The scanner property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -112,7 +112,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #endif
         /// <summary>The type of media content in the Plex library. This can represent videos, music, or photos.</summary>
         public global::Soenneker.Plex.OpenApiClient.Models.MediaTypeString? Type { get; set; }
-        /// <summary>The updatedAt property</summary>
+        /// <summary>Unix epoch datetime in seconds</summary>
         public long? UpdatedAt { get; set; }
         /// <summary>The universally unique identifier for the library.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

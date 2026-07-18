@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Plex.OpenApiClient.Livetv.Dvrs;
 using Soenneker.Plex.OpenApiClient.Livetv.Epg;
+using Soenneker.Plex.OpenApiClient.Livetv.Recordings;
 using Soenneker.Plex.OpenApiClient.Livetv.Sessions;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,11 @@ namespace Soenneker.Plex.OpenApiClient.Livetv
         public global::Soenneker.Plex.OpenApiClient.Livetv.Epg.EpgRequestBuilder Epg
         {
             get => new global::Soenneker.Plex.OpenApiClient.Livetv.Epg.EpgRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The recordings property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Livetv.Recordings.RecordingsRequestBuilder Recordings
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Livetv.Recordings.RecordingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The sessions property</summary>
         public global::Soenneker.Plex.OpenApiClient.Livetv.Sessions.SessionsRequestBuilder Sessions

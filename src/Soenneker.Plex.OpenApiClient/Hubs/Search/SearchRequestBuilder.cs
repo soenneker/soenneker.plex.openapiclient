@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Plex.OpenApiClient.Hubs.Search.Voice;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Search
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SearchRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/hubs/search?query={query}{&limit*,sectionId*}", pathParameters)
+        public SearchRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/hubs/search?query={query}{&includeCollections*,limit*,sectionId*}", pathParameters)
         {
         }
         /// <summary>
@@ -35,26 +36,26 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Search
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SearchRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/hubs/search?query={query}{&limit*,sectionId*}", rawUrl)
+        public SearchRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/hubs/search?query={query}{&includeCollections*,limit*,sectionId*}", rawUrl)
         {
         }
         /// <summary>
         /// Perform a search and get the result as hubsThis endpoint performs a search across all library sections, or a single section, and returns matches as hubs, split up by type. It performs spell checking, looks for partial matches, and orders the hubs based on quality of results. In addition, based on matches, it will return other related matches (e.g. for a genre match, it may return movies in that genre, or for an actor match, movies with that actor).In the response&apos;s items, the following extra attributes are returned to further describe or disambiguate the result:- `reason`: The reason for the result, if not because of a direct search term match; can be either:  - `section`: There are multiple identical results from different sections.  - `originalTitle`: There was a search term match from the original title field (sometimes those can be very different or in a foreign language).  - `&lt;hub identifier&gt;`: If the reason for the result is due to a result in another hub, the source hub identifier is returned. For example, if the search is for &quot;dylan&quot; then Bob Dylan may be returned as an artist result, an a few of his albums returned as album results with a reason code of `artist` (the identifier of that particular hub). Or if the search is for &quot;arnold&quot;, there might be movie results returned with a reason of `actor`- `reasonTitle`: The string associated with the reason code. For a section reason, it&apos;ll be the section name; For a hub identifier, it&apos;ll be a string associated with the match (e.g. `Arnold Schwarzenegger` for movies which were returned because the search was for &quot;arnold&quot;).- `reasonID`: The ID of the item associated with the reason for the result. This might be a section ID, a tag ID, an artist ID, or a show ID.This request is intended to be very fast, and called as the user types.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Hubs.Search.SearchGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Hubs.Search.SearchGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Hubs.Search.SearchGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Hubs.Search.SearchGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Hubs.Search.SearchGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Perform a search and get the result as hubsThis endpoint performs a search across all library sections, or a single section, and returns matches as hubs, split up by type. It performs spell checking, looks for partial matches, and orders the hubs based on quality of results. In addition, based on matches, it will return other related matches (e.g. for a genre match, it may return movies in that genre, or for an actor match, movies with that actor).In the response&apos;s items, the following extra attributes are returned to further describe or disambiguate the result:- `reason`: The reason for the result, if not because of a direct search term match; can be either:  - `section`: There are multiple identical results from different sections.  - `originalTitle`: There was a search term match from the original title field (sometimes those can be very different or in a foreign language).  - `&lt;hub identifier&gt;`: If the reason for the result is due to a result in another hub, the source hub identifier is returned. For example, if the search is for &quot;dylan&quot; then Bob Dylan may be returned as an artist result, an a few of his albums returned as album results with a reason code of `artist` (the identifier of that particular hub). Or if the search is for &quot;arnold&quot;, there might be movie results returned with a reason of `actor`- `reasonTitle`: The string associated with the reason code. For a section reason, it&apos;ll be the section name; For a hub identifier, it&apos;ll be a string associated with the match (e.g. `Arnold Schwarzenegger` for movies which were returned because the search was for &quot;arnold&quot;).- `reasonID`: The ID of the item associated with the reason for the result. This might be a section ID, a tag ID, an artist ID, or a show ID.This request is intended to be very fast, and called as the user types.
@@ -90,6 +91,9 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Search
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class SearchRequestBuilderGetQueryParameters 
         {
+            /// <summary>Include collection results in search hubs</summary>
+            [QueryParameter("includeCollections")]
+            public bool? IncludeCollections { get; set; }
             /// <summary>The number of items to return per hub.  3 if not specified</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

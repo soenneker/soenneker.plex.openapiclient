@@ -39,6 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Matches
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Matches.MatchesRequestBuilder.MatchesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +50,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Matches
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The matches endpoint is used to match content external to the library with content inside the library. This is done by passing a series of semantic &quot;hints&quot; about the content (its type, name, or release year). Each type (e.g. movie) has a canonical set of minimal required hints.This ability to match content is useful in a variety of scenarios. For example, in the DVR, the EPG uses the endpoint to match recording rules against airing content. And in the cloud, the UMP uses the endpoint to match up a piece of media with rich metadata.The endpoint response can including multiple matches, if there is ambiguity, each one containing a `score` from 0 to 100. For somewhat historical reasons, anything over 85 is considered a positive match (we prefer false negatives over false positives in general for matching).The `guid` hint is somewhat special, in that it generally represents a unique identity for a piece of media (e.g. the IMDB `ttXXX`) identifier, in contrast with other hints which can be much more ambiguous (e.g. a title of `Jane Eyre`, which could refer to the 1943 or the 2011 version).Episodes require either a season/episode pair, or an air date (or both). Either the path must be sent, or the show title
@@ -108,10 +113,13 @@ namespace Soenneker.Plex.OpenApiClient.Library.Matches
             [QueryParameter("guid")]
             public string Guid { get; set; }
 #endif
+            /// <summary>Include alternate metadata sources in the response</summary>
             [QueryParameter("includeAlternateMetadataSources")]
             public int? IncludeAlternateMetadataSources { get; set; }
+            /// <summary>Include ancestor metadata in the response</summary>
             [QueryParameter("includeAncestorMetadata")]
             public int? IncludeAncestorMetadata { get; set; }
+            /// <summary>Include full metadata in the response</summary>
             [QueryParameter("includeFullMetadata")]
             public int? IncludeFullMetadata { get; set; }
             /// <summary>Used for episodes and tracks.  The episode/tracks number in the season/album.</summary>

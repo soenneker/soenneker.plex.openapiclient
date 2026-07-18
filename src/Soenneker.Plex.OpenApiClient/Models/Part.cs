@@ -33,6 +33,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string Container { get; set; }
 #endif
+        /// <summary>Deep analysis version for this part.</summary>
+        public int? DeepAnalysisVersion { get; set; }
         /// <summary>The duration of the media item, in milliseconds</summary>
         public int? Duration { get; set; }
         /// <summary>Indicates if the part exists.</summary>
@@ -67,6 +69,24 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #endif
         /// <summary>The optimizedForStreaming property</summary>
         public bool? OptimizedForStreaming { get; set; }
+        /// <summary>RTP packet length for streaming.</summary>
+        public int? PacketLength { get; set; }
+        /// <summary>Streaming protocol (e.g. dash, hls, direct).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Protocol { get; set; }
+#nullable restore
+#else
+        public string Protocol { get; set; }
+#endif
+        /// <summary>Comma-separated list of bandwidth requirements.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RequiredBandwidths { get; set; }
+#nullable restore
+#else
+        public string RequiredBandwidths { get; set; }
+#endif
         /// <summary>The size of the media, in bytes</summary>
         public long? Size { get; set; }
         /// <summary>The Stream property</summary>
@@ -76,6 +96,16 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.Plex.OpenApiClient.Models.StreamObject> Stream { get; set; }
+#endif
+        /// <summary>Mobile sync item association ID.</summary>
+        public int? SyncItemId { get; set; }
+        /// <summary>Sync state (e.g. pending, downloaded, processing).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SyncState { get; set; }
+#nullable restore
+#else
+        public string SyncState { get; set; }
 #endif
         /// <summary>The videoProfile property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -113,6 +143,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "accessible", n => { Accessible = n.GetBoolValue(); } },
                 { "audioProfile", n => { AudioProfile = n.GetStringValue(); } },
                 { "container", n => { Container = n.GetStringValue(); } },
+                { "deepAnalysisVersion", n => { DeepAnalysisVersion = n.GetIntValue(); } },
                 { "duration", n => { Duration = n.GetIntValue(); } },
                 { "exists", n => { Exists = n.GetBoolValue(); } },
                 { "file", n => { File = n.GetStringValue(); } },
@@ -121,8 +152,13 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "indexes", n => { Indexes = n.GetStringValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "optimizedForStreaming", n => { OptimizedForStreaming = n.GetBoolValue(); } },
+                { "packetLength", n => { PacketLength = n.GetIntValue(); } },
+                { "protocol", n => { Protocol = n.GetStringValue(); } },
+                { "requiredBandwidths", n => { RequiredBandwidths = n.GetStringValue(); } },
                 { "size", n => { Size = n.GetLongValue(); } },
                 { "Stream", n => { Stream = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.StreamObject>(global::Soenneker.Plex.OpenApiClient.Models.StreamObject.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "syncItemId", n => { SyncItemId = n.GetIntValue(); } },
+                { "syncState", n => { SyncState = n.GetStringValue(); } },
                 { "videoProfile", n => { VideoProfile = n.GetStringValue(); } },
             };
         }
@@ -136,6 +172,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteBoolValue("accessible", Accessible);
             writer.WriteStringValue("audioProfile", AudioProfile);
             writer.WriteStringValue("container", Container);
+            writer.WriteIntValue("deepAnalysisVersion", DeepAnalysisVersion);
             writer.WriteIntValue("duration", Duration);
             writer.WriteBoolValue("exists", Exists);
             writer.WriteStringValue("file", File);
@@ -144,8 +181,13 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteStringValue("indexes", Indexes);
             writer.WriteStringValue("key", Key);
             writer.WriteBoolValue("optimizedForStreaming", OptimizedForStreaming);
+            writer.WriteIntValue("packetLength", PacketLength);
+            writer.WriteStringValue("protocol", Protocol);
+            writer.WriteStringValue("requiredBandwidths", RequiredBandwidths);
             writer.WriteLongValue("size", Size);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.StreamObject>("Stream", Stream);
+            writer.WriteIntValue("syncItemId", SyncItemId);
+            writer.WriteStringValue("syncState", SyncState);
             writer.WriteStringValue("videoProfile", VideoProfile);
             writer.WriteAdditionalData(AdditionalData);
         }

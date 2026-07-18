@@ -65,6 +65,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Item.Thumb.Item
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/octet-stream, text/html");
             return requestInfo;
         }
         /// <summary>

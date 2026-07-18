@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using System;
 namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Subtitles
 {
     /// <summary>
-    /// Builds and executes requests for operations under \library\metadata\{ids}\subtitles
+    /// Builds and executes requests for operations under \library\metadata\{ids-id}\subtitles
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SubtitlesRequestBuilder : BaseRequestBuilder
@@ -21,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Subtitles
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubtitlesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/subtitles{?forced*,format*,hearingImpaired*,language*,mediaItemID*,title*,url*}", pathParameters)
+        public SubtitlesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/subtitles{?forced*,format*,hearingImpaired*,language*,mediaItemID*,title*,url*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +30,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Subtitles
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubtitlesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/subtitles{?forced*,format*,hearingImpaired*,language*,mediaItemID*,title*,url*}", rawUrl)
+        public SubtitlesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/subtitles{?forced*,format*,hearingImpaired*,language*,mediaItemID*,title*,url*}", rawUrl)
         {
         }
         /// <summary>
@@ -38,6 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Subtitles
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Subtitles.SubtitlesRequestBuilder.SubtitlesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -48,7 +50,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Subtitles
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Add a subtitle to a metadata item
@@ -66,7 +72,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Subtitles
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "text/html");
+            requestInfo.Headers.TryAdd("Accept", "text/html, application/json");
             return requestInfo;
         }
         /// <summary>
@@ -84,8 +90,10 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Subtitles
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class SubtitlesRequestBuilderGetQueryParameters 
         {
+            /// <summary>The forced</summary>
             [QueryParameter("forced")]
             public int? Forced { get; set; }
+            /// <summary>The format</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("format")]
@@ -95,8 +103,10 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Subtitles
             [QueryParameter("format")]
             public string Format { get; set; }
 #endif
+            /// <summary>The hearingImpaired</summary>
             [QueryParameter("hearingImpaired")]
             public int? HearingImpaired { get; set; }
+            /// <summary>The language code to use</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("language")]
@@ -106,8 +116,10 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Subtitles
             [QueryParameter("language")]
             public string Language { get; set; }
 #endif
+            /// <summary>The unique identifier of the mediaitem</summary>
             [QueryParameter("mediaItemID")]
             public int? MediaItemID { get; set; }
+            /// <summary>The title to filter by</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("title")]

@@ -5,9 +5,12 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Channels;
 using Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices;
+using Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Guide;
 using Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups;
 using Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Prefs;
+using Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Recordings;
 using Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.ReloadGuide;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -31,6 +34,11 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item
         {
             get => new global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Devices.DevicesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The guide property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Guide.GuideRequestBuilder Guide
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Guide.GuideRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The lineups property</summary>
         public global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Lineups.LineupsRequestBuilder Lineups
         {
@@ -40,6 +48,11 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item
         public global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Prefs.PrefsRequestBuilder Prefs
         {
             get => new global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Prefs.PrefsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The recordings property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Recordings.RecordingsRequestBuilder Recordings
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.Recordings.RecordingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The reloadGuide property</summary>
         public global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.ReloadGuide.ReloadGuideRequestBuilder ReloadGuide
@@ -68,6 +81,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -78,25 +92,80 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a single DVR by its id (key)
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.WithDvrGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.DVRResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.WithDvrGetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.DVRResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.WithDvrGetResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.DVRResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.WithDvrGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item.WithDvrGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.DVRResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.DVRResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Update DVR settings.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse?> PatchAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse> PatchAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToPatchRequestInformation(requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Update DVR settings.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToPutRequestInformation(requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a single DVR by its id (key)
@@ -114,7 +183,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "text/html");
+            requestInfo.Headers.TryAdd("Accept", "text/html, application/json");
             return requestInfo;
         }
         /// <summary>
@@ -132,6 +201,44 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs.Item
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
+        /// Update DVR settings.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPatchRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPatchRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
+        /// Update DVR settings.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

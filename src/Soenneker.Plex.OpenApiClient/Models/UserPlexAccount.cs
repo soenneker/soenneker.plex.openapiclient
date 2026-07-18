@@ -118,7 +118,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
         public global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount_mailingListStatus? MailingListStatus { get; set; }
         /// <summary>The maximum number of accounts allowed in the Plex Home</summary>
         public int? MaxHomeSize { get; set; }
-        /// <summary>[Might be removed] The hashed Plex Home PIN </summary>
+        /// <summary>[Might be removed] The hashed Plex Home PIN</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

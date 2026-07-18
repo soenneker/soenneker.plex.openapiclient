@@ -16,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.Services.Ultrablur.Colors
         /// <summary>The UltraBlurColors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Services.Ultrablur.Colors.ColorsGetResponse_MediaContainer_UltraBlurColors>? UltraBlurColors { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.UltraBlurColors>? UltraBlurColors { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Services.Ultrablur.Colors.ColorsGetResponse_MediaContainer_UltraBlurColors> UltraBlurColors { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.UltraBlurColors> UltraBlurColors { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Services.Ultrablur.Colors
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "UltraBlurColors", n => { UltraBlurColors = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Services.Ultrablur.Colors.ColorsGetResponse_MediaContainer_UltraBlurColors>(global::Soenneker.Plex.OpenApiClient.Services.Ultrablur.Colors.ColorsGetResponse_MediaContainer_UltraBlurColors.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "UltraBlurColors", n => { UltraBlurColors = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.UltraBlurColors>(global::Soenneker.Plex.OpenApiClient.Models.UltraBlurColors.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Plex.OpenApiClient.Services.Ultrablur.Colors
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Services.Ultrablur.Colors.ColorsGetResponse_MediaContainer_UltraBlurColors>("UltraBlurColors", UltraBlurColors);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.UltraBlurColors>("UltraBlurColors", UltraBlurColors);
         }
     }
 }

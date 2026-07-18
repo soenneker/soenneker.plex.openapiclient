@@ -178,6 +178,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithSubscriptionItemRequestBuilderPutQueryParameters 
         {
+            /// <summary>The preference key to retrieve or set</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("prefs")]

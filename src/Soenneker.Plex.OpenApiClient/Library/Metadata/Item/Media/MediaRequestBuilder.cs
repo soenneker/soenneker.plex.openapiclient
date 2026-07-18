@@ -10,13 +10,13 @@ using System;
 namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Media
 {
     /// <summary>
-    /// Builds and executes requests for operations under \library\metadata\{ids}\media
+    /// Builds and executes requests for operations under \library\metadata\{ids-id}\media
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MediaRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.library.metadata.item.media.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The mediaItem</param>
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Media.Item.WithMediaItemItemRequestBuilder"/></returns>
         public global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Media.Item.WithMediaItemItemRequestBuilder this[string position]
         {
@@ -32,7 +32,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Media
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MediaRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/media", pathParameters)
+        public MediaRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/media", pathParameters)
         {
         }
         /// <summary>
@@ -40,7 +40,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Media
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MediaRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/media", rawUrl)
+        public MediaRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/media", rawUrl)
         {
         }
     }

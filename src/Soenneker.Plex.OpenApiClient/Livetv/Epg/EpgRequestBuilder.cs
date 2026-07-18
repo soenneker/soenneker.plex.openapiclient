@@ -5,9 +5,11 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Plex.OpenApiClient.Livetv.Epg.Channelmap;
 using Soenneker.Plex.OpenApiClient.Livetv.Epg.Channels;
 using Soenneker.Plex.OpenApiClient.Livetv.Epg.Countries;
+using Soenneker.Plex.OpenApiClient.Livetv.Epg.Guide;
 using Soenneker.Plex.OpenApiClient.Livetv.Epg.Languages;
 using Soenneker.Plex.OpenApiClient.Livetv.Epg.Lineup;
 using Soenneker.Plex.OpenApiClient.Livetv.Epg.Lineupchannels;
+using Soenneker.Plex.OpenApiClient.Livetv.Epg.Search;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -35,6 +37,11 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Epg
         {
             get => new global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Countries.CountriesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The guide property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Guide.GuideRequestBuilder Guide
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Guide.GuideRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The languages property</summary>
         public global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Languages.LanguagesRequestBuilder Languages
         {
@@ -49,6 +56,11 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Epg
         public global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Lineupchannels.LineupchannelsRequestBuilder Lineupchannels
         {
             get => new global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Lineupchannels.LineupchannelsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The search property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Search.SearchRequestBuilder Search
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Livetv.Epg.EpgRequestBuilder"/> and sets the default values.

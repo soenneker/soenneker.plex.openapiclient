@@ -22,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,field%2Elocked*,field%2Evalue*,filters*,includeGuids*,includeMeta*,mediaQuery*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*}", pathParameters)
+        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,asyncAugmentMetadata*,asyncRefreshLocalMediaAgent*,checkFiles*,contentRating*,excludeElements*,excludeFields*,field%2Elocked*,field%2Evalue*,filters*,firstCharacter*,genre*,includeAdvanced*,includeArt*,includeBandwidths*,includeBanner*,includeChapters*,includeCollections*,includeConcerts*,includeCredits*,includeExternalIds*,includeExternalMedia*,includeExtras*,includeFields*,includeGuids*,includeLoudnessRamps*,includeMeta*,includeOnDeck*,includePopularLeaves*,includePreferences*,includeRelated*,includeReviews*,includeStations*,includeTheme*,includeThumb*,mediaQuery*,nocache*,resolution*,skipRefresh*,sort*,studio*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*,unwatched*,year*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,15 +30,16 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,field%2Elocked*,field%2Evalue*,filters*,includeGuids*,includeMeta*,mediaQuery*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*}", rawUrl)
+        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,asyncAugmentMetadata*,asyncRefreshLocalMediaAgent*,checkFiles*,contentRating*,excludeElements*,excludeFields*,field%2Elocked*,field%2Evalue*,filters*,firstCharacter*,genre*,includeAdvanced*,includeArt*,includeBandwidths*,includeBanner*,includeChapters*,includeCollections*,includeConcerts*,includeCredits*,includeExternalIds*,includeExternalMedia*,includeExtras*,includeFields*,includeGuids*,includeLoudnessRamps*,includeMeta*,includeOnDeck*,includePopularLeaves*,includePreferences*,includeRelated*,includeReviews*,includeStations*,includeTheme*,includeThumb*,mediaQuery*,nocache*,resolution*,skipRefresh*,sort*,studio*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*,unwatched*,year*}", rawUrl)
         {
         }
         /// <summary>
-        /// Get the items in a section, potentially filtering them
+        /// Get the items in a section, potentially filtering them.When `includeCollections=1` is passed, the response may also contain `Collection` items.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.All.AllRequestBuilder.AllRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +50,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// This endpoint takes an large possible set of values.  Here are some examples.- **Parameters, extra documentation**  - artist.title.value      - When used with track, both artist.title.value and album.title.value need to be specified  - title.value usage      - Summary          - Tracks always rename and never merge          - Albums and Artists              - if single item and item without title does not exist, it is renamed.              - if single item and item with title does exist they are merged.              - if multiple they are always merged.      - Tracks          - Works as expected will update the track&apos;s title          - Single track:    `/library/sections/{id}/all?type=10&amp;id=42&amp;title.value=NewName`          - Multiple tracks: `/library/sections/{id}/all?type=10&amp;id=42,43,44&amp;title.value=NewName`          - All tracks:      `/library/sections/{id}/all?type=10&amp;title.value=NewName`      - Albums          - Functionality changes depending on the existence of an album with the same title          - Album exists              - Single album: `/library/sections/{id}/all?type=9&amp;id=42&amp;title.value=Album 2`                  - Album with id 42 is merged into album titled &quot;Album 2&quot;              - Multiple/All albums: `/library/sections/{id}/all?type=9&amp;title.value=Moo Album`                  - All albums are merged into the existing album titled &quot;Moo Album&quot;          - Album does not exist              - Single album: `/library/sections/{id}/all?type=9&amp;id=42&amp;title.value=NewAlbumTitle`                  - Album with id 42 has title modified to &quot;NewAlbumTitle&quot;              - Multiple/All albums: `/library/sections/{id}/all?type=9&amp;title.value=NewAlbumTitle`                  - All albums are merged into a new album with title=&quot;NewAlbumTitle&quot;      - Artists          - Functionaly changes depending on the existence of an artist with the same title.          - Artist exists              - Single artist: `/library/sections/{id}/all?type=8&amp;id=42&amp;title.value=Artist 2`                  - Artist with id 42 is merged into existing artist titled &quot;Artist 2&quot;              - Multiple/All artists: `/library/sections/{id}/all?type=8&amp;title.value=Artist 3`                  - All artists are merged into the existing artist titled &quot;Artist 3&quot;          - Artist does not exist              - Single artist: `/library/sections/{id}/all?type=8&amp;id=42&amp;title.value=NewArtistTitle`                  - Artist with id 42 has title modified to &quot;NewArtistTitle&quot;              - Multiple/All artists: `/library/sections/{id}/all?type=8&amp;title.value=NewArtistTitle`                  - All artists are merged into a new artist with title=&quot;NewArtistTitle&quot;- **Notes**    - Technically square brackets are not allowed in an URI except the Internet Protocol Literal Address    - RFC3513: A host identified by an Internet Protocol literal address, version 6 [RFC3513] or later, is distinguished by enclosing the IP literal within square brackets (&quot;[&quot; and &quot;]&quot;). This is the only place where square bracket characters are allowed in the URI syntax.    - Escaped square brackets are allowed, but don&apos;t render well
@@ -70,7 +75,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get the items in a section, potentially filtering them
+        /// Get the items in a section, potentially filtering them.When `includeCollections=1` is passed, the response may also contain `Collection` items.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -117,17 +122,156 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
             return new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.All.AllRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get the items in a section, potentially filtering them
+        /// Get the items in a section, potentially filtering them.When `includeCollections=1` is passed, the response may also contain `Collection` items.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AllRequestBuilderGetQueryParameters 
         {
+            /// <summary>Async metadata augmentation</summary>
+            [QueryParameter("asyncAugmentMetadata")]
+            public int? AsyncAugmentMetadata { get; set; }
+            /// <summary>Async local media agent refresh</summary>
+            [QueryParameter("asyncRefreshLocalMediaAgent")]
+            public int? AsyncRefreshLocalMediaAgent { get; set; }
+            /// <summary>Verify file existence</summary>
+            [QueryParameter("checkFiles")]
+            public int? CheckFiles { get; set; }
+            /// <summary>Filter by content rating.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("contentRating")]
+            public string? ContentRating { get; set; }
+#nullable restore
+#else
+            [QueryParameter("contentRating")]
+            public string ContentRating { get; set; }
+#endif
+            /// <summary>Comma-separated list of elements to exclude from the response</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("excludeElements")]
+            public string? ExcludeElements { get; set; }
+#nullable restore
+#else
+            [QueryParameter("excludeElements")]
+            public string ExcludeElements { get; set; }
+#endif
+            /// <summary>Blacklist of fields to omit</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("excludeFields")]
+            public string? ExcludeFields { get; set; }
+#nullable restore
+#else
+            [QueryParameter("excludeFields")]
+            public string ExcludeFields { get; set; }
+#endif
+            /// <summary>General filtering expression.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("filters")]
+            public string? Filters { get; set; }
+#nullable restore
+#else
+            [QueryParameter("filters")]
+            public string Filters { get; set; }
+#endif
+            /// <summary>Filter by first character of title.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("firstCharacter")]
+            public string? FirstCharacter { get; set; }
+#nullable restore
+#else
+            [QueryParameter("firstCharacter")]
+            public string FirstCharacter { get; set; }
+#endif
+            /// <summary>Filter by genre.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("genre")]
+            public string? Genre { get; set; }
+#nullable restore
+#else
+            [QueryParameter("genre")]
+            public string Genre { get; set; }
+#endif
+            /// <summary>Include advanced settings</summary>
+            [QueryParameter("includeAdvanced")]
+            public int? IncludeAdvanced { get; set; }
+            /// <summary>Force inclusion of artwork fields</summary>
+            [QueryParameter("includeArt")]
+            public int? IncludeArt { get; set; }
+            /// <summary>Include bandwidth info</summary>
+            [QueryParameter("includeBandwidths")]
+            public int? IncludeBandwidths { get; set; }
+            /// <summary>Force inclusion of banner fields</summary>
+            [QueryParameter("includeBanner")]
+            public int? IncludeBanner { get; set; }
+            /// <summary>Include chapter markers</summary>
+            [QueryParameter("includeChapters")]
+            public int? IncludeChapters { get; set; }
+            /// <summary>Include collection items in results</summary>
+            [QueryParameter("includeCollections")]
+            public int? IncludeCollections { get; set; }
+            /// <summary>Include concert items</summary>
+            [QueryParameter("includeConcerts")]
+            public int? IncludeConcerts { get; set; }
+            /// <summary>Include full credits</summary>
+            [QueryParameter("includeCredits")]
+            public int? IncludeCredits { get; set; }
+            /// <summary>Include external GUIDs</summary>
+            [QueryParameter("includeExternalIds")]
+            public int? IncludeExternalIds { get; set; }
+            /// <summary>Include external or online media</summary>
+            [QueryParameter("includeExternalMedia")]
+            public int? IncludeExternalMedia { get; set; }
+            /// <summary>Include trailers, behind-the-scenes, etc.</summary>
+            [QueryParameter("includeExtras")]
+            public int? IncludeExtras { get; set; }
+            /// <summary>Whitelist of fields to return</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("includeFields")]
+            public string? IncludeFields { get; set; }
+#nullable restore
+#else
+            [QueryParameter("includeFields")]
+            public string IncludeFields { get; set; }
+#endif
             /// <summary>Adds the Guid object to the response</summary>
             [QueryParameter("includeGuids")]
             public int? IncludeGuids { get; set; }
+            /// <summary>Include loudness ramp data</summary>
+            [QueryParameter("includeLoudnessRamps")]
+            public int? IncludeLoudnessRamps { get; set; }
             /// <summary>Adds the Meta object to the response</summary>
             [QueryParameter("includeMeta")]
             public int? IncludeMeta { get; set; }
+            /// <summary>Include On Deck status</summary>
+            [QueryParameter("includeOnDeck")]
+            public int? IncludeOnDeck { get; set; }
+            /// <summary>Include popular episodes</summary>
+            [QueryParameter("includePopularLeaves")]
+            public int? IncludePopularLeaves { get; set; }
+            /// <summary>Include user preferences</summary>
+            [QueryParameter("includePreferences")]
+            public int? IncludePreferences { get; set; }
+            /// <summary>Include related items</summary>
+            [QueryParameter("includeRelated")]
+            public int? IncludeRelated { get; set; }
+            /// <summary>Include user reviews</summary>
+            [QueryParameter("includeReviews")]
+            public int? IncludeReviews { get; set; }
+            /// <summary>Include radio station data</summary>
+            [QueryParameter("includeStations")]
+            public int? IncludeStations { get; set; }
+            /// <summary>Force inclusion of theme fields</summary>
+            [QueryParameter("includeTheme")]
+            public int? IncludeTheme { get; set; }
+            /// <summary>Force inclusion of thumbnail fields</summary>
+            [QueryParameter("includeThumb")]
+            public int? IncludeThumb { get; set; }
             /// <summary>A querystring-based filtering language used to select subsets of media. Can be provided as an object with typed properties for type safety, or as a string for complex queries with operators and boolean logic.The query supports:- Fields: integer, boolean, tag, string, date, language- Operators: =, !=, ==, !==, &lt;=, &gt;=, &gt;&gt;=, &lt;&lt;= (varies by field type)- Boolean operators: &amp; (AND), , (OR), push/pop (parentheses), or=1 (explicit OR)- Sorting: sort parameter with :desc, :nullsLast modifiers- Grouping: group parameter- Limits: limit parameterExamples:- Object format: `{type: 4, sourceType: 2, title: &quot;24&quot;}` → `type=4&amp;sourceType=2&amp;title=24`- String format: `type=4&amp;sourceType=2&amp;title==24` - type = 4 AND sourceType = 2 AND title = &quot;24&quot;- Complex: `push=1&amp;index=1&amp;or=1&amp;rating=2&amp;pop=1&amp;duration=10` - (index = 1 OR rating = 2) AND duration = 10See [API Info section](#section/API-Info/Media-Queries) for detailed information on building media queries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,12 +282,57 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
             [QueryParameter("mediaQuery")]
             public string MediaQuery { get; set; }
 #endif
+            /// <summary>Bypass cache</summary>
+            [QueryParameter("nocache")]
+            public int? Nocache { get; set; }
+            /// <summary>Filter by resolution.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("resolution")]
+            public string? Resolution { get; set; }
+#nullable restore
+#else
+            [QueryParameter("resolution")]
+            public string Resolution { get; set; }
+#endif
+            /// <summary>Skip synchronous refresh</summary>
+            [QueryParameter("skipRefresh")]
+            public int? SkipRefresh { get; set; }
+            /// <summary>Sort key and direction (e.g. addedAt:desc, titleSort)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("sort")]
+            public string? Sort { get; set; }
+#nullable restore
+#else
+            [QueryParameter("sort")]
+            public string Sort { get; set; }
+#endif
+            /// <summary>Filter by studio.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("studio")]
+            public string? Studio { get; set; }
+#nullable restore
+#else
+            [QueryParameter("studio")]
+            public string Studio { get; set; }
+#endif
+            /// <summary>Filter by metadata type (1=movie, 2=show, 3=season, 4=episode, 8=artist, 9=album, 10=track)</summary>
+            [QueryParameter("type")]
+            public int? Type { get; set; }
+            /// <summary>Filter to unwatched only (1 = true).</summary>
+            [QueryParameter("unwatched")]
+            public int? Unwatched { get; set; }
             /// <summary>The number of items to return. If not specified, all items will be returned.If the number of items exceeds the limit, the response will be paginated.By default this is 50</summary>
             [QueryParameter("X%2DPlex%2DContainer%2DSize")]
             public int? XPlexContainerSize { get; set; }
             /// <summary>The index of the first item to return. If not specified, the first item will be returned.If the number of items exceeds the limit, the response will be paginated.By default this is 0</summary>
             [QueryParameter("X%2DPlex%2DContainer%2DStart")]
             public int? XPlexContainerStart { get; set; }
+            /// <summary>Filter by year.</summary>
+            [QueryParameter("year")]
+            public int? Year { get; set; }
         }
         /// <summary>
         /// This endpoint takes an large possible set of values.  Here are some examples.- **Parameters, extra documentation**  - artist.title.value      - When used with track, both artist.title.value and album.title.value need to be specified  - title.value usage      - Summary          - Tracks always rename and never merge          - Albums and Artists              - if single item and item without title does not exist, it is renamed.              - if single item and item with title does exist they are merged.              - if multiple they are always merged.      - Tracks          - Works as expected will update the track&apos;s title          - Single track:    `/library/sections/{id}/all?type=10&amp;id=42&amp;title.value=NewName`          - Multiple tracks: `/library/sections/{id}/all?type=10&amp;id=42,43,44&amp;title.value=NewName`          - All tracks:      `/library/sections/{id}/all?type=10&amp;title.value=NewName`      - Albums          - Functionality changes depending on the existence of an album with the same title          - Album exists              - Single album: `/library/sections/{id}/all?type=9&amp;id=42&amp;title.value=Album 2`                  - Album with id 42 is merged into album titled &quot;Album 2&quot;              - Multiple/All albums: `/library/sections/{id}/all?type=9&amp;title.value=Moo Album`                  - All albums are merged into the existing album titled &quot;Moo Album&quot;          - Album does not exist              - Single album: `/library/sections/{id}/all?type=9&amp;id=42&amp;title.value=NewAlbumTitle`                  - Album with id 42 has title modified to &quot;NewAlbumTitle&quot;              - Multiple/All albums: `/library/sections/{id}/all?type=9&amp;title.value=NewAlbumTitle`                  - All albums are merged into a new album with title=&quot;NewAlbumTitle&quot;      - Artists          - Functionaly changes depending on the existence of an artist with the same title.          - Artist exists              - Single artist: `/library/sections/{id}/all?type=8&amp;id=42&amp;title.value=Artist 2`                  - Artist with id 42 is merged into existing artist titled &quot;Artist 2&quot;              - Multiple/All artists: `/library/sections/{id}/all?type=8&amp;title.value=Artist 3`                  - All artists are merged into the existing artist titled &quot;Artist 3&quot;          - Artist does not exist              - Single artist: `/library/sections/{id}/all?type=8&amp;id=42&amp;title.value=NewArtistTitle`                  - Artist with id 42 has title modified to &quot;NewArtistTitle&quot;              - Multiple/All artists: `/library/sections/{id}/all?type=8&amp;title.value=NewArtistTitle`                  - All artists are merged into a new artist with title=&quot;NewArtistTitle&quot;- **Notes**    - Technically square brackets are not allowed in an URI except the Internet Protocol Literal Address    - RFC3513: A host identified by an Internet Protocol literal address, version 6 [RFC3513] or later, is distinguished by enclosing the IP literal within square brackets (&quot;[&quot; and &quot;]&quot;). This is the only place where square bracket characters are allowed in the URI syntax.    - Escaped square brackets are allowed, but don&apos;t render well
@@ -264,6 +453,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
             [QueryParameter("title%2Evalue")]
             public string TitleValue { get; set; }
 #endif
+            /// <summary>The media type to filter by</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("type")]

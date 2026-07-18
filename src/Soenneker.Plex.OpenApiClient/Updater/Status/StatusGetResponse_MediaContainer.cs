@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -31,10 +32,10 @@ namespace Soenneker.Plex.OpenApiClient.Updater.Status
         /// <summary>The Release property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Updater.Status.StatusGetResponse_MediaContainer_Release>? Release { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Release>? Release { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Updater.Status.StatusGetResponse_MediaContainer_Release> Release { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Release> Release { get; set; }
 #endif
         /// <summary>The current error code (`0` means no error)</summary>
         public int? Status { get; set; }
@@ -67,7 +68,7 @@ namespace Soenneker.Plex.OpenApiClient.Updater.Status
                 { "canInstall", n => { CanInstall = n.GetBoolValue(); } },
                 { "checkedAt", n => { CheckedAt = n.GetIntValue(); } },
                 { "downloadURL", n => { DownloadURL = n.GetStringValue(); } },
-                { "Release", n => { Release = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Updater.Status.StatusGetResponse_MediaContainer_Release>(global::Soenneker.Plex.OpenApiClient.Updater.Status.StatusGetResponse_MediaContainer_Release.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Release", n => { Release = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Release>(global::Soenneker.Plex.OpenApiClient.Models.Release.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "status", n => { Status = n.GetIntValue(); } },
             };
         }
@@ -82,7 +83,7 @@ namespace Soenneker.Plex.OpenApiClient.Updater.Status
             writer.WriteBoolValue("canInstall", CanInstall);
             writer.WriteIntValue("checkedAt", CheckedAt);
             writer.WriteStringValue("downloadURL", DownloadURL);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Updater.Status.StatusGetResponse_MediaContainer_Release>("Release", Release);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Release>("Release", Release);
             writer.WriteIntValue("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

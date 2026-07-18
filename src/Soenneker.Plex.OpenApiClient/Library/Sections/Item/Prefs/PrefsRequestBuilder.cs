@@ -39,6 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Prefs
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithSettings"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithSettings?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Prefs.PrefsRequestBuilder.PrefsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +50,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Prefs
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithSettings>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithSettings.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithSettings>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithSettings.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Set the prefs for a section by id
@@ -57,6 +62,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Prefs
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> PutAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Prefs.PrefsRequestBuilder.PrefsRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -67,7 +73,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Prefs
         {
 #endif
             var requestInfo = ToPutRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get the prefs for a section by id and potentially overriding the agent
@@ -104,7 +114,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Prefs
 #endif
             var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/library/sections/{sectionId}/prefs?prefs={prefs}", PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "text/html");
+            requestInfo.Headers.TryAdd("Accept", "text/html, application/json");
             return requestInfo;
         }
         /// <summary>
@@ -122,6 +132,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Prefs
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PrefsRequestBuilderGetQueryParameters 
         {
+            /// <summary>The identifier of the metadata agent to use</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("agent")]
@@ -138,6 +149,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Prefs
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PrefsRequestBuilderPutQueryParameters 
         {
+            /// <summary>The preference key to retrieve or set</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("prefs")]

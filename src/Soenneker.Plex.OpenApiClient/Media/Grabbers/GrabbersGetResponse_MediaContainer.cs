@@ -16,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers
         /// <summary>The MediaGrabber property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.GrabbersGetResponse_MediaContainer_MediaGrabber>? MediaGrabber { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.MediaGrabber>? MediaGrabber { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.GrabbersGetResponse_MediaContainer_MediaGrabber> MediaGrabber { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.MediaGrabber> MediaGrabber { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "MediaGrabber", n => { MediaGrabber = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.GrabbersGetResponse_MediaContainer_MediaGrabber>(global::Soenneker.Plex.OpenApiClient.Media.Grabbers.GrabbersGetResponse_MediaContainer_MediaGrabber.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "MediaGrabber", n => { MediaGrabber = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.MediaGrabber>(global::Soenneker.Plex.OpenApiClient.Models.MediaGrabber.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.GrabbersGetResponse_MediaContainer_MediaGrabber>("MediaGrabber", MediaGrabber);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.MediaGrabber>("MediaGrabber", MediaGrabber);
         }
     }
 }

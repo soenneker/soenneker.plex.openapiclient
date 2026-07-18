@@ -38,13 +38,13 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string CountryCode { get; set; }
 #endif
-        /// <summary>The diagnostics property</summary>
+        /// <summary>Comma-separated list of enabled diagnostics modules.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Diagnostics { get; set; }
+        public List<string>? Diagnostics { get; set; }
 #nullable restore
 #else
-        public string Diagnostics { get; set; }
+        public List<string> Diagnostics { get; set; }
 #endif
         /// <summary>The eventStream property</summary>
         public bool? EventStream { get; set; }
@@ -104,21 +104,15 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string MyPlexUsername { get; set; }
 #endif
-        /// <summary>The offlineTranscode property</summary>
+        /// <summary>Whether offline transcoding is enabled.</summary>
+        public int? OfflineTranscode { get; set; }
+        /// <summary>List of enabled owner features.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? OfflineTranscode { get; set; }
+        public List<string>? OwnerFeatures { get; set; }
 #nullable restore
 #else
-        public UntypedNode OfflineTranscode { get; set; }
-#endif
-        /// <summary>A comma-separated list of features which are enabled for the server owner</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? OwnerFeatures { get; set; }
-#nullable restore
-#else
-        public string OwnerFeatures { get; set; }
+        public List<string> OwnerFeatures { get; set; }
 #endif
         /// <summary>The platform property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -160,29 +154,29 @@ namespace Soenneker.Plex.OpenApiClient.Models
         public bool? TranscoderSubtitles { get; set; }
         /// <summary>The transcoderVideo property</summary>
         public bool? TranscoderVideo { get; set; }
-        /// <summary>The suggested video quality bitrates to present to the user</summary>
+        /// <summary>List of supported transcoder video bitrates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? TranscoderVideoBitrates { get; set; }
+        public List<string>? TranscoderVideoBitrates { get; set; }
 #nullable restore
 #else
-        public UntypedNode TranscoderVideoBitrates { get; set; }
+        public List<string> TranscoderVideoBitrates { get; set; }
 #endif
-        /// <summary>The transcoderVideoQualities property</summary>
+        /// <summary>List of supported transcoder video qualities.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TranscoderVideoQualities { get; set; }
+        public List<string>? TranscoderVideoQualities { get; set; }
 #nullable restore
 #else
-        public string TranscoderVideoQualities { get; set; }
+        public List<string> TranscoderVideoQualities { get; set; }
 #endif
-        /// <summary>The suggested video resolutions to the above quality bitrates</summary>
+        /// <summary>List of supported transcoder video resolutions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? TranscoderVideoResolutions { get; set; }
+        public List<string>? TranscoderVideoResolutions { get; set; }
 #nullable restore
 #else
-        public UntypedNode TranscoderVideoResolutions { get; set; }
+        public List<string> TranscoderVideoResolutions { get; set; }
 #endif
         /// <summary>The updatedAt property</summary>
         public int? UpdatedAt { get; set; }
@@ -226,7 +220,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "certificate", n => { Certificate = n.GetBoolValue(); } },
                 { "companionProxy", n => { CompanionProxy = n.GetBoolValue(); } },
                 { "countryCode", n => { CountryCode = n.GetStringValue(); } },
-                { "diagnostics", n => { Diagnostics = n.GetStringValue(); } },
+                { "diagnostics", n => { Diagnostics = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "eventStream", n => { EventStream = n.GetBoolValue(); } },
                 { "friendlyName", n => { FriendlyName = n.GetStringValue(); } },
                 { "hubSearch", n => { HubSearch = n.GetBoolValue(); } },
@@ -241,8 +235,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "myPlexSigninState", n => { MyPlexSigninState = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "myPlexSubscription", n => { MyPlexSubscription = n.GetBoolValue(); } },
                 { "myPlexUsername", n => { MyPlexUsername = n.GetStringValue(); } },
-                { "offlineTranscode", n => { OfflineTranscode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "ownerFeatures", n => { OwnerFeatures = n.GetStringValue(); } },
+                { "offlineTranscode", n => { OfflineTranscode = n.GetIntValue(); } },
+                { "ownerFeatures", n => { OwnerFeatures = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "platform", n => { Platform = n.GetStringValue(); } },
                 { "platformVersion", n => { PlatformVersion = n.GetStringValue(); } },
                 { "pluginHost", n => { PluginHost = n.GetBoolValue(); } },
@@ -257,9 +251,9 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "transcoderPhoto", n => { TranscoderPhoto = n.GetBoolValue(); } },
                 { "transcoderSubtitles", n => { TranscoderSubtitles = n.GetBoolValue(); } },
                 { "transcoderVideo", n => { TranscoderVideo = n.GetBoolValue(); } },
-                { "transcoderVideoBitrates", n => { TranscoderVideoBitrates = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "transcoderVideoQualities", n => { TranscoderVideoQualities = n.GetStringValue(); } },
-                { "transcoderVideoResolutions", n => { TranscoderVideoResolutions = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "transcoderVideoBitrates", n => { TranscoderVideoBitrates = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "transcoderVideoQualities", n => { TranscoderVideoQualities = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "transcoderVideoResolutions", n => { TranscoderVideoResolutions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetIntValue(); } },
                 { "updater", n => { Updater = n.GetBoolValue(); } },
                 { "version", n => { Version = n.GetStringValue(); } },
@@ -284,7 +278,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteBoolValue("certificate", Certificate);
             writer.WriteBoolValue("companionProxy", CompanionProxy);
             writer.WriteStringValue("countryCode", CountryCode);
-            writer.WriteStringValue("diagnostics", Diagnostics);
+            writer.WriteCollectionOfPrimitiveValues<string>("diagnostics", Diagnostics);
             writer.WriteBoolValue("eventStream", EventStream);
             writer.WriteStringValue("friendlyName", FriendlyName);
             writer.WriteBoolValue("hubSearch", HubSearch);
@@ -299,8 +293,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("myPlexSigninState", MyPlexSigninState);
             writer.WriteBoolValue("myPlexSubscription", MyPlexSubscription);
             writer.WriteStringValue("myPlexUsername", MyPlexUsername);
-            writer.WriteObjectValue<UntypedNode>("offlineTranscode", OfflineTranscode);
-            writer.WriteStringValue("ownerFeatures", OwnerFeatures);
+            writer.WriteIntValue("offlineTranscode", OfflineTranscode);
+            writer.WriteCollectionOfPrimitiveValues<string>("ownerFeatures", OwnerFeatures);
             writer.WriteStringValue("platform", Platform);
             writer.WriteStringValue("platformVersion", PlatformVersion);
             writer.WriteBoolValue("pluginHost", PluginHost);
@@ -315,9 +309,9 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteBoolValue("transcoderPhoto", TranscoderPhoto);
             writer.WriteBoolValue("transcoderSubtitles", TranscoderSubtitles);
             writer.WriteBoolValue("transcoderVideo", TranscoderVideo);
-            writer.WriteObjectValue<UntypedNode>("transcoderVideoBitrates", TranscoderVideoBitrates);
-            writer.WriteStringValue("transcoderVideoQualities", TranscoderVideoQualities);
-            writer.WriteObjectValue<UntypedNode>("transcoderVideoResolutions", TranscoderVideoResolutions);
+            writer.WriteCollectionOfPrimitiveValues<string>("transcoderVideoBitrates", TranscoderVideoBitrates);
+            writer.WriteCollectionOfPrimitiveValues<string>("transcoderVideoQualities", TranscoderVideoQualities);
+            writer.WriteCollectionOfPrimitiveValues<string>("transcoderVideoResolutions", TranscoderVideoResolutions);
             writer.WriteIntValue("updatedAt", UpdatedAt);
             writer.WriteBoolValue("updater", Updater);
             writer.WriteStringValue("version", Version);

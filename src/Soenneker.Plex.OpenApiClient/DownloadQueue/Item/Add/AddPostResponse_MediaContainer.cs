@@ -16,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add
         /// <summary>The AddedQueueItems property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddPostResponse_MediaContainer_AddedQueueItems>? AddedQueueItems { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.AddedQueueItem>? AddedQueueItems { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddPostResponse_MediaContainer_AddedQueueItems> AddedQueueItems { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.AddedQueueItem> AddedQueueItems { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "AddedQueueItems", n => { AddedQueueItems = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddPostResponse_MediaContainer_AddedQueueItems>(global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddPostResponse_MediaContainer_AddedQueueItems.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "AddedQueueItems", n => { AddedQueueItems = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.AddedQueueItem>(global::Soenneker.Plex.OpenApiClient.Models.AddedQueueItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add.AddPostResponse_MediaContainer_AddedQueueItems>("AddedQueueItems", AddedQueueItems);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.AddedQueueItem>("AddedQueueItems", AddedQueueItems);
         }
     }
 }

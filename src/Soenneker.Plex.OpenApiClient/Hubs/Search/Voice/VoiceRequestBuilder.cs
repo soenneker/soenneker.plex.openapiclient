@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Search.Voice
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VoiceRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/hubs/search/voice?query={query}{&limit*,type*}", pathParameters)
+        public VoiceRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/hubs/search/voice?query={query}{&includeCollections*,limit*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,26 +30,26 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Search.Voice
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VoiceRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/hubs/search/voice?query={query}{&limit*,type*}", rawUrl)
+        public VoiceRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/hubs/search/voice?query={query}{&includeCollections*,limit*,type*}", rawUrl)
         {
         }
         /// <summary>
         /// Perform a search tailored to voice input and get the result as hubsThis endpoint performs a search specifically tailored towards voice or other imprecise input which may work badly with the substring and spell-checking heuristics used by the `/hubs/search` endpoint. It uses a [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) heuristic to search titles, and as such is much slower than the other search endpoint. Whenever possible, clients should limit the search to the appropriate type.Results, as well as their containing per-type hubs, contain a `distance` attribute which can be used to judge result quality.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceRequestBuilder.VoiceRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceRequestBuilder.VoiceRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceRequestBuilder.VoiceRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceRequestBuilder.VoiceRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Hubs.Search.Voice.VoiceGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithHubs.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Perform a search tailored to voice input and get the result as hubsThis endpoint performs a search specifically tailored towards voice or other imprecise input which may work badly with the substring and spell-checking heuristics used by the `/hubs/search` endpoint. It uses a [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) heuristic to search titles, and as such is much slower than the other search endpoint. Whenever possible, clients should limit the search to the appropriate type.Results, as well as their containing per-type hubs, contain a `distance` attribute which can be used to judge result quality.
@@ -84,6 +85,9 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Search.Voice
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class VoiceRequestBuilderGetQueryParameters 
         {
+            /// <summary>Include collection results in search hubs</summary>
+            [QueryParameter("includeCollections")]
+            public bool? IncludeCollections { get; set; }
             /// <summary>The number of items to return per hub.  3 if not specified</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

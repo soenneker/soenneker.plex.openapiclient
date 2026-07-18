@@ -60,6 +60,24 @@ namespace Soenneker.Plex.OpenApiClient.Models
         public bool? Promoted { get; set; }
         /// <summary>Indicating that the contents of the hub may change on each request</summary>
         public bool? Random { get; set; }
+        /// <summary>Reason for hub inclusion (e.g. &quot;because you watched&quot;).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Reason { get; set; }
+#nullable restore
+#else
+        public string Reason { get; set; }
+#endif
+        /// <summary>ID of the item that triggered the reason.</summary>
+        public int? ReasonID { get; set; }
+        /// <summary>Human-readable reason title.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReasonTitle { get; set; }
+#nullable restore
+#else
+        public string ReasonTitle { get; set; }
+#endif
         /// <summary>The size property</summary>
         public int? Size { get; set; }
         /// <summary>A suggestion on how this hub&apos;s contents might be displayed by a client. Some examples include `hero`, `list`, `spotlight`, and `upsell`</summary>
@@ -129,6 +147,9 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "more", n => { More = n.GetBoolValue(); } },
                 { "promoted", n => { Promoted = n.GetBoolValue(); } },
                 { "random", n => { Random = n.GetBoolValue(); } },
+                { "reason", n => { Reason = n.GetStringValue(); } },
+                { "reasonID", n => { ReasonID = n.GetIntValue(); } },
+                { "reasonTitle", n => { ReasonTitle = n.GetStringValue(); } },
                 { "size", n => { Size = n.GetIntValue(); } },
                 { "style", n => { Style = n.GetStringValue(); } },
                 { "subtype", n => { Subtype = n.GetStringValue(); } },
@@ -152,6 +173,9 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteBoolValue("more", More);
             writer.WriteBoolValue("promoted", Promoted);
             writer.WriteBoolValue("random", Random);
+            writer.WriteStringValue("reason", Reason);
+            writer.WriteIntValue("reasonID", ReasonID);
+            writer.WriteStringValue("reasonTitle", ReasonTitle);
             writer.WriteIntValue("size", Size);
             writer.WriteStringValue("style", Style);
             writer.WriteStringValue("subtype", Subtype);

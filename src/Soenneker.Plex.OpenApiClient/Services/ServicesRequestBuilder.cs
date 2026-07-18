@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Plex.OpenApiClient.Services.Browse;
 using Soenneker.Plex.OpenApiClient.Services.Ultrablur;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,11 @@ namespace Soenneker.Plex.OpenApiClient.Services
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ServicesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The browse property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Services.Browse.BrowseRequestBuilder Browse
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Services.Browse.BrowseRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The ultrablur property</summary>
         public global::Soenneker.Plex.OpenApiClient.Services.Ultrablur.UltrablurRequestBuilder Ultrablur
         {

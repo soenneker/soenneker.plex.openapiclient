@@ -16,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Epg.Languages
         /// <summary>The Language property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Languages.LanguagesGetResponse_MediaContainer_Language>? Language { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.EPGLanguage>? Language { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Languages.LanguagesGetResponse_MediaContainer_Language> Language { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.EPGLanguage> Language { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Epg.Languages
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "Language", n => { Language = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Languages.LanguagesGetResponse_MediaContainer_Language>(global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Languages.LanguagesGetResponse_MediaContainer_Language.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Language", n => { Language = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.EPGLanguage>(global::Soenneker.Plex.OpenApiClient.Models.EPGLanguage.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Epg.Languages
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Languages.LanguagesGetResponse_MediaContainer_Language>("Language", Language);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.EPGLanguage>("Language", Language);
         }
     }
 }

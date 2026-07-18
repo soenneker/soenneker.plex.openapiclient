@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Nearest
 {
     /// <summary>
-    /// Builds and executes requests for operations under \library\metadata\{ids}\nearest
+    /// Builds and executes requests for operations under \library\metadata\{ids-id}\nearest
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class NearestRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Nearest
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public NearestRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/nearest{?excludeGrandparentID*,excludeParentID*,limit*,maxDistance*}", pathParameters)
+        public NearestRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/nearest{?excludeGrandparentID*,excludeParentID*,limit*,maxDistance*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,15 +30,16 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Nearest
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public NearestRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/nearest{?excludeGrandparentID*,excludeParentID*,limit*,maxDistance*}", rawUrl)
+        public NearestRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/nearest{?excludeGrandparentID*,excludeParentID*,limit*,maxDistance*}", rawUrl)
         {
         }
         /// <summary>
-        /// Get the nearest tracks, sonically, to the provided track
+        /// Get sonically similar items for a music track.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Nearest.NearestRequestBuilder.NearestRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,10 +50,14 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Nearest
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get the nearest tracks, sonically, to the provided track
+        /// Get sonically similar items for a music track.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,17 +85,21 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Nearest
             return new global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Nearest.NearestRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get the nearest tracks, sonically, to the provided track
+        /// Get sonically similar items for a music track.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class NearestRequestBuilderGetQueryParameters 
         {
+            /// <summary>The unique identifier of the excludegrandparent</summary>
             [QueryParameter("excludeGrandparentID")]
             public int? ExcludeGrandparentID { get; set; }
+            /// <summary>The unique identifier of the excludeparent</summary>
             [QueryParameter("excludeParentID")]
             public int? ExcludeParentID { get; set; }
+            /// <summary>Maximum number of items to return</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            /// <summary>The maxDistance</summary>
             [QueryParameter("maxDistance")]
             public double? MaxDistance { get; set; }
         }

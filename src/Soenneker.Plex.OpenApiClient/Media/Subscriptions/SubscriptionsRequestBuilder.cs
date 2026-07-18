@@ -37,7 +37,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions
             get => new global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.Template.TemplateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.media.subscriptions.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The unique identifier of the subscription</param>
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.Item.WithSubscriptionItemRequestBuilder"/></returns>
         public global::Soenneker.Plex.OpenApiClient.Media.Subscriptions.Item.WithSubscriptionItemRequestBuilder this[int position]
         {
@@ -53,7 +53,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubscriptionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/subscriptions{?hints,includeGrabs*,includeStorage*,params,prefs,targetLibrarySectionID*,targetSectionLocationID*,type*}", pathParameters)
+        public SubscriptionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/subscriptions{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,hints,includeGrabs*,includeStorage*,params,prefs,targetLibrarySectionID*,targetSectionLocationID*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubscriptionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/subscriptions{?hints,includeGrabs*,includeStorage*,params,prefs,targetLibrarySectionID*,targetSectionLocationID*,type*}", rawUrl)
+        public SubscriptionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/subscriptions{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,hints,includeGrabs*,includeStorage*,params,prefs,targetLibrarySectionID*,targetSectionLocationID*,type*}", rawUrl)
         {
         }
         /// <summary>
@@ -159,6 +159,12 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions
             /// <summary>Compute the storage of recorded items desired by this subscription</summary>
             [QueryParameter("includeStorage")]
             public int? IncludeStorage { get; set; }
+            /// <summary>Pagination page size.</summary>
+            [QueryParameter("X%2DPlex%2DContainer%2DSize")]
+            public int? XPlexContainerSize { get; set; }
+            /// <summary>Pagination start offset.</summary>
+            [QueryParameter("X%2DPlex%2DContainer%2DStart")]
+            public int? XPlexContainerStart { get; set; }
         }
         /// <summary>
         /// Create a subscription. The query parameters should be mostly derived from the [template](#tag/Subscriptions/operation/mediaSubscriptionsGetTemplate)

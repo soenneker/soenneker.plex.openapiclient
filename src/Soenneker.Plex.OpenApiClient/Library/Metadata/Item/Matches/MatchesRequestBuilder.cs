@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Matches
 {
     /// <summary>
-    /// Builds and executes requests for operations under \library\metadata\{ids}\matches
+    /// Builds and executes requests for operations under \library\metadata\{ids-id}\matches
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MatchesRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Matches
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MatchesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/matches{?agent*,language*,manual*,parentTitle*,title*,year*}", pathParameters)
+        public MatchesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/matches{?agent*,language*,manual*,parentTitle*,title*,year*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Matches
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MatchesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/matches{?agent*,language*,manual*,parentTitle*,title*,year*}", rawUrl)
+        public MatchesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/matches{?agent*,language*,manual*,parentTitle*,title*,year*}", rawUrl)
         {
         }
         /// <summary>
@@ -39,6 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Matches
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata?> PutAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Matches.MatchesRequestBuilder.MatchesRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +50,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Matches
         {
 #endif
             var requestInfo = ToPutRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get the list of metadata matches for a metadata item
@@ -85,6 +90,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Matches
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MatchesRequestBuilderPutQueryParameters 
         {
+            /// <summary>The identifier of the metadata agent to use</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("agent")]
@@ -94,6 +100,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Matches
             [QueryParameter("agent")]
             public string Agent { get; set; }
 #endif
+            /// <summary>The language code to use</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("language")]
@@ -103,8 +110,10 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Matches
             [QueryParameter("language")]
             public string Language { get; set; }
 #endif
+            /// <summary>Whether to perform the operation manually</summary>
             [QueryParameter("manual")]
             public int? Manual { get; set; }
+            /// <summary>The parentTitle</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("parentTitle")]
@@ -114,6 +123,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Matches
             [QueryParameter("parentTitle")]
             public string ParentTitle { get; set; }
 #endif
+            /// <summary>The title to filter by</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("title")]
@@ -123,6 +133,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Matches
             [QueryParameter("title")]
             public string Title { get; set; }
 #endif
+            /// <summary>The year to filter by</summary>
             [QueryParameter("year")]
             public int? Year { get; set; }
         }

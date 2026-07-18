@@ -21,6 +21,8 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
 #else
         public global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse_MediaContainer_Bandwidths Bandwidths { get; set; }
 #endif
+        /// <summary>The play queue ID when playback originates from a queue.</summary>
+        public int? PlayQueueID { get; set; }
         /// <summary>A code describing why the session was terminated by the server.</summary>
         public int? TerminationCode { get; set; }
         /// <summary>A user friendly and localized text describing why the session was terminated by the server.</summary>
@@ -50,6 +52,7 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
                 { "Bandwidths", n => { Bandwidths = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse_MediaContainer_Bandwidths>(global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse_MediaContainer_Bandwidths.CreateFromDiscriminatorValue); } },
+                { "playQueueID", n => { PlayQueueID = n.GetIntValue(); } },
                 { "terminationCode", n => { TerminationCode = n.GetIntValue(); } },
                 { "terminationText", n => { TerminationText = n.GetStringValue(); } },
             };
@@ -63,6 +66,7 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
             writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse_MediaContainer_Bandwidths>("Bandwidths", Bandwidths);
+            writer.WriteIntValue("playQueueID", PlayQueueID);
             writer.WriteIntValue("terminationCode", TerminationCode);
             writer.WriteStringValue("terminationText", TerminationText);
         }

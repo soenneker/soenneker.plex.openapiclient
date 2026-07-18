@@ -7,28 +7,58 @@ using Microsoft.Kiota.Serialization.Form;
 using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
+using Soenneker.Plex.OpenApiClient.Accounts;
+using Soenneker.Plex.OpenApiClient.Actions;
 using Soenneker.Plex.OpenApiClient.Activities;
+using Soenneker.Plex.OpenApiClient.Api;
+using Soenneker.Plex.OpenApiClient.Auth;
 using Soenneker.Plex.OpenApiClient.Butler;
+using Soenneker.Plex.OpenApiClient.Claim;
+using Soenneker.Plex.OpenApiClient.Clients;
+using Soenneker.Plex.OpenApiClient.Cloud_server;
 using Soenneker.Plex.OpenApiClient.Colon;
+using Soenneker.Plex.OpenApiClient.Devices;
+using Soenneker.Plex.OpenApiClient.Diagnostics;
 using Soenneker.Plex.OpenApiClient.DownloadQueue;
+using Soenneker.Plex.OpenApiClient.Downloads;
+using Soenneker.Plex.OpenApiClient.Features;
+using Soenneker.Plex.OpenApiClient.Friends;
+using Soenneker.Plex.OpenApiClient.Geoip;
+using Soenneker.Plex.OpenApiClient.Home;
 using Soenneker.Plex.OpenApiClient.Hubs;
 using Soenneker.Plex.OpenApiClient.Identity;
+using Soenneker.Plex.OpenApiClient.Ip;
 using Soenneker.Plex.OpenApiClient.Item;
 using Soenneker.Plex.OpenApiClient.Library;
 using Soenneker.Plex.OpenApiClient.Livetv;
 using Soenneker.Plex.OpenApiClient.Log;
 using Soenneker.Plex.OpenApiClient.Media;
 using Soenneker.Plex.OpenApiClient.Models;
+using Soenneker.Plex.OpenApiClient.Music;
+using Soenneker.Plex.OpenApiClient.Myplex;
 using Soenneker.Plex.OpenApiClient.Photo;
+using Soenneker.Plex.OpenApiClient.Ping;
+using Soenneker.Plex.OpenApiClient.Pins;
+using Soenneker.Plex.OpenApiClient.PinsXml;
 using Soenneker.Plex.OpenApiClient.PlayQueues;
+using Soenneker.Plex.OpenApiClient.Player;
 using Soenneker.Plex.OpenApiClient.Playlists;
 using Soenneker.Plex.OpenApiClient.Resources;
 using Soenneker.Plex.OpenApiClient.Security;
+using Soenneker.Plex.OpenApiClient.Server;
+using Soenneker.Plex.OpenApiClient.Servers;
 using Soenneker.Plex.OpenApiClient.Services;
+using Soenneker.Plex.OpenApiClient.Shared_servers;
+using Soenneker.Plex.OpenApiClient.Sharings;
+using Soenneker.Plex.OpenApiClient.Statistics;
 using Soenneker.Plex.OpenApiClient.Status;
+using Soenneker.Plex.OpenApiClient.Sync;
+using Soenneker.Plex.OpenApiClient.System;
+using Soenneker.Plex.OpenApiClient.Transcode;
 using Soenneker.Plex.OpenApiClient.Updater;
 using Soenneker.Plex.OpenApiClient.User;
 using Soenneker.Plex.OpenApiClient.Users;
+using Soenneker.Plex.OpenApiClient.Webhooks;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -42,25 +72,95 @@ namespace Soenneker.Plex.OpenApiClient
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PlexOpenApiClient : BaseRequestBuilder
     {
+        /// <summary>The accounts property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Accounts.AccountsRequestBuilder Accounts
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Accounts.AccountsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The actions property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Actions.ActionsRequestBuilder Actions
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Actions.ActionsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The activities property</summary>
         public global::Soenneker.Plex.OpenApiClient.Activities.ActivitiesRequestBuilder Activities
         {
             get => new global::Soenneker.Plex.OpenApiClient.Activities.ActivitiesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The api property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Api.ApiRequestBuilder Api
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Api.ApiRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The auth property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Auth.AuthRequestBuilder Auth
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Auth.AuthRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The butler property</summary>
         public global::Soenneker.Plex.OpenApiClient.Butler.ButlerRequestBuilder Butler
         {
             get => new global::Soenneker.Plex.OpenApiClient.Butler.ButlerRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The claim property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Claim.ClaimRequestBuilder Claim
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Claim.ClaimRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The clients property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Clients.ClientsRequestBuilder Clients
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Clients.ClientsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The cloud_server property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Cloud_server.Cloud_serverRequestBuilder Cloud_server
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Cloud_server.Cloud_serverRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The Colon property</summary>
         public global::Soenneker.Plex.OpenApiClient.Colon.RequestBuilder Colon
         {
             get => new global::Soenneker.Plex.OpenApiClient.Colon.RequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The devices property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Devices.DevicesRequestBuilder Devices
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Devices.DevicesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The diagnostics property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Diagnostics.DiagnosticsRequestBuilder Diagnostics
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Diagnostics.DiagnosticsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The downloadQueue property</summary>
         public global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueueRequestBuilder DownloadQueue
         {
             get => new global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueueRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The downloads property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Downloads.DownloadsRequestBuilder Downloads
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Downloads.DownloadsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The features property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Features.FeaturesRequestBuilder Features
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Features.FeaturesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The friends property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Friends.FriendsRequestBuilder Friends
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Friends.FriendsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The geoip property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Geoip.GeoipRequestBuilder Geoip
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Geoip.GeoipRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The home property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Home.HomeRequestBuilder Home
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Home.HomeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The hubs property</summary>
         public global::Soenneker.Plex.OpenApiClient.Hubs.HubsRequestBuilder Hubs
@@ -71,6 +171,11 @@ namespace Soenneker.Plex.OpenApiClient
         public global::Soenneker.Plex.OpenApiClient.Identity.IdentityRequestBuilder Identity
         {
             get => new global::Soenneker.Plex.OpenApiClient.Identity.IdentityRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The ip property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Ip.IpRequestBuilder Ip
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Ip.IpRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The library property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.LibraryRequestBuilder Library
@@ -92,10 +197,40 @@ namespace Soenneker.Plex.OpenApiClient
         {
             get => new global::Soenneker.Plex.OpenApiClient.Media.MediaRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The music property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Music.MusicRequestBuilder Music
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Music.MusicRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The myplex property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Myplex.MyplexRequestBuilder Myplex
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Myplex.MyplexRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The photo property</summary>
         public global::Soenneker.Plex.OpenApiClient.Photo.PhotoRequestBuilder Photo
         {
             get => new global::Soenneker.Plex.OpenApiClient.Photo.PhotoRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The ping property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Ping.PingRequestBuilder Ping
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Ping.PingRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pins property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Pins.PinsRequestBuilder Pins
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Pins.PinsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pinsXml property</summary>
+        public global::Soenneker.Plex.OpenApiClient.PinsXml.PinsXmlRequestBuilder PinsXml
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.PinsXml.PinsXmlRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The player property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Player.PlayerRequestBuilder Player
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Player.PlayerRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The playlists property</summary>
         public global::Soenneker.Plex.OpenApiClient.Playlists.PlaylistsRequestBuilder Playlists
@@ -117,15 +252,55 @@ namespace Soenneker.Plex.OpenApiClient
         {
             get => new global::Soenneker.Plex.OpenApiClient.Security.SecurityRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The server property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Server.ServerRequestBuilder Server
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Server.ServerRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The servers property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Servers.ServersRequestBuilder Servers
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Servers.ServersRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The services property</summary>
         public global::Soenneker.Plex.OpenApiClient.Services.ServicesRequestBuilder Services
         {
             get => new global::Soenneker.Plex.OpenApiClient.Services.ServicesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The shared_servers property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Shared_servers.Shared_serversRequestBuilder Shared_servers
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Shared_servers.Shared_serversRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The sharings property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Sharings.SharingsRequestBuilder Sharings
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Sharings.SharingsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The statistics property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Statistics.StatisticsRequestBuilder Statistics
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Statistics.StatisticsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The status property</summary>
         public global::Soenneker.Plex.OpenApiClient.Status.StatusRequestBuilder Status
         {
             get => new global::Soenneker.Plex.OpenApiClient.Status.StatusRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The sync property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Sync.SyncRequestBuilder Sync
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Sync.SyncRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The system property</summary>
+        public global::Soenneker.Plex.OpenApiClient.System.SystemRequestBuilder System
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.System.SystemRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The transcode property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Transcode.TranscodeRequestBuilder Transcode
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Transcode.TranscodeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The updater property</summary>
         public global::Soenneker.Plex.OpenApiClient.Updater.UpdaterRequestBuilder Updater
@@ -141,6 +316,11 @@ namespace Soenneker.Plex.OpenApiClient
         public global::Soenneker.Plex.OpenApiClient.Users.UsersRequestBuilder Users
         {
             get => new global::Soenneker.Plex.OpenApiClient.Users.UsersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The webhooks property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Webhooks.WebhooksRequestBuilder Webhooks
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Webhooks.WebhooksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.item collection</summary>
         /// <param name="position">Type of transcode media</param>
@@ -176,20 +356,25 @@ namespace Soenneker.Plex.OpenApiClient
         /// <summary>
         /// Information about this PMS setup and configuration
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDirectory"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.GetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDirectory?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.GetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDirectory> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.GetResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDirectory>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDirectory.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.GetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.GetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Information about this PMS setup and configuration

@@ -30,6 +30,10 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string ChannelVcn { get; set; }
 #endif
+        /// <summary>Whether the channel requires DRM.</summary>
+        public bool? Drm { get; set; }
+        /// <summary>Whether the channel is marked as a favorite.</summary>
+        public bool? Favorite { get; set; }
         /// <summary>The hd property</summary>
         public bool? Hd { get; set; }
         /// <summary>The identifier property</summary>
@@ -56,6 +60,10 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string Language { get; set; }
 #endif
+        /// <summary>Signal quality percentage (0-100).</summary>
+        public int? SignalQuality { get; set; }
+        /// <summary>Signal strength percentage (0-100).</summary>
+        public int? SignalStrength { get; set; }
         /// <summary>The thumb property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -99,10 +107,14 @@ namespace Soenneker.Plex.OpenApiClient.Models
             {
                 { "callSign", n => { CallSign = n.GetStringValue(); } },
                 { "channelVcn", n => { ChannelVcn = n.GetStringValue(); } },
+                { "drm", n => { Drm = n.GetBoolValue(); } },
+                { "favorite", n => { Favorite = n.GetBoolValue(); } },
                 { "hd", n => { Hd = n.GetBoolValue(); } },
                 { "identifier", n => { Identifier = n.GetStringValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "language", n => { Language = n.GetStringValue(); } },
+                { "signalQuality", n => { SignalQuality = n.GetIntValue(); } },
+                { "signalStrength", n => { SignalStrength = n.GetIntValue(); } },
                 { "thumb", n => { Thumb = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
@@ -116,10 +128,14 @@ namespace Soenneker.Plex.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("callSign", CallSign);
             writer.WriteStringValue("channelVcn", ChannelVcn);
+            writer.WriteBoolValue("drm", Drm);
+            writer.WriteBoolValue("favorite", Favorite);
             writer.WriteBoolValue("hd", Hd);
             writer.WriteStringValue("identifier", Identifier);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("language", Language);
+            writer.WriteIntValue("signalQuality", SignalQuality);
+            writer.WriteIntValue("signalStrength", SignalStrength);
             writer.WriteStringValue("thumb", Thumb);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);

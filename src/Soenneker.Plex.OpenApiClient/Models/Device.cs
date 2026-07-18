@@ -22,6 +22,18 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public List<global::Soenneker.Plex.OpenApiClient.Models.ChannelMapping> ChannelMapping { get; set; }
 #endif
+        /// <summary>Distinct hardware identifier for the device.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DeviceIdentifier { get; set; }
+#nullable restore
+#else
+        public string DeviceIdentifier { get; set; }
+#endif
+        /// <summary>Whether the device is enabled.</summary>
+        public bool? Enabled { get; set; }
+        /// <summary>Unique device ID.</summary>
+        public int? Id { get; set; }
         /// <summary>The key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -32,6 +44,22 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #endif
         /// <summary>The lastSeenAt property</summary>
         public int? LastSeenAt { get; set; }
+        /// <summary>EPG lineup association.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Lineup { get; set; }
+#nullable restore
+#else
+        public string Lineup { get; set; }
+#endif
+        /// <summary>Type of EPG lineup.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LineupType { get; set; }
+#nullable restore
+#else
+        public string LineupType { get; set; }
+#endif
         /// <summary>The make property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,6 +83,14 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #nullable restore
 #else
         public string ModelNumber { get; set; }
+#endif
+        /// <summary>Human-readable device name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Name { get; set; }
+#nullable restore
+#else
+        public string Name { get; set; }
 #endif
         /// <summary>The protocol property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -87,6 +123,24 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #nullable restore
 #else
         public string Status { get; set; }
+#endif
+        /// <summary>URL to the device thumbnail image.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Thumb { get; set; }
+#nullable restore
+#else
+        public string Thumb { get; set; }
+#endif
+        /// <summary>Version of the device thumbnail.</summary>
+        public int? ThumbVersion { get; set; }
+        /// <summary>Display title for the device.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Title { get; set; }
+#nullable restore
+#else
+        public string Title { get; set; }
 #endif
         /// <summary>The tuners property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -138,15 +192,24 @@ namespace Soenneker.Plex.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "ChannelMapping", n => { ChannelMapping = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.ChannelMapping>(global::Soenneker.Plex.OpenApiClient.Models.ChannelMapping.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "deviceIdentifier", n => { DeviceIdentifier = n.GetStringValue(); } },
+                { "enabled", n => { Enabled = n.GetBoolValue(); } },
+                { "id", n => { Id = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "lastSeenAt", n => { LastSeenAt = n.GetIntValue(); } },
+                { "lineup", n => { Lineup = n.GetStringValue(); } },
+                { "lineupType", n => { LineupType = n.GetStringValue(); } },
                 { "make", n => { Make = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "modelNumber", n => { ModelNumber = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
                 { "protocol", n => { Protocol = n.GetStringValue(); } },
                 { "sources", n => { Sources = n.GetStringValue(); } },
                 { "state", n => { State = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
+                { "thumb", n => { Thumb = n.GetStringValue(); } },
+                { "thumbVersion", n => { ThumbVersion = n.GetIntValue(); } },
+                { "title", n => { Title = n.GetStringValue(); } },
                 { "tuners", n => { Tuners = n.GetStringValue(); } },
                 { "uri", n => { Uri = n.GetStringValue(); } },
                 { "uuid", n => { Uuid = n.GetStringValue(); } },
@@ -160,15 +223,24 @@ namespace Soenneker.Plex.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.ChannelMapping>("ChannelMapping", ChannelMapping);
+            writer.WriteStringValue("deviceIdentifier", DeviceIdentifier);
+            writer.WriteBoolValue("enabled", Enabled);
+            writer.WriteIntValue("id", Id);
             writer.WriteStringValue("key", Key);
             writer.WriteIntValue("lastSeenAt", LastSeenAt);
+            writer.WriteStringValue("lineup", Lineup);
+            writer.WriteStringValue("lineupType", LineupType);
             writer.WriteStringValue("make", Make);
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("modelNumber", ModelNumber);
+            writer.WriteStringValue("name", Name);
             writer.WriteStringValue("protocol", Protocol);
             writer.WriteStringValue("sources", Sources);
             writer.WriteStringValue("state", State);
             writer.WriteStringValue("status", Status);
+            writer.WriteStringValue("thumb", Thumb);
+            writer.WriteIntValue("thumbVersion", ThumbVersion);
+            writer.WriteStringValue("title", Title);
             writer.WriteStringValue("tuners", Tuners);
             writer.WriteStringValue("uri", Uri);
             writer.WriteStringValue("uuid", Uuid);

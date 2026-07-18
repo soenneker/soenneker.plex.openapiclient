@@ -22,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Discover
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DiscoverRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/grabbers/devices/discover", pathParameters)
+        public DiscoverRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/grabbers/devices/discover{?grabberIdentifier*,protocol*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Discover
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DiscoverRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/grabbers/devices/discover", rawUrl)
+        public DiscoverRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/grabbers/devices/discover{?grabberIdentifier*,protocol*}", rawUrl)
         {
         }
         /// <summary>
@@ -39,17 +39,22 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Discover
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Discover.DiscoverRequestBuilder.DiscoverRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Discover.DiscoverRequestBuilder.DiscoverRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Tell grabbers to discover devices
@@ -58,14 +63,14 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Discover
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Discover.DiscoverRequestBuilder.DiscoverRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Discover.DiscoverRequestBuilder.DiscoverRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -78,6 +83,26 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Discover
         public global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Discover.DiscoverRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Discover.DiscoverRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Tell grabbers to discover devices
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class DiscoverRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Targeted grabber identifier.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("grabberIdentifier")]
+            public string? GrabberIdentifier { get; set; }
+#nullable restore
+#else
+            [QueryParameter("grabberIdentifier")]
+            public string GrabberIdentifier { get; set; }
+#endif
+            /// <summary>Protocol to filter discovery.</summary>
+            [QueryParameter("protocol")]
+            public global::Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices.Discover.GetProtocolQueryParameterType? Protocol { get; set; }
         }
     }
 }

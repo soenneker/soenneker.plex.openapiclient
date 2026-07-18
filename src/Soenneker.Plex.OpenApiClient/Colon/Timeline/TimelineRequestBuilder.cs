@@ -21,7 +21,7 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TimelineRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/:/timeline{?bandwidth*,bufferedSize*,bufferedTime*,continuing*,duration*,key*,offline*,playQueueItemID*,ratingKey*,state*,time*,timeStalled*,timeToFirstFrame*,updated*}", pathParameters)
+        public TimelineRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/:/timeline{?bandwidth*,bufferedSize*,bufferedTime*,containerKey*,continuing*,duration*,guid*,key*,offline*,playQueueID*,playQueueItemID*,ratingKey*,state*,time*,timeStalled*,timeToFirstFrame*,updated*,url*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TimelineRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/:/timeline{?bandwidth*,bufferedSize*,bufferedTime*,continuing*,duration*,key*,offline*,playQueueItemID*,ratingKey*,state*,time*,timeStalled*,timeToFirstFrame*,updated*}", rawUrl)
+        public TimelineRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/:/timeline{?bandwidth*,bufferedSize*,bufferedTime*,containerKey*,continuing*,duration*,guid*,key*,offline*,playQueueID*,playQueueItemID*,ratingKey*,state*,time*,timeStalled*,timeToFirstFrame*,updated*,url*}", rawUrl)
         {
         }
         /// <summary>
@@ -93,12 +93,32 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
             /// <summary>Amount of time in seconds buffered by client.  Omit if computed by `bufferedSize` below.</summary>
             [QueryParameter("bufferedTime")]
             public int? BufferedTime { get; set; }
+            /// <summary>Groups timeline reports (e.g. /playQueues/123).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("containerKey")]
+            public string? ContainerKey { get; set; }
+#nullable restore
+#else
+            [QueryParameter("containerKey")]
+            public string ContainerKey { get; set; }
+#endif
             /// <summary>When state is `stopped`, a flag indicating whether or not the client is going to continue playing anothe item.</summary>
             [QueryParameter("continuing")]
             public int? Continuing { get; set; }
             /// <summary>The total duration of the item in ms.</summary>
             [QueryParameter("duration")]
             public int? Duration { get; set; }
+            /// <summary>Global unique identifier for the item.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("guid")]
+            public string? Guid { get; set; }
+#nullable restore
+#else
+            [QueryParameter("guid")]
+            public string Guid { get; set; }
+#endif
             /// <summary>The details key for the item.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -112,6 +132,9 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
             /// <summary>Also used by sync clients, used to indicate that a timeline is being synced from being offline, as opposed to being &quot;live&quot;.</summary>
             [QueryParameter("offline")]
             public int? Offline { get; set; }
+            /// <summary>Identifies the play queue itself (distinct from playQueueItemID).</summary>
+            [QueryParameter("playQueueID")]
+            public int? PlayQueueID { get; set; }
             /// <summary>If playing media from a play queue, the play queue&apos;s ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -147,6 +170,16 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
             /// <summary>Used when a sync client comes online and is syncing media timelines, holds the time at which the playback state was last updated.</summary>
             [QueryParameter("updated")]
             public int? Updated { get; set; }
+            /// <summary>Alternative to key/ratingKey (legacy).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("url")]
+            public string? Url { get; set; }
+#nullable restore
+#else
+            [QueryParameter("url")]
+            public string Url { get; set; }
+#endif
         }
     }
 }

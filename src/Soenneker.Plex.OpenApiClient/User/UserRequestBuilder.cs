@@ -4,6 +4,8 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Plex.OpenApiClient.Models;
+using Soenneker.Plex.OpenApiClient.User.Item;
+using Soenneker.Plex.OpenApiClient.User.View_state_sync;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -17,6 +19,23 @@ namespace Soenneker.Plex.OpenApiClient.User
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UserRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The view_state_sync property</summary>
+        public global::Soenneker.Plex.OpenApiClient.User.View_state_sync.View_state_syncRequestBuilder View_state_sync
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.User.View_state_sync.View_state_syncRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.user.item collection</summary>
+        /// <param name="position">The universally unique identifier</param>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.User.Item.WithUuItemRequestBuilder"/></returns>
+        public global::Soenneker.Plex.OpenApiClient.User.Item.WithUuItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("uuid", position);
+                return new global::Soenneker.Plex.OpenApiClient.User.Item.WithUuItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.User.UserRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -39,8 +58,8 @@ namespace Soenneker.Plex.OpenApiClient.User
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Plex.OpenApiClient.User.UserPlexAccount400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Plex.OpenApiClient.User.UserPlexAccount401Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.BadRequestErrorResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.UnauthorizedErrorResponse">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -53,8 +72,8 @@ namespace Soenneker.Plex.OpenApiClient.User
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Plex.OpenApiClient.User.UserPlexAccount400Error.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Plex.OpenApiClient.User.UserPlexAccount401Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Plex.OpenApiClient.Models.BadRequestErrorResponse.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.UnauthorizedErrorResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

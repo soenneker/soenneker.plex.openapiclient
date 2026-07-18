@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Decision;
 using Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Fallback;
+using Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Session;
 using Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.StartWithExtension;
 using Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Subtitles;
 using System.Collections.Generic;
@@ -27,6 +28,11 @@ namespace Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal
         public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Fallback.FallbackRequestBuilder Fallback
         {
             get => new global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Fallback.FallbackRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The session property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Session.SessionRequestBuilder Session
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Session.SessionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The subtitles property</summary>
         public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Subtitles.SubtitlesRequestBuilder Subtitles
@@ -53,7 +59,7 @@ namespace Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal
         /// Builds and executes requests for operations under \{transcodeType}\:\transcode\universal\start.{extension}
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.StartWithExtension.StartWithExtensionRequestBuilder"/></returns>
-        /// <param name="extension">Extension </param>
+        /// <param name="extension">Extension</param>
         public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.StartWithExtension.StartWithExtensionRequestBuilder StartWithExtension(string extension)
         {
             if(string.IsNullOrEmpty(extension)) throw new ArgumentNullException(nameof(extension));

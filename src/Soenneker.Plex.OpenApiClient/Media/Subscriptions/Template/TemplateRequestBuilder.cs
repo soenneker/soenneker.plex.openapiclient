@@ -21,7 +21,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions.Template
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TemplateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/subscriptions/template{?guid*}", pathParameters)
+        public TemplateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/subscriptions/template{?guid*,targetLibrarySectionID*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions.Template
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TemplateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/subscriptions/template{?guid*}", rawUrl)
+        public TemplateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/media/subscriptions/template{?guid*,targetLibrarySectionID*,type*}", rawUrl)
         {
         }
         /// <summary>
@@ -93,6 +93,19 @@ namespace Soenneker.Plex.OpenApiClient.Media.Subscriptions.Template
 #else
             [QueryParameter("guid")]
             public string Guid { get; set; }
+#endif
+            /// <summary>Target library section ID.</summary>
+            [QueryParameter("targetLibrarySectionID")]
+            public int? TargetLibrarySectionID { get; set; }
+            /// <summary>Subscription type.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("type")]
+            public string? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type")]
+            public string Type { get; set; }
 #endif
         }
     }

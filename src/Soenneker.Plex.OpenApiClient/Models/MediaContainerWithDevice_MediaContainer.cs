@@ -15,10 +15,10 @@ namespace Soenneker.Plex.OpenApiClient.Models
         /// <summary>The Device property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice_MediaContainer_Device>? Device { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Device>? Device { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice_MediaContainer_Device> Device { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Device> Device { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,7 +38,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "Device", n => { Device = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice_MediaContainer_Device>(global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice_MediaContainer_Device.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Device", n => { Device = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Device>(global::Soenneker.Plex.OpenApiClient.Models.Device.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithDevice_MediaContainer_Device>("Device", Device);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Device>("Device", Device);
         }
     }
 }

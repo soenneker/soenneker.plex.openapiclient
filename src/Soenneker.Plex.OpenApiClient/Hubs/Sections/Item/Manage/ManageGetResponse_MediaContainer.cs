@@ -16,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage
         /// <summary>The Hub property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage.ManageGetResponse_MediaContainer_Hub>? Hub { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.ManagedHub>? Hub { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage.ManageGetResponse_MediaContainer_Hub> Hub { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.ManagedHub> Hub { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "Hub", n => { Hub = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage.ManageGetResponse_MediaContainer_Hub>(global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage.ManageGetResponse_MediaContainer_Hub.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Hub", n => { Hub = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.ManagedHub>(global::Soenneker.Plex.OpenApiClient.Models.ManagedHub.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Hubs.Sections.Item.Manage.ManageGetResponse_MediaContainer_Hub>("Hub", Hub);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.ManagedHub>("Hub", Hub);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Subtitles
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubtitlesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{transcodeType}/:/transcode/universal/subtitles{?advancedSubtitles*,audioBoost*,audioChannelCount*,autoAdjustQuality*,autoAdjustSubtitle*,directPlay*,directStream*,directStreamAudio*,disableResolutionRotation*,hasMDE*,location*,mediaBufferSize*,mediaIndex*,musicBitrate*,offset*,partIndex*,path*,peakBitrate*,photoResolution*,protocol*,secondsPerSegment*,subtitleSize*,subtitles*,transcodeSessionId*,videoBitrate*,videoQuality*,videoResolution*}", pathParameters)
+        public SubtitlesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{transcodeType}/:/transcode/universal/subtitles{?advancedSubtitles*,audioBoost*,audioChannelCount*,autoAdjustQuality*,autoAdjustSubtitle*,copyts*,directPlay*,directStream*,directStreamAudio*,disableResolutionRotation*,hasMDE*,location*,maxVideoBitrate*,mediaBufferSize*,mediaIndex*,musicBitrate*,offset*,partIndex*,path*,peakBitrate*,photoResolution*,platform*,protocol*,secondsPerSegment*,subtitleSize*,subtitles*,transcodeSessionId*,videoBitrate*,videoQuality*,videoResolution*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Subtitles
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubtitlesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{transcodeType}/:/transcode/universal/subtitles{?advancedSubtitles*,audioBoost*,audioChannelCount*,autoAdjustQuality*,autoAdjustSubtitle*,directPlay*,directStream*,directStreamAudio*,disableResolutionRotation*,hasMDE*,location*,mediaBufferSize*,mediaIndex*,musicBitrate*,offset*,partIndex*,path*,peakBitrate*,photoResolution*,protocol*,secondsPerSegment*,subtitleSize*,subtitles*,transcodeSessionId*,videoBitrate*,videoQuality*,videoResolution*}", rawUrl)
+        public SubtitlesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{transcodeType}/:/transcode/universal/subtitles{?advancedSubtitles*,audioBoost*,audioChannelCount*,autoAdjustQuality*,autoAdjustSubtitle*,copyts*,directPlay*,directStream*,directStreamAudio*,disableResolutionRotation*,hasMDE*,location*,maxVideoBitrate*,mediaBufferSize*,mediaIndex*,musicBitrate*,offset*,partIndex*,path*,peakBitrate*,photoResolution*,platform*,protocol*,secondsPerSegment*,subtitleSize*,subtitles*,transcodeSessionId*,videoBitrate*,videoQuality*,videoResolution*}", rawUrl)
         {
         }
         /// <summary>
@@ -99,6 +99,9 @@ namespace Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Subtitles
             /// <summary>Indicates if the server should adjust subtitles based on Voice Activity Data.</summary>
             [QueryParameter("autoAdjustSubtitle")]
             public int? AutoAdjustSubtitle { get; set; }
+            /// <summary>Copy timestamps instead of re-encoding them</summary>
+            [QueryParameter("copyts")]
+            public int? Copyts { get; set; }
             /// <summary>Indicates the client supports direct playing the indicated content.</summary>
             [QueryParameter("directPlay")]
             public int? DirectPlay { get; set; }
@@ -117,6 +120,9 @@ namespace Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Subtitles
             /// <summary>Network type of the client, can be used to help determine target bitrate.</summary>
             [QueryParameter("location")]
             public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Subtitles.GetLocationQueryParameterType? Location { get; set; }
+            /// <summary>Client-side maximum video bitrate cap in kbps</summary>
+            [QueryParameter("maxVideoBitrate")]
+            public int? MaxVideoBitrate { get; set; }
             /// <summary>Buffer size used in playback (in KB). Clients should specify a lower bound if not known exactly. This value could make the difference between transcoding and direct play on bandwidth constrained networks.</summary>
             [QueryParameter("mediaBufferSize")]
             public int? MediaBufferSize { get; set; }
@@ -155,6 +161,16 @@ namespace Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Subtitles
             [QueryParameter("photoResolution")]
             public string PhotoResolution { get; set; }
 #endif
+            /// <summary>Client platform (some clients send this in addition to headers).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("platform")]
+            public string? Platform { get; set; }
+#nullable restore
+#else
+            [QueryParameter("platform")]
+            public string Platform { get; set; }
+#endif
             /// <summary>Indicates the network streaming protocol to be used for the transcode session: * &apos;http&apos; - include the file in the http response such as MKV streaming * &apos;hls&apos; - hls stream (RFC 8216) * &apos;dash&apos; - dash stream (ISO/IEC 23009-1:2022)</summary>
             [QueryParameter("protocol")]
             public global::Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Subtitles.GetProtocolQueryParameterType? Protocol { get; set; }
@@ -183,7 +199,7 @@ namespace Soenneker.Plex.OpenApiClient.Item.Colon.Transcode.Universal.Subtitles
             /// <summary>Target photo quality.</summary>
             [QueryParameter("videoQuality")]
             public int? VideoQuality { get; set; }
-            /// <summary>Target maximum video resolution.</summary>
+            /// <summary>Cap resolution string (e.g. 1920x1080)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("videoResolution")]

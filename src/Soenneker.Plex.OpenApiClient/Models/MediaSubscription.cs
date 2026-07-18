@@ -22,10 +22,10 @@ namespace Soenneker.Plex.OpenApiClient.Models
         /// <summary>Media Matching Hints</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Directory { get; set; }
+        public global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Directory? Directory { get; set; }
 #nullable restore
 #else
-        public UntypedNode Directory { get; set; }
+        public global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Directory Directory { get; set; }
 #endif
         /// <summary>Only included if `includeStorage` is specified</summary>
         public int? DurationTotal { get; set; }
@@ -64,10 +64,10 @@ namespace Soenneker.Plex.OpenApiClient.Models
         /// <summary>Media Matching Hints</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Playlist { get; set; }
+        public global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Playlist? Playlist { get; set; }
 #nullable restore
 #else
-        public UntypedNode Playlist { get; set; }
+        public global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Playlist Playlist { get; set; }
 #endif
         /// <summary>The Setting property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -96,10 +96,10 @@ namespace Soenneker.Plex.OpenApiClient.Models
         /// <summary>Media Matching Hints</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Video { get; set; }
+        public global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Video? Video { get; set; }
 #nullable restore
 #else
-        public UntypedNode Video { get; set; }
+        public global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Video Video { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription"/> and sets the default values.
@@ -128,20 +128,20 @@ namespace Soenneker.Plex.OpenApiClient.Models
             {
                 { "airingsType", n => { AiringsType = n.GetEnumValue<global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_airingsType>(); } },
                 { "createdAt", n => { CreatedAt = n.GetIntValue(); } },
-                { "Directory", n => { Directory = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "Directory", n => { Directory = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Directory>(global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Directory.CreateFromDiscriminatorValue); } },
                 { "durationTotal", n => { DurationTotal = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "librarySectionTitle", n => { LibrarySectionTitle = n.GetStringValue(); } },
                 { "locationPath", n => { LocationPath = n.GetStringValue(); } },
                 { "MediaGrabOperation", n => { MediaGrabOperation = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.MediaGrabOperation>(global::Soenneker.Plex.OpenApiClient.Models.MediaGrabOperation.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "Playlist", n => { Playlist = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "Playlist", n => { Playlist = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Playlist>(global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Playlist.CreateFromDiscriminatorValue); } },
                 { "Setting", n => { Setting = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Setting>(global::Soenneker.Plex.OpenApiClient.Models.Setting.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "storageTotal", n => { StorageTotal = n.GetIntValue(); } },
                 { "targetLibrarySectionID", n => { TargetLibrarySectionID = n.GetIntValue(); } },
                 { "targetSectionLocationID", n => { TargetSectionLocationID = n.GetIntValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetIntValue(); } },
-                { "Video", n => { Video = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "Video", n => { Video = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Video>(global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Video.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -153,20 +153,20 @@ namespace Soenneker.Plex.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_airingsType>("airingsType", AiringsType);
             writer.WriteIntValue("createdAt", CreatedAt);
-            writer.WriteObjectValue<UntypedNode>("Directory", Directory);
+            writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Directory>("Directory", Directory);
             writer.WriteIntValue("durationTotal", DurationTotal);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("librarySectionTitle", LibrarySectionTitle);
             writer.WriteStringValue("locationPath", LocationPath);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.MediaGrabOperation>("MediaGrabOperation", MediaGrabOperation);
-            writer.WriteObjectValue<UntypedNode>("Playlist", Playlist);
+            writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Playlist>("Playlist", Playlist);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Setting>("Setting", Setting);
             writer.WriteIntValue("storageTotal", StorageTotal);
             writer.WriteIntValue("targetLibrarySectionID", TargetLibrarySectionID);
             writer.WriteIntValue("targetSectionLocationID", TargetSectionLocationID);
             writer.WriteStringValue("title", Title);
             writer.WriteIntValue("type", Type);
-            writer.WriteObjectValue<UntypedNode>("Video", Video);
+            writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.MediaSubscription_Video>("Video", Video);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

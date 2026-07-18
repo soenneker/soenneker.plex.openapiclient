@@ -39,7 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Resources
         /// <returns>A List&lt;global::Soenneker.Plex.OpenApiClient.Models.PlexDevice&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Resources.Resources401Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.UnauthorizedErrorResponse">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<List<global::Soenneker.Plex.OpenApiClient.Models.PlexDevice>?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Resources.ResourcesRequestBuilder.ResourcesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -52,7 +52,7 @@ namespace Soenneker.Plex.OpenApiClient.Resources
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "401", global::Soenneker.Plex.OpenApiClient.Resources.Resources401Error.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.UnauthorizedErrorResponse.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.Plex.OpenApiClient.Models.PlexDevice>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.PlexDevice.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -15,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.Activities
         /// <summary>The Activity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Activities.ActivitiesGetResponse_MediaContainer_Activity>? Activity { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Activity>? Activity { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Activities.ActivitiesGetResponse_MediaContainer_Activity> Activity { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Activity> Activity { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -47,7 +48,7 @@ namespace Soenneker.Plex.OpenApiClient.Activities
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "Activity", n => { Activity = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Activities.ActivitiesGetResponse_MediaContainer_Activity>(global::Soenneker.Plex.OpenApiClient.Activities.ActivitiesGetResponse_MediaContainer_Activity.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Activity", n => { Activity = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Activity>(global::Soenneker.Plex.OpenApiClient.Models.Activity.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -57,7 +58,7 @@ namespace Soenneker.Plex.OpenApiClient.Activities
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Activities.ActivitiesGetResponse_MediaContainer_Activity>("Activity", Activity);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Activity>("Activity", Activity);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

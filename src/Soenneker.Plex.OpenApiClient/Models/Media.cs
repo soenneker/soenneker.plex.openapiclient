@@ -71,6 +71,16 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public List<global::Soenneker.Plex.OpenApiClient.Models.Part> Part { get; set; }
 #endif
+        /// <summary>Whether this media version is selected for playback.</summary>
+        public bool? Selected { get; set; }
+        /// <summary>Unique identifier for this media instance.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Uuid { get; set; }
+#nullable restore
+#else
+        public string Uuid { get; set; }
+#endif
         /// <summary>The videoCodec property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -143,6 +153,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "optimizedForStreaming", n => { OptimizedForStreaming = n.GetIntValue(); } },
                 { "Part", n => { Part = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Part>(global::Soenneker.Plex.OpenApiClient.Models.Part.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "selected", n => { Selected = n.GetBoolValue(); } },
+                { "uuid", n => { Uuid = n.GetStringValue(); } },
                 { "videoCodec", n => { VideoCodec = n.GetStringValue(); } },
                 { "videoFrameRate", n => { VideoFrameRate = n.GetStringValue(); } },
                 { "videoProfile", n => { VideoProfile = n.GetStringValue(); } },
@@ -170,6 +182,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteLongValue("id", Id);
             writer.WriteIntValue("optimizedForStreaming", OptimizedForStreaming);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Part>("Part", Part);
+            writer.WriteBoolValue("selected", Selected);
+            writer.WriteStringValue("uuid", Uuid);
             writer.WriteStringValue("videoCodec", VideoCodec);
             writer.WriteStringValue("videoFrameRate", VideoFrameRate);
             writer.WriteStringValue("videoProfile", VideoProfile);

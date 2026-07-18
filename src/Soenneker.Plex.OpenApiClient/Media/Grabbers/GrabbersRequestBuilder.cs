@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Plex.OpenApiClient.Media.Grabbers.Devices;
 using Soenneker.Plex.OpenApiClient.Media.Grabbers.Operations;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -50,6 +51,7 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Media.Grabbers.GrabbersGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.GrabbersGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.GrabbersRequestBuilder.GrabbersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -60,7 +62,11 @@ namespace Soenneker.Plex.OpenApiClient.Media.Grabbers
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.GrabbersGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Media.Grabbers.GrabbersGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Media.Grabbers.GrabbersGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Media.Grabbers.GrabbersGetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get available grabbers visible to the server

@@ -12,13 +12,13 @@ using System;
 namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker
 {
     /// <summary>
-    /// Builds and executes requests for operations under \library\metadata\{ids}\marker
+    /// Builds and executes requests for operations under \library\metadata\{ids-id}\marker
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MarkerRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.library.metadata.item.marker.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The marker identifier</param>
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item.WithMarkerItemRequestBuilder"/></returns>
         public global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker.Item.WithMarkerItemRequestBuilder this[string position]
         {
@@ -34,7 +34,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MarkerRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/marker?startTimeOffset={startTimeOffset}&type={type}{&attributes,endTimeOffset*}", pathParameters)
+        public MarkerRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/marker?startTimeOffset={startTimeOffset}&type={type}{&attributes,endTimeOffset*}", pathParameters)
         {
         }
         /// <summary>
@@ -42,7 +42,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Marker
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MarkerRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids}/marker?startTimeOffset={startTimeOffset}&type={type}{&attributes,endTimeOffset*}", rawUrl)
+        public MarkerRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/marker?startTimeOffset={startTimeOffset}&type={type}{&attributes,endTimeOffset*}", rawUrl)
         {
         }
         /// <summary>

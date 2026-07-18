@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Status.Sessions.History.All
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/status/sessions/history/all{?accountID*,librarySectionID*,metadataItemID*,sort*,viewedAt*}", pathParameters)
+        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/status/sessions/history/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,accountID*,deviceID*,excludeElements*,excludeFields*,includeElements*,includeFields*,librarySectionID*,metadataItemID*,sort*,viewedAt*,viewedAt%3C*,viewedAt%3E*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +30,7 @@ namespace Soenneker.Plex.OpenApiClient.Status.Sessions.History.All
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/status/sessions/history/all{?accountID*,librarySectionID*,metadataItemID*,sort*,viewedAt*}", rawUrl)
+        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/status/sessions/history/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,accountID*,deviceID*,excludeElements*,excludeFields*,includeElements*,includeFields*,librarySectionID*,metadataItemID*,sort*,viewedAt*,viewedAt%3C*,viewedAt%3E*}", rawUrl)
         {
         }
         /// <summary>
@@ -38,6 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Status.Sessions.History.All
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.All.AllGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.All.AllGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.All.AllRequestBuilder.AllRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -48,7 +50,11 @@ namespace Soenneker.Plex.OpenApiClient.Status.Sessions.History.All
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.All.AllGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.All.AllGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.All.AllGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Status.Sessions.History.All.AllGetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List all playback history (Admin can see all users, others can only see their own).Pagination should be used on this endpoint.  Additionally this endpoint supports `includeFields`, `excludeFields`, `includeElements`, and `excludeElements` parameters.
@@ -87,6 +93,49 @@ namespace Soenneker.Plex.OpenApiClient.Status.Sessions.History.All
             /// <summary>The account id to restrict view history</summary>
             [QueryParameter("accountID")]
             public int? AccountID { get; set; }
+            /// <summary>Filter by device ID</summary>
+            [QueryParameter("deviceID")]
+            public int? DeviceID { get; set; }
+            /// <summary>Comma-separated list of elements to exclude from the response</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("excludeElements")]
+            public string? ExcludeElements { get; set; }
+#nullable restore
+#else
+            [QueryParameter("excludeElements")]
+            public string ExcludeElements { get; set; }
+#endif
+            /// <summary>Comma-separated list of fields to exclude from the response</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("excludeFields")]
+            public string? ExcludeFields { get; set; }
+#nullable restore
+#else
+            [QueryParameter("excludeFields")]
+            public string ExcludeFields { get; set; }
+#endif
+            /// <summary>Whitelist of elements to include</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("includeElements")]
+            public string? IncludeElements { get; set; }
+#nullable restore
+#else
+            [QueryParameter("includeElements")]
+            public string IncludeElements { get; set; }
+#endif
+            /// <summary>Whitelist of fields to return</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("includeFields")]
+            public string? IncludeFields { get; set; }
+#nullable restore
+#else
+            [QueryParameter("includeFields")]
+            public string IncludeFields { get; set; }
+#endif
             /// <summary>The library section id to restrict view history</summary>
             [QueryParameter("librarySectionID")]
             public int? LibrarySectionID { get; set; }
@@ -106,6 +155,18 @@ namespace Soenneker.Plex.OpenApiClient.Status.Sessions.History.All
             /// <summary>The time period to restrict history (typically of the form `viewedAt&gt;=12456789`)</summary>
             [QueryParameter("viewedAt")]
             public int? ViewedAt { get; set; }
+            /// <summary>Greater-than filter for viewedAt timestamp</summary>
+            [QueryParameter("viewedAt%3E")]
+            public int? ViewedAt0 { get; set; }
+            /// <summary>Less-than filter for viewedAt timestamp</summary>
+            [QueryParameter("viewedAt%3C")]
+            public int? ViewedAt1 { get; set; }
+            /// <summary>Pagination page size</summary>
+            [QueryParameter("X%2DPlex%2DContainer%2DSize")]
+            public int? XPlexContainerSize { get; set; }
+            /// <summary>Pagination start offset</summary>
+            [QueryParameter("X%2DPlex%2DContainer%2DStart")]
+            public int? XPlexContainerStart { get; set; }
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Scrobble
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ScrobbleRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/:/scrobble?identifier={identifier}{&key*,uri*}", pathParameters)
+        public ScrobbleRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/:/scrobble?identifier={identifier}&uri={uri}{&key*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Scrobble
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ScrobbleRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/:/scrobble?identifier={identifier}{&key*,uri*}", rawUrl)
+        public ScrobbleRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/:/scrobble?identifier={identifier}&uri={uri}{&key*}", rawUrl)
         {
         }
         /// <summary>
@@ -104,7 +104,7 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Scrobble
             [QueryParameter("key")]
             public string Key { get; set; }
 #endif
-            /// <summary>The URI of the item to mark as played.  See intro for description of the URIs</summary>
+            /// <summary>URI of the item to scrobble. Format is `library://&lt;section-uuid&gt;/item/&lt;url-encoded-key&gt;` or `plex://movie/&lt;guid&gt;` or `plex://episode/&lt;guid&gt;`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("uri")]

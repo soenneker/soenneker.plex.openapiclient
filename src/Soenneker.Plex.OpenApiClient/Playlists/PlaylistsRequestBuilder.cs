@@ -41,7 +41,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PlaylistsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists{?playQueueID*,playlistType*,smart*,uri*}", pathParameters)
+        public PlaylistsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists{?playQueueID*,playlistType*,smart*,type*,uri*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,8 +49,31 @@ namespace Soenneker.Plex.OpenApiClient.Playlists
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PlaylistsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists{?playQueueID*,playlistType*,smart*,uri*}", rawUrl)
+        public PlaylistsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/playlists{?playQueueID*,playlistType*,smart*,type*,uri*}", rawUrl)
         {
+        }
+        /// <summary>
+        /// Delete a playlist.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Playlists.PlaylistsRequestBuilder.PlaylistsRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Playlists.PlaylistsRequestBuilder.PlaylistsRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToDeleteRequestInformation(requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.SuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Gets a list of playlists and playlist folders for a user. General filters are permitted, such as `sort=lastViewedAt:desc`. A flat playlist list can be retrieved using `type=15` to limit the collection to just playlists.
@@ -58,6 +81,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Playlists.PlaylistsRequestBuilder.PlaylistsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -68,7 +92,11 @@ namespace Soenneker.Plex.OpenApiClient.Playlists
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a new playlist. By default the playlist is blank.
@@ -87,6 +115,25 @@ namespace Soenneker.Plex.OpenApiClient.Playlists
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Delete a playlist.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Playlists.PlaylistsRequestBuilder.PlaylistsRequestBuilderDeleteQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Playlists.PlaylistsRequestBuilder.PlaylistsRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/playlists?ratingKey={ratingKey}", PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
         }
         /// <summary>
         /// Gets a list of playlists and playlist folders for a user. General filters are permitted, such as `sort=lastViewedAt:desc`. A flat playlist list can be retrieved using `type=15` to limit the collection to just playlists.
@@ -136,6 +183,16 @@ namespace Soenneker.Plex.OpenApiClient.Playlists
             return new global::Soenneker.Plex.OpenApiClient.Playlists.PlaylistsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
+        /// Delete a playlist.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class PlaylistsRequestBuilderDeleteQueryParameters 
+        {
+            /// <summary>The rating key of the playlist to delete.</summary>
+            [QueryParameter("ratingKey")]
+            public int? RatingKey { get; set; }
+        }
+        /// <summary>
         /// Gets a list of playlists and playlist folders for a user. General filters are permitted, such as `sort=lastViewedAt:desc`. A flat playlist list can be retrieved using `type=15` to limit the collection to just playlists.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
@@ -147,6 +204,9 @@ namespace Soenneker.Plex.OpenApiClient.Playlists
             /// <summary>Whether this is a smart collection/playlist</summary>
             [QueryParameter("smart")]
             public bool? Smart { get; set; }
+            /// <summary>Filter by playlist type. Use 42 for optimized/conversion items.</summary>
+            [QueryParameter("type")]
+            public int? Type { get; set; }
         }
         /// <summary>
         /// Create a new playlist. By default the playlist is blank.

@@ -16,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.Item.Levels
         /// <summary>The Level property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Library.Streams.Item.Levels.LevelsGetResponse_MediaContainer_Level>? Level { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Level>? Level { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Library.Streams.Item.Levels.LevelsGetResponse_MediaContainer_Level> Level { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Level> Level { get; set; }
 #endif
         /// <summary>The total number of samples (as a string)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -47,7 +47,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.Item.Levels
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "Level", n => { Level = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Library.Streams.Item.Levels.LevelsGetResponse_MediaContainer_Level>(global::Soenneker.Plex.OpenApiClient.Library.Streams.Item.Levels.LevelsGetResponse_MediaContainer_Level.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Level", n => { Level = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Level>(global::Soenneker.Plex.OpenApiClient.Models.Level.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "totalSamples", n => { TotalSamples = n.GetStringValue(); } },
             };
         }
@@ -59,7 +59,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Streams.Item.Levels
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Library.Streams.Item.Levels.LevelsGetResponse_MediaContainer_Level>("Level", Level);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Level>("Level", Level);
             writer.WriteStringValue("totalSamples", TotalSamples);
         }
     }

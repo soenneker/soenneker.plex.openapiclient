@@ -16,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.Status.Sessions.Background
         /// <summary>The TranscodeJob property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Status.Sessions.Background.BackgroundGetResponse_MediaContainer_TranscodeJob>? TranscodeJob { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.TranscodeJob>? TranscodeJob { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Status.Sessions.Background.BackgroundGetResponse_MediaContainer_TranscodeJob> TranscodeJob { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.TranscodeJob> TranscodeJob { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Status.Sessions.Background
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "TranscodeJob", n => { TranscodeJob = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Status.Sessions.Background.BackgroundGetResponse_MediaContainer_TranscodeJob>(global::Soenneker.Plex.OpenApiClient.Status.Sessions.Background.BackgroundGetResponse_MediaContainer_TranscodeJob.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "TranscodeJob", n => { TranscodeJob = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.TranscodeJob>(global::Soenneker.Plex.OpenApiClient.Models.TranscodeJob.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Plex.OpenApiClient.Status.Sessions.Background
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Status.Sessions.Background.BackgroundGetResponse_MediaContainer_TranscodeJob>("TranscodeJob", TranscodeJob);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.TranscodeJob>("TranscodeJob", TranscodeJob);
         }
     }
 }

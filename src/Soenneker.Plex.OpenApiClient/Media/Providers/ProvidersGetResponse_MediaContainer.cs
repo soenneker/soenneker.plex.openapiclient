@@ -10,47 +10,32 @@ namespace Soenneker.Plex.OpenApiClient.Media.Providers
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ProvidersGetResponse_MediaContainer : global::Soenneker.Plex.OpenApiClient.Models.ServerConfiguration, IParsable
+    public partial class ProvidersGetResponse_MediaContainer : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The Feature property</summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The Provider property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Media.Providers.ProvidersGetResponse_MediaContainer_Feature>? Feature { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Provider>? Provider { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Media.Providers.ProvidersGetResponse_MediaContainer_Feature> Feature { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Provider> Provider { get; set; }
 #endif
-        /// <summary>A comma-separated list of default protocols for the provider, which can be:- `stream`: The provider allows streaming media directly from the provider (e.g. for Vimeo). - `download`: The provider allows downloading media for offline storage, sync, etc. (e.g. Podcasts). - `livetv`: The provider provides live content which is only available on a schedule basis.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Protocols { get; set; }
-#nullable restore
-#else
-        public string Protocols { get; set; }
-#endif
-        /// <summary>The title of the provider.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Title { get; set; }
-#nullable restore
-#else
-        public string Title { get; set; }
-#endif
-        /// <summary>This attribute contains a comma-separated list of the media types exposed by the provider (e.g. `video, audio`).</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Types { get; set; }
-#nullable restore
-#else
-        public string Types { get; set; }
-#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Media.Providers.ProvidersGetResponse_MediaContainer"/> and sets the default values.
+        /// </summary>
+        public ProvidersGetResponse_MediaContainer()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Media.Providers.ProvidersGetResponse_MediaContainer"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Plex.OpenApiClient.Media.Providers.ProvidersGetResponse_MediaContainer CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Plex.OpenApiClient.Media.Providers.ProvidersGetResponse_MediaContainer CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::Soenneker.Plex.OpenApiClient.Media.Providers.ProvidersGetResponse_MediaContainer();
@@ -59,28 +44,22 @@ namespace Soenneker.Plex.OpenApiClient.Media.Providers
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
+            return new Dictionary<string, Action<IParseNode>>
             {
-                { "Feature", n => { Feature = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Media.Providers.ProvidersGetResponse_MediaContainer_Feature>(global::Soenneker.Plex.OpenApiClient.Media.Providers.ProvidersGetResponse_MediaContainer_Feature.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "protocols", n => { Protocols = n.GetStringValue(); } },
-                { "title", n => { Title = n.GetStringValue(); } },
-                { "types", n => { Types = n.GetStringValue(); } },
+                { "Provider", n => { Provider = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Provider>(global::Soenneker.Plex.OpenApiClient.Models.Provider.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public override void Serialize(ISerializationWriter writer)
+        public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Media.Providers.ProvidersGetResponse_MediaContainer_Feature>("Feature", Feature);
-            writer.WriteStringValue("protocols", Protocols);
-            writer.WriteStringValue("title", Title);
-            writer.WriteStringValue("types", Types);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Provider>("Provider", Provider);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

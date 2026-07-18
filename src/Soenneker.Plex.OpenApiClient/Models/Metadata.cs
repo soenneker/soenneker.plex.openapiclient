@@ -28,6 +28,14 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string Art { get; set; }
 #endif
+        /// <summary>Blur hash for background art.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ArtBlurHash { get; set; }
+#nullable restore
+#else
+        public string ArtBlurHash { get; set; }
+#endif
         /// <summary>Some rating systems separate reviewer ratings from audience ratings</summary>
         public float? AudienceRating { get; set; }
         /// <summary>A URI representing the image to be shown with the audience rating (e.g. rottentomatoes://image.rating.spilled).</summary>
@@ -96,8 +104,20 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public List<global::Soenneker.Plex.OpenApiClient.Models.Tag> Director { get; set; }
 #endif
+        /// <summary>Levenshtein distance for voice search results.</summary>
+        public int? Distance { get; set; }
         /// <summary>When present, the duration for the item, in units of milliseconds.</summary>
         public int? Duration { get; set; }
+        /// <summary>Edition string (e.g. &quot;Director&apos;s Cut&quot;).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EditionTitle { get; set; }
+#nullable restore
+#else
+        public string EditionTitle { get; set; }
+#endif
+        /// <summary>Whether credits marker generation is enabled for this item.</summary>
+        public bool? EnableCreditsMarkerGeneration { get; set; }
         /// <summary>Typically only seen in metadata at a library&apos;s top level</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -212,6 +232,16 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
+        /// <summary>Per-item language override.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LanguageOverride { get; set; }
+#nullable restore
+#else
+        public string LanguageOverride { get; set; }
+#endif
+        /// <summary>Timestamp of the last user rating.</summary>
+        public int? LastRatedAt { get; set; }
         /// <summary>The lastViewedAt property</summary>
         public long? LastViewedAt { get; set; }
         /// <summary>For shows and seasons, contains the number of total episodes.</summary>
@@ -240,6 +270,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public List<global::Soenneker.Plex.OpenApiClient.Models.Tag> MetadataRating { get; set; }
 #endif
+        /// <summary>Analysis version for music items.</summary>
+        public int? MusicAnalysisVersion { get; set; }
         /// <summary>When present, in the format YYYY-MM-DD [HH:MM:SS] (the hours/minutes/seconds part is not always present). The air date, or a higher resolution release date for an item, depending on type. For example, episodes usually have air date like 1979-08-10 (we don&apos;t use epoch seconds because media existed prior to 1970). In some cases, recorded over-the-air content has higher resolution air date which includes a time component. Albums and movies may have day-resolution release dates as well.</summary>
         public Date? OriginallyAvailableAt { get; set; }
         /// <summary>When present, used to indicate an item&apos;s original title, e.g. a movie&apos;s foreign title.</summary>
@@ -300,6 +332,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string ParentTitle { get; set; }
 #endif
+        /// <summary>Item ID within a playlist.</summary>
+        public int? PlaylistItemID { get; set; }
         /// <summary>Indicates that the item has a primary extra; for a movie, this is a trailer, and for a music track it is a music video. The URL points to the metadata details endpoint for the item.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -356,6 +390,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public global::Soenneker.Plex.OpenApiClient.Models.Metadata.Metadata_skipChildren SkipChildren { get; set; }
 #endif
+        /// <summary>Number of times this track has been skipped.</summary>
+        public int? SkipCount { get; set; }
         /// <summary>When present on an episode or track item, indicates parent should be skipped in favor of grandparent (show).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -364,6 +400,14 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public global::Soenneker.Plex.OpenApiClient.Models.Metadata.Metadata_skipParent SkipParent { get; set; }
 #endif
+        /// <summary>URL-friendly slug for the item.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Slug { get; set; }
+#nullable restore
+#else
+        public string Slug { get; set; }
+#endif
         /// <summary>Typically only seen in metadata at a library&apos;s top level</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -371,6 +415,14 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.Plex.OpenApiClient.Models.Sort> Sort { get; set; }
+#endif
+        /// <summary>Remote or shared server item URI.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SourceURI { get; set; }
+#nullable restore
+#else
+        public string SourceURI { get; set; }
 #endif
         /// <summary>When present, the studio or label which produced an item (e.g. movie studio for movies, record label for albums).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -420,6 +472,14 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string Thumb { get; set; }
 #endif
+        /// <summary>Blur hash for thumbnail.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ThumbBlurHash { get; set; }
+#nullable restore
+#else
+        public string ThumbBlurHash { get; set; }
+#endif
         /// <summary>The title of the item (e.g. “300” or “The Simpsons”)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -446,6 +506,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #endif
         /// <summary>In units of seconds since the epoch, returns the time at which the item was last changed (e.g. had its metadata updated).</summary>
         public int? UpdatedAt { get; set; }
+        /// <summary>Whether to display the original title.</summary>
+        public bool? UseOriginalTitle { get; set; }
         /// <summary>When the user has rated an item, this contains the user rating</summary>
         public float? UserRating { get; set; }
         /// <summary>When a users has completed watched or listened to an item, this attribute contains the number of consumptions.</summary>
@@ -492,6 +554,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "absoluteIndex", n => { AbsoluteIndex = n.GetIntValue(); } },
                 { "addedAt", n => { AddedAt = n.GetLongValue(); } },
                 { "art", n => { Art = n.GetStringValue(); } },
+                { "artBlurHash", n => { ArtBlurHash = n.GetStringValue(); } },
                 { "audienceRating", n => { AudienceRating = n.GetFloatValue(); } },
                 { "audienceRatingImage", n => { AudienceRatingImage = n.GetStringValue(); } },
                 { "Autotag", n => { Autotag = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Tag>(global::Soenneker.Plex.OpenApiClient.Models.Tag.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -502,7 +565,10 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "contentRating", n => { ContentRating = n.GetStringValue(); } },
                 { "Country", n => { Country = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Tag>(global::Soenneker.Plex.OpenApiClient.Models.Tag.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "Director", n => { Director = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Tag>(global::Soenneker.Plex.OpenApiClient.Models.Tag.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "distance", n => { Distance = n.GetIntValue(); } },
                 { "duration", n => { Duration = n.GetIntValue(); } },
+                { "editionTitle", n => { EditionTitle = n.GetStringValue(); } },
+                { "enableCreditsMarkerGeneration", n => { EnableCreditsMarkerGeneration = n.GetBoolValue(); } },
                 { "Filter", n => { Filter = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Filter>(global::Soenneker.Plex.OpenApiClient.Models.Filter.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "Genre", n => { Genre = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Tag>(global::Soenneker.Plex.OpenApiClient.Models.Tag.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "grandparentArt", n => { GrandparentArt = n.GetStringValue(); } },
@@ -518,11 +584,14 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "Image", n => { Image = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Image>(global::Soenneker.Plex.OpenApiClient.Models.Image.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
+                { "languageOverride", n => { LanguageOverride = n.GetStringValue(); } },
+                { "lastRatedAt", n => { LastRatedAt = n.GetIntValue(); } },
                 { "lastViewedAt", n => { LastViewedAt = n.GetLongValue(); } },
                 { "leafCount", n => { LeafCount = n.GetIntValue(); } },
                 { "Media", n => { Media = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Media>(global::Soenneker.Plex.OpenApiClient.Models.Media.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "Guid", n => { MetadataGuid = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Metadata_Guid>(global::Soenneker.Plex.OpenApiClient.Models.Metadata_Guid.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "Rating", n => { MetadataRating = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Tag>(global::Soenneker.Plex.OpenApiClient.Models.Tag.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "musicAnalysisVersion", n => { MusicAnalysisVersion = n.GetIntValue(); } },
                 { "originalTitle", n => { OriginalTitle = n.GetStringValue(); } },
                 { "originallyAvailableAt", n => { OriginallyAvailableAt = n.GetDateValue(); } },
                 { "parentGuid", n => { ParentGuid = n.GetStringValue(); } },
@@ -532,6 +601,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "parentRatingKey", n => { ParentRatingKey = n.GetStringValue(); } },
                 { "parentThumb", n => { ParentThumb = n.GetStringValue(); } },
                 { "parentTitle", n => { ParentTitle = n.GetStringValue(); } },
+                { "playlistItemID", n => { PlaylistItemID = n.GetIntValue(); } },
                 { "primaryExtraKey", n => { PrimaryExtraKey = n.GetStringValue(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
                 { "rating", n => { Rating = n.GetFloatValue(); } },
@@ -542,18 +612,23 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "search", n => { Search = n.GetBoolValue(); } },
                 { "secondary", n => { Secondary = n.GetBoolValue(); } },
                 { "skipChildren", n => { SkipChildren = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.Metadata.Metadata_skipChildren>(global::Soenneker.Plex.OpenApiClient.Models.Metadata.Metadata_skipChildren.CreateFromDiscriminatorValue); } },
+                { "skipCount", n => { SkipCount = n.GetIntValue(); } },
                 { "skipParent", n => { SkipParent = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.Metadata.Metadata_skipParent>(global::Soenneker.Plex.OpenApiClient.Models.Metadata.Metadata_skipParent.CreateFromDiscriminatorValue); } },
+                { "slug", n => { Slug = n.GetStringValue(); } },
                 { "Sort", n => { Sort = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Sort>(global::Soenneker.Plex.OpenApiClient.Models.Sort.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "sourceURI", n => { SourceURI = n.GetStringValue(); } },
                 { "studio", n => { Studio = n.GetStringValue(); } },
                 { "subtype", n => { Subtype = n.GetStringValue(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "tagline", n => { Tagline = n.GetStringValue(); } },
                 { "theme", n => { Theme = n.GetStringValue(); } },
                 { "thumb", n => { Thumb = n.GetStringValue(); } },
+                { "thumbBlurHash", n => { ThumbBlurHash = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "titleSort", n => { TitleSort = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetIntValue(); } },
+                { "useOriginalTitle", n => { UseOriginalTitle = n.GetBoolValue(); } },
                 { "userRating", n => { UserRating = n.GetFloatValue(); } },
                 { "viewCount", n => { ViewCount = n.GetIntValue(); } },
                 { "viewOffset", n => { ViewOffset = n.GetIntValue(); } },
@@ -572,6 +647,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteIntValue("absoluteIndex", AbsoluteIndex);
             writer.WriteLongValue("addedAt", AddedAt);
             writer.WriteStringValue("art", Art);
+            writer.WriteStringValue("artBlurHash", ArtBlurHash);
             writer.WriteFloatValue("audienceRating", AudienceRating);
             writer.WriteStringValue("audienceRatingImage", AudienceRatingImage);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Tag>("Autotag", Autotag);
@@ -582,7 +658,10 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteStringValue("contentRating", ContentRating);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Tag>("Country", Country);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Tag>("Director", Director);
+            writer.WriteIntValue("distance", Distance);
             writer.WriteIntValue("duration", Duration);
+            writer.WriteStringValue("editionTitle", EditionTitle);
+            writer.WriteBoolValue("enableCreditsMarkerGeneration", EnableCreditsMarkerGeneration);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Filter>("Filter", Filter);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Tag>("Genre", Genre);
             writer.WriteStringValue("grandparentArt", GrandparentArt);
@@ -598,11 +677,14 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Image>("Image", Image);
             writer.WriteIntValue("index", Index);
             writer.WriteStringValue("key", Key);
+            writer.WriteStringValue("languageOverride", LanguageOverride);
+            writer.WriteIntValue("lastRatedAt", LastRatedAt);
             writer.WriteLongValue("lastViewedAt", LastViewedAt);
             writer.WriteIntValue("leafCount", LeafCount);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Media>("Media", Media);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Metadata_Guid>("Guid", MetadataGuid);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Tag>("Rating", MetadataRating);
+            writer.WriteIntValue("musicAnalysisVersion", MusicAnalysisVersion);
             writer.WriteDateValue("originallyAvailableAt", OriginallyAvailableAt);
             writer.WriteStringValue("originalTitle", OriginalTitle);
             writer.WriteStringValue("parentGuid", ParentGuid);
@@ -612,6 +694,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteStringValue("parentRatingKey", ParentRatingKey);
             writer.WriteStringValue("parentThumb", ParentThumb);
             writer.WriteStringValue("parentTitle", ParentTitle);
+            writer.WriteIntValue("playlistItemID", PlaylistItemID);
             writer.WriteStringValue("primaryExtraKey", PrimaryExtraKey);
             writer.WriteStringValue("prompt", Prompt);
             writer.WriteFloatValue("rating", Rating);
@@ -622,18 +705,23 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteBoolValue("search", Search);
             writer.WriteBoolValue("secondary", Secondary);
             writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.Metadata.Metadata_skipChildren>("skipChildren", SkipChildren);
+            writer.WriteIntValue("skipCount", SkipCount);
             writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.Metadata.Metadata_skipParent>("skipParent", SkipParent);
+            writer.WriteStringValue("slug", Slug);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Sort>("Sort", Sort);
+            writer.WriteStringValue("sourceURI", SourceURI);
             writer.WriteStringValue("studio", Studio);
             writer.WriteStringValue("subtype", Subtype);
             writer.WriteStringValue("summary", Summary);
             writer.WriteStringValue("tagline", Tagline);
             writer.WriteStringValue("theme", Theme);
             writer.WriteStringValue("thumb", Thumb);
+            writer.WriteStringValue("thumbBlurHash", ThumbBlurHash);
             writer.WriteStringValue("title", Title);
             writer.WriteStringValue("titleSort", TitleSort);
             writer.WriteStringValue("type", Type);
             writer.WriteIntValue("updatedAt", UpdatedAt);
+            writer.WriteBoolValue("useOriginalTitle", UseOriginalTitle);
             writer.WriteFloatValue("userRating", UserRating);
             writer.WriteIntValue("viewCount", ViewCount);
             writer.WriteIntValue("viewedLeafCount", ViewedLeafCount);

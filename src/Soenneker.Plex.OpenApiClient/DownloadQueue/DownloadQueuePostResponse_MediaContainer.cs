@@ -16,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue
         /// <summary>The DownloadQueue property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueuePostResponse_MediaContainer_DownloadQueue>? DownloadQueue { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.DownloadQueue>? DownloadQueue { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueuePostResponse_MediaContainer_DownloadQueue> DownloadQueue { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.DownloadQueue> DownloadQueue { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "DownloadQueue", n => { DownloadQueue = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueuePostResponse_MediaContainer_DownloadQueue>(global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueuePostResponse_MediaContainer_DownloadQueue.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "DownloadQueue", n => { DownloadQueue = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.DownloadQueue>(global::Soenneker.Plex.OpenApiClient.Models.DownloadQueue.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.DownloadQueue.DownloadQueuePostResponse_MediaContainer_DownloadQueue>("DownloadQueue", DownloadQueue);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.DownloadQueue>("DownloadQueue", DownloadQueue);
         }
     }
 }

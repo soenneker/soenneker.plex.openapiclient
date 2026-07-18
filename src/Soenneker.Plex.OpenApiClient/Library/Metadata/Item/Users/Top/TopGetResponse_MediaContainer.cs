@@ -16,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Users.Top
         /// <summary>The Account property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Users.Top.TopGetResponse_MediaContainer_Account>? Account { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.TopUserAccount>? Account { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Users.Top.TopGetResponse_MediaContainer_Account> Account { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.TopUserAccount> Account { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Users.Top
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "Account", n => { Account = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Users.Top.TopGetResponse_MediaContainer_Account>(global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Users.Top.TopGetResponse_MediaContainer_Account.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Account", n => { Account = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.TopUserAccount>(global::Soenneker.Plex.OpenApiClient.Models.TopUserAccount.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Users.Top
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Users.Top.TopGetResponse_MediaContainer_Account>("Account", Account);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.TopUserAccount>("Account", Account);
         }
     }
 }

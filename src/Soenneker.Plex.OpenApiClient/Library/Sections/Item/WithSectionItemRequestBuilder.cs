@@ -3,30 +3,59 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Agents;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Albums;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.All;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.AllLeaves;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Analyze;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Artists;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Arts;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Autocomplete;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByContentRating;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByDecade;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByFolder;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByResolution;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByYear;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Categories;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Clips;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Cluster;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Collection;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Collections;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Common;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Composite;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.ComputePath;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Edit;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.EmptyTrash;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Episodes;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Filters;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Hubs;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Indexes;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Intros;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Label;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Location;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Match;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Moment;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Move;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Movies;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Nearest;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Newest;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.OnDeck;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Optimize;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Photos;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Playlists;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Prefs;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.RecentlyAdded;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Refresh;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Search;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Settings;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Shows;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Sorts;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Tags;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Timeline;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Unmatch;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Unwatched;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -40,6 +69,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithSectionItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The agents property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Agents.AgentsRequestBuilder Agents
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Agents.AgentsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The albums property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Albums.AlbumsRequestBuilder Albums
         {
@@ -60,6 +94,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Analyze.AnalyzeRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The artists property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Artists.ArtistsRequestBuilder Artists
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Artists.ArtistsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The arts property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Arts.ArtsRequestBuilder Arts
         {
@@ -70,10 +109,40 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Autocomplete.AutocompleteRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The byContentRating property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByContentRating.ByContentRatingRequestBuilder ByContentRating
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByContentRating.ByContentRatingRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The byDecade property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByDecade.ByDecadeRequestBuilder ByDecade
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByDecade.ByDecadeRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The byFolder property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByFolder.ByFolderRequestBuilder ByFolder
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByFolder.ByFolderRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The byResolution property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByResolution.ByResolutionRequestBuilder ByResolution
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByResolution.ByResolutionRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The byYear property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByYear.ByYearRequestBuilder ByYear
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.ByYear.ByYearRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The categories property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Categories.CategoriesRequestBuilder Categories
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Categories.CategoriesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The clips property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Clips.ClipsRequestBuilder Clips
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Clips.ClipsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The cluster property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Cluster.ClusterRequestBuilder Cluster
@@ -105,10 +174,20 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.ComputePath.ComputePathRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The edit property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Edit.EditRequestBuilder Edit
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Edit.EditRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The emptyTrash property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.EmptyTrash.EmptyTrashRequestBuilder EmptyTrash
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.EmptyTrash.EmptyTrashRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The episodes property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Episodes.EpisodesRequestBuilder Episodes
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Episodes.EpisodesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The filters property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Filters.FiltersRequestBuilder Filters
@@ -120,6 +199,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The hubs property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Hubs.HubsRequestBuilder Hubs
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Hubs.HubsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The indexes property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Indexes.IndexesRequestBuilder Indexes
         {
@@ -130,35 +214,120 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Intros.IntrosRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The label property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Label.LabelRequestBuilder Label
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Label.LabelRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The location property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Location.LocationRequestBuilder Location
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Location.LocationRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The match property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Match.MatchRequestBuilder Match
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Match.MatchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The moment property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Moment.MomentRequestBuilder Moment
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Moment.MomentRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The move property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Move.MoveRequestBuilder Move
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Move.MoveRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The movies property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Movies.MoviesRequestBuilder Movies
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Movies.MoviesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The nearest property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Nearest.NearestRequestBuilder Nearest
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Nearest.NearestRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The newest property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Newest.NewestRequestBuilder Newest
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Newest.NewestRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The onDeck property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.OnDeck.OnDeckRequestBuilder OnDeck
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.OnDeck.OnDeckRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The optimize property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Optimize.OptimizeRequestBuilder Optimize
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Optimize.OptimizeRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The photos property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Photos.PhotosRequestBuilder Photos
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Photos.PhotosRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The playlists property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Playlists.PlaylistsRequestBuilder Playlists
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Playlists.PlaylistsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The prefs property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Prefs.PrefsRequestBuilder Prefs
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Prefs.PrefsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The recentlyAdded property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.RecentlyAdded.RecentlyAddedRequestBuilder RecentlyAdded
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.RecentlyAdded.RecentlyAddedRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The refresh property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Refresh.RefreshRequestBuilder Refresh
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Refresh.RefreshRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The search property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Search.SearchRequestBuilder Search
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The settings property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Settings.SettingsRequestBuilder Settings
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Settings.SettingsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The shows property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Shows.ShowsRequestBuilder Shows
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Shows.ShowsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The sorts property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Sorts.SortsRequestBuilder Sorts
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Sorts.SortsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The tags property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Tags.TagsRequestBuilder Tags
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Tags.TagsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The timeline property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Timeline.TimelineRequestBuilder Timeline
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Timeline.TimelineRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The unmatch property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Unmatch.UnmatchRequestBuilder Unmatch
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Unmatch.UnmatchRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The unwatched property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Unwatched.UnwatchedRequestBuilder Unwatched
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Unwatched.UnwatchedRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.WithSectionItemRequestBuilder"/> and sets the default values.
@@ -182,6 +351,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.WithSectionItemRequestBuilder.WithSectionItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -192,7 +362,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns details for the library. This can be thought of as an interstitial endpoint because it contains information about the library, rather than content itself. It often contains a list of `Directory` metadata objects: These used to be used by clients to build a menuing system.
@@ -200,6 +374,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.WithSectionGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.WithSectionGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.WithSectionItemRequestBuilder.WithSectionItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -210,7 +385,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.WithSectionGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.WithSectionGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.WithSectionGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.WithSectionGetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Edit a library section by id setting parameters
@@ -246,7 +425,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "text/html");
+            requestInfo.Headers.TryAdd("Accept", "text/html, application/json");
             return requestInfo;
         }
         /// <summary>

@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Add;
 using Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Item_Escaped;
 using Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Items;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -56,6 +57,7 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.WithQueueGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.WithQueueGetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -66,7 +68,11 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.WithQueueGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.WithQueueGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Plex.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.WithQueueGetResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.DownloadQueue.Item.WithQueueGetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Available: 0.2.0Get a download queue by its id

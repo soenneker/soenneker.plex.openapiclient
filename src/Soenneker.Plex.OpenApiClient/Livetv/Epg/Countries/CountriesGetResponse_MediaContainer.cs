@@ -16,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Epg.Countries
         /// <summary>The Country property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Countries.CountriesGetResponse_MediaContainer_Country>? Country { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.EPGCountry>? Country { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Countries.CountriesGetResponse_MediaContainer_Country> Country { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.EPGCountry> Country { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Epg.Countries
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "Country", n => { Country = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Countries.CountriesGetResponse_MediaContainer_Country>(global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Countries.CountriesGetResponse_MediaContainer_Country.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Country", n => { Country = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.EPGCountry>(global::Soenneker.Plex.OpenApiClient.Models.EPGCountry.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Epg.Countries
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Livetv.Epg.Countries.CountriesGetResponse_MediaContainer_Country>("Country", Country);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.EPGCountry>("Country", Country);
         }
     }
 }

@@ -22,15 +22,15 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata
             get => new global::Soenneker.Plex.OpenApiClient.Library.Metadata.Augmentations.AugmentationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.library.metadata.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.WithIdsItemRequestBuilder"/></returns>
-        public global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.WithIdsItemRequestBuilder this[string position]
+        /// <param name="position">Comma-separated list of IDs</param>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.IdsItemRequestBuilder"/></returns>
+        public global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.IdsItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("ids", position);
-                return new global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.WithIdsItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("ids%2Did", position);
+                return new global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.IdsItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
+using Soenneker.Plex.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -18,10 +19,10 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
         /// <summary>The Bandwidth property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse_MediaContainer_Bandwidths_Bandwidth>? Bandwidth { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Bandwidth>? Bandwidth { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse_MediaContainer_Bandwidths_Bandwidth> Bandwidth { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Bandwidth> Bandwidth { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse_MediaContainer_Bandwidths"/> and sets the default values.
@@ -48,7 +49,7 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "Bandwidth", n => { Bandwidth = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse_MediaContainer_Bandwidths_Bandwidth>(global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse_MediaContainer_Bandwidths_Bandwidth.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Bandwidth", n => { Bandwidth = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Bandwidth>(global::Soenneker.Plex.OpenApiClient.Models.Bandwidth.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -58,7 +59,7 @@ namespace Soenneker.Plex.OpenApiClient.Colon.Timeline
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Colon.Timeline.TimelinePostResponse_MediaContainer_Bandwidths_Bandwidth>("Bandwidth", Bandwidth);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Bandwidth>("Bandwidth", Bandwidth);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

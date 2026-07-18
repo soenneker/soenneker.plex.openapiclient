@@ -14,6 +14,22 @@ namespace Soenneker.Plex.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Lineup identifier.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Identifier { get; set; }
+#nullable restore
+#else
+        public string Identifier { get; set; }
+#endif
+        /// <summary>API key for this lineup.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Key { get; set; }
+#nullable restore
+#else
+        public string Key { get; set; }
+#endif
         /// <summary>- `-1`: N/A- `0`: Over the air- `1`: Cable- `2`: Satellite- `3`: IPTV- `4`: Virtual</summary>
         public int? LineupType { get; set; }
         /// <summary>The location property</summary>
@@ -73,6 +89,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "identifier", n => { Identifier = n.GetStringValue(); } },
+                { "key", n => { Key = n.GetStringValue(); } },
                 { "lineupType", n => { LineupType = n.GetIntValue(); } },
                 { "location", n => { Location = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -87,6 +105,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("identifier", Identifier);
+            writer.WriteStringValue("key", Key);
             writer.WriteIntValue("lineupType", LineupType);
             writer.WriteStringValue("location", Location);
             writer.WriteStringValue("title", Title);

@@ -22,8 +22,6 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string ResourceSession { get; set; }
 #endif
-        /// <summary>The selected property</summary>
-        public bool? Selected { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -44,7 +42,6 @@ namespace Soenneker.Plex.OpenApiClient.Models
             {
                 { "abr", n => { Abr = n.GetBoolValue(); } },
                 { "resourceSession", n => { ResourceSession = n.GetStringValue(); } },
-                { "selected", n => { Selected = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -57,7 +54,6 @@ namespace Soenneker.Plex.OpenApiClient.Models
             base.Serialize(writer);
             writer.WriteBoolValue("abr", Abr);
             writer.WriteStringValue("resourceSession", ResourceSession);
-            writer.WriteBoolValue("selected", Selected);
         }
     }
 }

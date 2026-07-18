@@ -60,20 +60,20 @@ namespace Soenneker.Plex.OpenApiClient.PlayQueues.Item
         /// <summary>
         /// Retrieves the play queue, centered at current item. This can be treated as a regular container by play queue-oblivious clients, but they may wish to request a large window onto the queue since they won&apos;t know to refresh.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.PlayQueueResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.PlayQueues.Item.WithPlayQueueItemRequestBuilder.WithPlayQueueItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.PlayQueueResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.PlayQueues.Item.WithPlayQueueItemRequestBuilder.WithPlayQueueItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.PlayQueues.Item.WithPlayQueueItemRequestBuilder.WithPlayQueueItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.PlayQueueResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.PlayQueues.Item.WithPlayQueueItemRequestBuilder.WithPlayQueueItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithPlaylistMetadata.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.PlayQueueResponse>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.PlayQueueResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Adds an item to a play queue (e.g. party mode). Increments the version of the play queue. Takes the following parameters (`uri` and `playlistID` are mutually exclusive). Returns the modified play queue.

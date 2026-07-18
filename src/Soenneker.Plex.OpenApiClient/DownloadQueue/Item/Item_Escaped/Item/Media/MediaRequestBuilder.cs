@@ -66,6 +66,7 @@ namespace Soenneker.Plex.OpenApiClient.DownloadQueue.Item.Item_Escaped.Item.Medi
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/octet-stream");
             return requestInfo;
         }
         /// <summary>

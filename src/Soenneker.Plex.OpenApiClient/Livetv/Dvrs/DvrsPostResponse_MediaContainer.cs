@@ -16,10 +16,10 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs
         /// <summary>The DVR property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsPostResponse_MediaContainer_DVR>? DVR { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.DVR>? DVR { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsPostResponse_MediaContainer_DVR> DVR { get; set; }
+        public List<global::Soenneker.Plex.OpenApiClient.Models.DVR> DVR { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +39,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "DVR", n => { DVR = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsPostResponse_MediaContainer_DVR>(global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsPostResponse_MediaContainer_DVR.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "DVR", n => { DVR = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.DVR>(global::Soenneker.Plex.OpenApiClient.Models.DVR.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Plex.OpenApiClient.Livetv.Dvrs
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Livetv.Dvrs.DvrsPostResponse_MediaContainer_DVR>("DVR", DVR);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.DVR>("DVR", DVR);
         }
     }
 }
