@@ -22,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Common
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CommonRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/common{?mediaQuery*,type*}", pathParameters)
+        public CommonRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/common{?mediaQuery*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Common
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CommonRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/common{?mediaQuery*,type*}", rawUrl)
+        public CommonRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/common{?mediaQuery*}", rawUrl)
         {
         }
         /// <summary>
@@ -95,9 +95,6 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Common
             [QueryParameter("mediaQuery")]
             public string MediaQuery { get; set; }
 #endif
-            /// <summary>Item type</summary>
-            [QueryParameter("type")]
-            public int? Type { get; set; }
         }
     }
 }

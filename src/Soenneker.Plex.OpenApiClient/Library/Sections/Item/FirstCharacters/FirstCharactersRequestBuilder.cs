@@ -22,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FirstCharactersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/firstCharacters{?mediaQuery*,sort*,type*}", pathParameters)
+        public FirstCharactersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/firstCharacters{?mediaQuery*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FirstCharactersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/firstCharacters{?mediaQuery*,sort*,type*}", rawUrl)
+        public FirstCharactersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/firstCharacters{?mediaQuery*}", rawUrl)
         {
         }
         /// <summary>
@@ -100,12 +100,6 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters
             [QueryParameter("mediaQuery")]
             public string MediaQuery { get; set; }
 #endif
-            /// <summary>The metadata type to filter on</summary>
-            [QueryParameter("sort")]
-            public int? Sort { get; set; }
-            /// <summary>The metadata type to filter on</summary>
-            [QueryParameter("type")]
-            public int? Type { get; set; }
         }
     }
 }

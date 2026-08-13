@@ -22,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,asyncAugmentMetadata*,asyncRefreshLocalMediaAgent*,checkFiles*,contentRating*,excludeElements*,excludeFields*,field%2Elocked*,field%2Evalue*,filters*,firstCharacter*,genre*,includeAdvanced*,includeArt*,includeBandwidths*,includeBanner*,includeChapters*,includeCollections*,includeConcerts*,includeCredits*,includeExternalIds*,includeExternalMedia*,includeExtras*,includeFields*,includeGuids*,includeLoudnessRamps*,includeMeta*,includeOnDeck*,includePopularLeaves*,includePreferences*,includeRelated*,includeReviews*,includeStations*,includeTheme*,includeThumb*,mediaQuery*,nocache*,resolution*,skipRefresh*,sort*,studio*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*,unwatched*,year*}", pathParameters)
+        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,asyncAugmentMetadata*,asyncRefreshLocalMediaAgent*,checkFiles*,contentRating*,excludeElements*,excludeFields*,field%2Elocked*,field%2Evalue*,filters*,firstCharacter*,genre*,includeAdvanced*,includeArt*,includeBandwidths*,includeBanner*,includeChapters*,includeCollections*,includeConcerts*,includeCredits*,includeExternalIds*,includeExternalMedia*,includeExtras*,includeFields*,includeGuids*,includeLoudnessRamps*,includeMeta*,includeOnDeck*,includePopularLeaves*,includePreferences*,includeRelated*,includeReviews*,includeStations*,includeTheme*,includeThumb*,mediaQuery*,nocache*,resolution*,skipRefresh*,studio*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*,unwatched*,year*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,asyncAugmentMetadata*,asyncRefreshLocalMediaAgent*,checkFiles*,contentRating*,excludeElements*,excludeFields*,field%2Elocked*,field%2Evalue*,filters*,firstCharacter*,genre*,includeAdvanced*,includeArt*,includeBandwidths*,includeBanner*,includeChapters*,includeCollections*,includeConcerts*,includeCredits*,includeExternalIds*,includeExternalMedia*,includeExtras*,includeFields*,includeGuids*,includeLoudnessRamps*,includeMeta*,includeOnDeck*,includePopularLeaves*,includePreferences*,includeRelated*,includeReviews*,includeStations*,includeTheme*,includeThumb*,mediaQuery*,nocache*,resolution*,skipRefresh*,sort*,studio*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*,unwatched*,year*}", rawUrl)
+        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,asyncAugmentMetadata*,asyncRefreshLocalMediaAgent*,checkFiles*,contentRating*,excludeElements*,excludeFields*,field%2Elocked*,field%2Evalue*,filters*,firstCharacter*,genre*,includeAdvanced*,includeArt*,includeBandwidths*,includeBanner*,includeChapters*,includeCollections*,includeConcerts*,includeCredits*,includeExternalIds*,includeExternalMedia*,includeExtras*,includeFields*,includeGuids*,includeLoudnessRamps*,includeMeta*,includeOnDeck*,includePopularLeaves*,includePreferences*,includeRelated*,includeReviews*,includeStations*,includeTheme*,includeThumb*,mediaQuery*,nocache*,resolution*,skipRefresh*,studio*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*,unwatched*,year*}", rawUrl)
         {
         }
         /// <summary>
@@ -298,16 +298,6 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
             /// <summary>Skip synchronous refresh</summary>
             [QueryParameter("skipRefresh")]
             public int? SkipRefresh { get; set; }
-            /// <summary>Sort key and direction (e.g. addedAt:desc, titleSort)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("sort")]
-            public string? Sort { get; set; }
-#nullable restore
-#else
-            [QueryParameter("sort")]
-            public string Sort { get; set; }
-#endif
             /// <summary>Filter by studio.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -318,9 +308,6 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
             [QueryParameter("studio")]
             public string Studio { get; set; }
 #endif
-            /// <summary>Filter by metadata type (1=movie, 2=show, 3=season, 4=episode, 8=artist, 9=album, 10=track)</summary>
-            [QueryParameter("type")]
-            public int? Type { get; set; }
             /// <summary>Filter to unwatched only (1 = true).</summary>
             [QueryParameter("unwatched")]
             public int? Unwatched { get; set; }

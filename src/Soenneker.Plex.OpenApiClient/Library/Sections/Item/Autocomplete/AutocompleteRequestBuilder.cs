@@ -22,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Autocomplete
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AutocompleteRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/autocomplete{?field%2Equery*,mediaQuery*,type*}", pathParameters)
+        public AutocompleteRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/autocomplete{?field%2Equery*,mediaQuery*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Autocomplete
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AutocompleteRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/autocomplete{?field%2Equery*,mediaQuery*,type*}", rawUrl)
+        public AutocompleteRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/autocomplete{?field%2Equery*,mediaQuery*}", rawUrl)
         {
         }
         /// <summary>
@@ -105,9 +105,6 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Autocomplete
             [QueryParameter("mediaQuery")]
             public string MediaQuery { get; set; }
 #endif
-            /// <summary>Item type</summary>
-            [QueryParameter("type")]
-            public int? Type { get; set; }
         }
     }
 }
