@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Plex.OpenApiClient.Api.Invites;
 using Soenneker.Plex.OpenApiClient.Api.Resources;
 using Soenneker.Plex.OpenApiClient.Api.Users;
 using Soenneker.Plex.OpenApiClient.Api.V2;
@@ -17,6 +18,11 @@ namespace Soenneker.Plex.OpenApiClient.Api
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ApiRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The invites property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Api.Invites.InvitesRequestBuilder Invites
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Api.Invites.InvitesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The resources property</summary>
         public global::Soenneker.Plex.OpenApiClient.Api.Resources.ResourcesRequestBuilder Resources
         {
