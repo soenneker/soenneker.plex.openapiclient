@@ -7,11 +7,10 @@ using System.IO;
 using System;
 namespace Soenneker.Plex.OpenApiClient.Models
 {
-    /// <summary>
-    /// Nested metadata items
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Items : global::Soenneker.Plex.OpenApiClient.Models.Metadata, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The MetadataItem property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

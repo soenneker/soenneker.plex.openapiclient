@@ -19,18 +19,18 @@ namespace Soenneker.Plex.OpenApiClient.Models
         /// <summary>The adsConsentReminderAt property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentReminderAt? AdsConsentReminderAt { get; set; }
+        public global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime? AdsConsentReminderAt { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentReminderAt AdsConsentReminderAt { get; set; }
+        public global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime AdsConsentReminderAt { get; set; }
 #endif
         /// <summary>The adsConsentSetAt property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentSetAt? AdsConsentSetAt { get; set; }
+        public global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime? AdsConsentSetAt { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentSetAt AdsConsentSetAt { get; set; }
+        public global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime AdsConsentSetAt { get; set; }
 #endif
         /// <summary>Unknown</summary>
         public bool? Anonymous { get; set; }
@@ -262,8 +262,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "adsConsent", n => { AdsConsent = n.GetBoolValue(); } },
-                { "adsConsentReminderAt", n => { AdsConsentReminderAt = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentReminderAt>(global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentReminderAt.CreateFromDiscriminatorValue); } },
-                { "adsConsentSetAt", n => { AdsConsentSetAt = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentSetAt>(global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentSetAt.CreateFromDiscriminatorValue); } },
+                { "adsConsentReminderAt", n => { AdsConsentReminderAt = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime>(global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime.CreateFromDiscriminatorValue); } },
+                { "adsConsentSetAt", n => { AdsConsentSetAt = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime>(global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime.CreateFromDiscriminatorValue); } },
                 { "anonymous", n => { Anonymous = n.GetBoolValue(); } },
                 { "attributionPartner", n => { AttributionPartner = n.GetStringValue(); } },
                 { "authToken", n => { AuthToken = n.GetStringValue(); } },
@@ -312,8 +312,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("adsConsent", AdsConsent);
-            writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentReminderAt>("adsConsentReminderAt", AdsConsentReminderAt);
-            writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentSetAt>("adsConsentSetAt", AdsConsentSetAt);
+            writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime>("adsConsentReminderAt", AdsConsentReminderAt);
+            writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime>("adsConsentSetAt", AdsConsentSetAt);
             writer.WriteBoolValue("anonymous", Anonymous);
             writer.WriteStringValue("attributionPartner", AttributionPartner);
             writer.WriteStringValue("authToken", AuthToken);
@@ -353,140 +353,6 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteStringValue("username", Username);
             writer.WriteStringValue("uuid", Uuid);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime"/>, <see cref="global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount_adsConsentReminderAtMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class UserPlexAccount_adsConsentReminderAt : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime? PlexDateTime { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime PlexDateTime { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount_adsConsentReminderAtMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount_adsConsentReminderAtMember1? UserPlexAccountAdsConsentReminderAtMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount_adsConsentReminderAtMember1 UserPlexAccountAdsConsentReminderAtMember1 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentReminderAt"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentReminderAt CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentReminderAt();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(PlexDateTime != null)
-                {
-                    return PlexDateTime.GetFieldDeserializers();
-                }
-                else if(UserPlexAccountAdsConsentReminderAtMember1 != null)
-                {
-                    return UserPlexAccountAdsConsentReminderAtMember1.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(PlexDateTime != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime>(null, PlexDateTime);
-                }
-                else if(UserPlexAccountAdsConsentReminderAtMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount_adsConsentReminderAtMember1>(null, UserPlexAccountAdsConsentReminderAtMember1);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime"/>, <see cref="global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount_adsConsentSetAtMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class UserPlexAccount_adsConsentSetAt : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime? PlexDateTime { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime PlexDateTime { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount_adsConsentSetAtMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount_adsConsentSetAtMember1? UserPlexAccountAdsConsentSetAtMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount_adsConsentSetAtMember1 UserPlexAccountAdsConsentSetAtMember1 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentSetAt"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentSetAt CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount.UserPlexAccount_adsConsentSetAt();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(PlexDateTime != null)
-                {
-                    return PlexDateTime.GetFieldDeserializers();
-                }
-                else if(UserPlexAccountAdsConsentSetAtMember1 != null)
-                {
-                    return UserPlexAccountAdsConsentSetAtMember1.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(PlexDateTime != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.PlexDateTime>(null, PlexDateTime);
-                }
-                else if(UserPlexAccountAdsConsentSetAtMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.UserPlexAccount_adsConsentSetAtMember1>(null, UserPlexAccountAdsConsentSetAtMember1);
-                }
-            }
         }
     }
 }

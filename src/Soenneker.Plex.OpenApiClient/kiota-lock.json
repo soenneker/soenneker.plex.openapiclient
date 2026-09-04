@@ -2,7 +2,7 @@
   "descriptionHash": "924586A17A5968354905101D4FA88B9216596243494EB591BA9F73D7300845EF15B453C0C896D33AD7F0FB03E3496A19F598C51A2BB04DCAB3DBCA399642B902",
   "descriptionLocation": "../../openapi.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.34.1",
+  "kiotaVersion": "1.35.0",
   "clientClassName": "PlexOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Plex.OpenApiClient",

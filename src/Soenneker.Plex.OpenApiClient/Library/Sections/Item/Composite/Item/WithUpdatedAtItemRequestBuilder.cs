@@ -92,12 +92,16 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.Composite.Item
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("composite")]
             public string? Composite { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("composite")]
             public string Composite { get; set; }
+            #pragma warning restore CS1591
 #endif
             /// <summary>A querystring-based filtering language used to select subsets of media. Can be provided as an object with typed properties for type safety, or as a string for complex queries with operators and boolean logic.The query supports:- Fields: integer, boolean, tag, string, date, language- Operators: =, !=, ==, !==, &lt;=, &gt;=, &gt;&gt;=, &lt;&lt;= (varies by field type)- Boolean operators: &amp; (AND), , (OR), push/pop (parentheses), or=1 (explicit OR)- Sorting: sort parameter with :desc, :nullsLast modifiers- Grouping: group parameter- Limits: limit parameterExamples:- Object format: `{type: 4, sourceType: 2, title: &quot;24&quot;}` → `type=4&amp;sourceType=2&amp;title=24`- String format: `type=4&amp;sourceType=2&amp;title==24` - type = 4 AND sourceType = 2 AND title = &quot;24&quot;- Complex: `push=1&amp;index=1&amp;or=1&amp;rating=2&amp;pop=1&amp;duration=10` - (index = 1 OR rating = 2) AND duration = 10See [API Info section](#section/API-Info/Media-Queries) for detailed information on building media queries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
