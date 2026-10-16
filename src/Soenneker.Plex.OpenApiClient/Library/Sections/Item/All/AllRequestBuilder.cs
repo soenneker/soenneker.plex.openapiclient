@@ -22,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,asyncAugmentMetadata*,asyncRefreshLocalMediaAgent*,checkFiles*,contentRating*,excludeElements*,excludeFields*,field%2Elocked*,field%2Evalue*,filters*,firstCharacter*,genre*,includeAdvanced*,includeArt*,includeBandwidths*,includeBanner*,includeChapters*,includeCollections*,includeConcerts*,includeCredits*,includeExternalIds*,includeExternalMedia*,includeExtras*,includeFields*,includeGuids*,includeLoudnessRamps*,includeMeta*,includeOnDeck*,includePopularLeaves*,includePreferences*,includeRelated*,includeReviews*,includeStations*,includeTheme*,includeThumb*,mediaQuery*,nocache*,resolution*,skipRefresh*,studio*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*,unwatched*,year*}", pathParameters)
+        public AllRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,addedAt%3C%3C*,addedAt%3E%3E*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,asyncAugmentMetadata*,asyncRefreshLocalMediaAgent*,checkFiles*,contentRating*,excludeElements*,excludeFields*,field%2Elocked*,field%2Evalue*,filters*,firstCharacter*,genre*,includeAdvanced*,includeArt*,includeBandwidths*,includeBanner*,includeChapters*,includeCollections*,includeConcerts*,includeCredits*,includeExternalIds*,includeExternalMedia*,includeExtras*,includeFields*,includeGuids*,includeLoudnessRamps*,includeMeta*,includeOnDeck*,includeOptionalElements*,includePopularLeaves*,includePreferences*,includeRelated*,includeReviews*,includeStations*,includeTheme*,includeThumb*,mediaQuery*,nocache*,resolution*,skipRefresh*,studio*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*,unwatched*,updatedAt%3C%3C*,updatedAt%3E%3E*,year*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,asyncAugmentMetadata*,asyncRefreshLocalMediaAgent*,checkFiles*,contentRating*,excludeElements*,excludeFields*,field%2Elocked*,field%2Evalue*,filters*,firstCharacter*,genre*,includeAdvanced*,includeArt*,includeBandwidths*,includeBanner*,includeChapters*,includeCollections*,includeConcerts*,includeCredits*,includeExternalIds*,includeExternalMedia*,includeExtras*,includeFields*,includeGuids*,includeLoudnessRamps*,includeMeta*,includeOnDeck*,includePopularLeaves*,includePreferences*,includeRelated*,includeReviews*,includeStations*,includeTheme*,includeThumb*,mediaQuery*,nocache*,resolution*,skipRefresh*,studio*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*,unwatched*,year*}", rawUrl)
+        public AllRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/sections/{sectionId}/all{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,addedAt%3C%3C*,addedAt%3E%3E*,album%2Etitle%2Eid*,album%2Etitle%2Evalue*,artist%2Etitle%2Eid*,artist%2Etitle%2Evalue*,asyncAugmentMetadata*,asyncRefreshLocalMediaAgent*,checkFiles*,contentRating*,excludeElements*,excludeFields*,field%2Elocked*,field%2Evalue*,filters*,firstCharacter*,genre*,includeAdvanced*,includeArt*,includeBandwidths*,includeBanner*,includeChapters*,includeCollections*,includeConcerts*,includeCredits*,includeExternalIds*,includeExternalMedia*,includeExtras*,includeFields*,includeGuids*,includeLoudnessRamps*,includeMeta*,includeOnDeck*,includeOptionalElements*,includePopularLeaves*,includePreferences*,includeRelated*,includeReviews*,includeStations*,includeTheme*,includeThumb*,mediaQuery*,nocache*,resolution*,skipRefresh*,studio*,tagtype%5B%5D%2Etag*,tagtype%5B%5D%2Etag%2Etag%2D*,tagtype%5Bidx%5D%2Etag%2Etag*,tagtype%5Bidx%5D%2Etagging%2Eobject*,title%2Evalue*,type*,unwatched*,updatedAt%3C%3C*,updatedAt%3E%3E*,year*}", rawUrl)
         {
         }
         /// <summary>
@@ -127,6 +127,12 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AllRequestBuilderGetQueryParameters 
         {
+            /// <summary>Return current items whose addedAt is strictly greater than this Unix timestamp in seconds.The query key is addedAt&gt;&gt; (URL-encoded as addedAt%3E%3E), for example addedAt%3E%3E=1791200000.Items added exactly at the supplied timestamp are excluded; overlap polling windows and deduplicate ratingKey values to avoid missing same-second additions.Verified for movies on PMS 1.43.4.10903. Support on other server versions and library types may vary.This filters surviving additions only; it does not identify later metadata updates or deleted items.</summary>
+            [QueryParameter("addedAt%3E%3E")]
+            public long? AddedAt { get; set; }
+            /// <summary>Return current items whose addedAt is strictly less than this Unix timestamp in seconds.The query key is addedAt&lt;&lt; (URL-encoded as addedAt%3C%3C), for example addedAt%3C%3C=1791252847.Items added exactly at the supplied timestamp are excluded. Combine with addedAt&gt;&gt; to request a bounded interval; both conditions must match.Support on server versions and library types may vary.This filters surviving additions only; it does not identify later metadata updates or deleted items, or provide an atomic snapshot.</summary>
+            [QueryParameter("addedAt%3C%3C")]
+            public long? AddedAt0 { get; set; }
             /// <summary>Async metadata augmentation</summary>
             [QueryParameter("asyncAugmentMetadata")]
             public int? AsyncAugmentMetadata { get; set; }
@@ -229,7 +235,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
             /// <summary>Include trailers, behind-the-scenes, etc.</summary>
             [QueryParameter("includeExtras")]
             public int? IncludeExtras { get; set; }
-            /// <summary>Whitelist of fields to return</summary>
+            /// <summary>Comma-separated whitelist of fields to return.With PMS API version 1.0.0 or later, this projection also applies to container attributes.Include size,totalSize,offset alongside item fields when paging, for example ratingKey,updatedAt,size,totalSize,offset.Otherwise the response may omit the pagination attributes needed to determine whether the complete result has been retrieved.This does not necessarily remove nested elements; use excludeElements to request their exclusion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("includeFields")]
@@ -251,6 +257,16 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
             /// <summary>Include On Deck status</summary>
             [QueryParameter("includeOnDeck")]
             public int? IncludeOnDeck { get; set; }
+            /// <summary>Comma-separated list of optional elements to add to the response.Use `Stream` to request stream metadata within returned media parts.Unlike `includeElements`, this adds optional elements without excluding the normal response elements.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("includeOptionalElements")]
+            public string? IncludeOptionalElements { get; set; }
+#nullable restore
+#else
+            [QueryParameter("includeOptionalElements")]
+            public string IncludeOptionalElements { get; set; }
+#endif
             /// <summary>Include popular episodes</summary>
             [QueryParameter("includePopularLeaves")]
             public int? IncludePopularLeaves { get; set; }
@@ -311,6 +327,12 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item.All
             /// <summary>Filter to unwatched only (1 = true).</summary>
             [QueryParameter("unwatched")]
             public int? Unwatched { get; set; }
+            /// <summary>Return current items whose updatedAt is strictly greater than this Unix timestamp in seconds.The query key is updatedAt&gt;&gt; (URL-encoded as updatedAt%3E%3E), for example updatedAt%3E%3E=1792000000.Items updated exactly at the supplied timestamp are excluded; overlap polling windows and deduplicate ratingKey values to avoid missing same-second updates.Verified for movies, episodes, and tracks on PMS 1.43.4.10903. Support on other server versions and library types may vary.This filters current items, not a durable change log: deleted items are not returned, and it does not guarantee that every file, part, or stream change updates the parent timestamp.</summary>
+            [QueryParameter("updatedAt%3E%3E")]
+            public long? UpdatedAt { get; set; }
+            /// <summary>Return current items whose updatedAt is strictly less than this Unix timestamp in seconds.The query key is updatedAt&lt;&lt; (URL-encoded as updatedAt%3C%3C), for example updatedAt%3C%3C=1792054845.Items updated exactly at the supplied timestamp are excluded. Combine with updatedAt&gt;&gt; to request a bounded interval; both conditions must match.Verified for movies on PMS 1.43.4.10903. Support on other server versions and library types may vary.This filters current items and does not provide an atomic snapshot, a replay cursor, or deleted items.</summary>
+            [QueryParameter("updatedAt%3C%3C")]
+            public long? UpdatedAt0 { get; set; }
             /// <summary>The number of items to return. If not specified, all items will be returned.If the number of items exceeds the limit, the response will be paginated.By default this is 50</summary>
             [QueryParameter("X%2DPlex%2DContainer%2DSize")]
             public int? XPlexContainerSize { get; set; }
