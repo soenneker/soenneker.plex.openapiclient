@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Plex.OpenApiClient.Models
 {
-    /// <summary>The type of media content in the Plex library. This can represent videos, music, or photos.</summary>
+    /// <summary>The Plex media type name, corresponding to the numeric MediaType schema.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum MediaTypeString
     {
@@ -23,6 +23,14 @@ namespace Soenneker.Plex.OpenApiClient.Models
         #pragma warning disable CS1591
         Episode,
         #pragma warning restore CS1591
+        [EnumMember(Value = "trailer")]
+        #pragma warning disable CS1591
+        Trailer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "person")]
+        #pragma warning disable CS1591
+        Person,
+        #pragma warning restore CS1591
         [EnumMember(Value = "artist")]
         #pragma warning disable CS1591
         Artist,
@@ -35,13 +43,25 @@ namespace Soenneker.Plex.OpenApiClient.Models
         #pragma warning disable CS1591
         Track,
         #pragma warning restore CS1591
-        [EnumMember(Value = "photoalbum")]
+        [EnumMember(Value = "clip")]
         #pragma warning disable CS1591
-        Photoalbum,
+        Clip,
         #pragma warning restore CS1591
         [EnumMember(Value = "photo")]
         #pragma warning disable CS1591
         Photo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "photoalbum")]
+        #pragma warning disable CS1591
+        Photoalbum,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "playlist")]
+        #pragma warning disable CS1591
+        Playlist,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "playlistfolder")]
+        #pragma warning disable CS1591
+        Playlistfolder,
         #pragma warning restore CS1591
         [EnumMember(Value = "collection")]
         #pragma warning disable CS1591

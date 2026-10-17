@@ -110,7 +110,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #else
         public string Title { get; set; }
 #endif
-        /// <summary>The type of media content in the Plex library. This can represent videos, music, or photos.</summary>
+        /// <summary>The Plex media type name, corresponding to the numeric MediaType schema.</summary>
         public global::Soenneker.Plex.OpenApiClient.Models.MediaTypeString? Type { get; set; }
         /// <summary>Unix epoch datetime in seconds</summary>
         public long? UpdatedAt { get; set; }

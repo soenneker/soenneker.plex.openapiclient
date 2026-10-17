@@ -121,7 +121,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Collections
             [QueryParameter("title")]
             public string Title { get; set; }
 #endif
-            /// <summary>The type of media to retrieve or filter by.1 = movie2 = show3 = season4 = episode5 = artist6 = album7 = track8 = photo_album9 = photoE.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries</summary>
+            /// <summary>The type of media to retrieve or filter by.1 = movie2 = show3 = season4 = episode5 = trailer7 = person8 = artist9 = album10 = track12 = clip13 = photo14 = photoalbum15 = playlist16 = playlistfolder18 = collectionE.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries</summary>
             [QueryParameter("type")]
             public int? Type { get; set; }
             /// <summary>The URI for processing the smart collection.  Required for a smart collection</summary>
