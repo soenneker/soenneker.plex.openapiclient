@@ -225,18 +225,36 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #endif
         /// <summary>Video level.</summary>
         public int? Level { get; set; }
-        /// <summary>Integrated loudness in LUFS.</summary>
-        public double? Loudness { get; set; }
+        /// <summary>Integrated loudness in LUFS. Plex may return a numeric value as a number or numeric string, or the sentinel string &quot;-inf&quot;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_loudness? Loudness { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_loudness Loudness { get; set; }
+#endif
         /// <summary>Loudness range in LU.</summary>
         public double? Lra { get; set; }
         /// <summary>Minimum lines in the lyric file.</summary>
         public int? MinLines { get; set; }
         /// <summary>Indicates if this is the original stream.</summary>
         public bool? Original { get; set; }
-        /// <summary>Track peak amplitude.</summary>
-        public double? Peak { get; set; }
+        /// <summary>Track peak amplitude. Plex may return a numeric value as a number or numeric string, or the sentinel string &quot;-inf&quot;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_peak? Peak { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_peak Peak { get; set; }
+#endif
         /// <summary>Whether the subtitle is an exact match.</summary>
-        public bool? PerfectMatch { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_perfectMatch? PerfectMatch { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_perfectMatch PerfectMatch { get; set; }
+#endif
         /// <summary>Video profile.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -298,7 +316,13 @@ namespace Soenneker.Plex.OpenApiClient.Models
         /// <summary>The streamType property</summary>
         public int? StreamType { get; set; }
         /// <summary>Whether lyrics are timestamped.</summary>
-        public bool? Timed { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_timed? Timed { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_timed Timed { get; set; }
+#endif
         /// <summary>Optional title for the stream (e.g., language variant).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -308,7 +332,13 @@ namespace Soenneker.Plex.OpenApiClient.Models
         public string Title { get; set; }
 #endif
         /// <summary>Whether the subtitle is temporary or downloaded.</summary>
-        public bool? Transient { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_transient? Transient { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_transient Transient { get; set; }
+#endif
         /// <summary>ID of the user who added the subtitle.</summary>
         public int? UserID { get; set; }
         /// <summary>Whether this audio track is an audio description track.</summary>
@@ -388,12 +418,12 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "languageCode", n => { LanguageCode = n.GetStringValue(); } },
                 { "languageTag", n => { LanguageTag = n.GetStringValue(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
-                { "loudness", n => { Loudness = n.GetDoubleValue(); } },
+                { "loudness", n => { Loudness = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_loudness>(global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_loudness.CreateFromDiscriminatorValue); } },
                 { "lra", n => { Lra = n.GetDoubleValue(); } },
                 { "minLines", n => { MinLines = n.GetIntValue(); } },
                 { "original", n => { Original = n.GetBoolValue(); } },
-                { "peak", n => { Peak = n.GetDoubleValue(); } },
-                { "perfectMatch", n => { PerfectMatch = n.GetBoolValue(); } },
+                { "peak", n => { Peak = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_peak>(global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_peak.CreateFromDiscriminatorValue); } },
+                { "perfectMatch", n => { PerfectMatch = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_perfectMatch>(global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_perfectMatch.CreateFromDiscriminatorValue); } },
                 { "profile", n => { Profile = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetStringValue(); } },
                 { "providerTitle", n => { ProviderTitle = n.GetStringValue(); } },
@@ -406,9 +436,9 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "startRamp", n => { StartRamp = n.GetStringValue(); } },
                 { "streamIdentifier", n => { StreamIdentifier = n.GetIntValue(); } },
                 { "streamType", n => { StreamType = n.GetIntValue(); } },
-                { "timed", n => { Timed = n.GetBoolValue(); } },
+                { "timed", n => { Timed = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_timed>(global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_timed.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
-                { "transient", n => { Transient = n.GetBoolValue(); } },
+                { "transient", n => { Transient = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_transient>(global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_transient.CreateFromDiscriminatorValue); } },
                 { "userID", n => { UserID = n.GetIntValue(); } },
                 { "visualImpaired", n => { VisualImpaired = n.GetBoolValue(); } },
                 { "width", n => { Width = n.GetIntValue(); } },
@@ -469,12 +499,12 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteStringValue("languageCode", LanguageCode);
             writer.WriteStringValue("languageTag", LanguageTag);
             writer.WriteIntValue("level", Level);
-            writer.WriteDoubleValue("loudness", Loudness);
+            writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_loudness>("loudness", Loudness);
             writer.WriteDoubleValue("lra", Lra);
             writer.WriteIntValue("minLines", MinLines);
             writer.WriteBoolValue("original", Original);
-            writer.WriteDoubleValue("peak", Peak);
-            writer.WriteBoolValue("perfectMatch", PerfectMatch);
+            writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_peak>("peak", Peak);
+            writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_perfectMatch>("perfectMatch", PerfectMatch);
             writer.WriteStringValue("profile", Profile);
             writer.WriteStringValue("provider", Provider);
             writer.WriteStringValue("providerTitle", ProviderTitle);
@@ -487,9 +517,9 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteStringValue("startRamp", StartRamp);
             writer.WriteIntValue("streamIdentifier", StreamIdentifier);
             writer.WriteIntValue("streamType", StreamType);
-            writer.WriteBoolValue("timed", Timed);
+            writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_timed>("timed", Timed);
             writer.WriteStringValue("title", Title);
-            writer.WriteBoolValue("transient", Transient);
+            writer.WriteObjectValue<global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_transient>("transient", Transient);
             writer.WriteIntValue("userID", UserID);
             writer.WriteBoolValue("visualImpaired", VisualImpaired);
             writer.WriteIntValue("width", Width);
@@ -521,6 +551,311 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_canAutoSync();
+                if(parseNode.GetBoolValue() is bool booleanValue)
+                {
+                    result.Boolean = booleanValue;
+                }
+                else if(parseNode.GetStringValue() is string stringValue)
+                {
+                    result.String = stringValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(Boolean != null)
+                {
+                    writer.WriteBoolValue(null, Boolean);
+                }
+                else if(String != null)
+                {
+                    writer.WriteStringValue(null, String);
+                }
+            }
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="double"/>, <see cref="string"/>
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class Stream_loudness : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="double"/></summary>
+            public double? Double { get; set; }
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? String { get; set; }
+#nullable restore
+#else
+            public string String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_loudness"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_loudness CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var result = new global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_loudness();
+                if(parseNode.GetDoubleValue() is double doubleValue)
+                {
+                    result.Double = doubleValue;
+                }
+                else if(parseNode.GetStringValue() is string stringValue)
+                {
+                    result.String = stringValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(Double != null)
+                {
+                    writer.WriteDoubleValue(null, Double);
+                }
+                else if(String != null)
+                {
+                    writer.WriteStringValue(null, String);
+                }
+            }
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="double"/>, <see cref="string"/>
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class Stream_peak : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="double"/></summary>
+            public double? Double { get; set; }
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? String { get; set; }
+#nullable restore
+#else
+            public string String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_peak"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_peak CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var result = new global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_peak();
+                if(parseNode.GetDoubleValue() is double doubleValue)
+                {
+                    result.Double = doubleValue;
+                }
+                else if(parseNode.GetStringValue() is string stringValue)
+                {
+                    result.String = stringValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(Double != null)
+                {
+                    writer.WriteDoubleValue(null, Double);
+                }
+                else if(String != null)
+                {
+                    writer.WriteStringValue(null, String);
+                }
+            }
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="string"/>
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class Stream_perfectMatch : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="bool"/></summary>
+            public bool? Boolean { get; set; }
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? String { get; set; }
+#nullable restore
+#else
+            public string String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_perfectMatch"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_perfectMatch CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var result = new global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_perfectMatch();
+                if(parseNode.GetBoolValue() is bool booleanValue)
+                {
+                    result.Boolean = booleanValue;
+                }
+                else if(parseNode.GetStringValue() is string stringValue)
+                {
+                    result.String = stringValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(Boolean != null)
+                {
+                    writer.WriteBoolValue(null, Boolean);
+                }
+                else if(String != null)
+                {
+                    writer.WriteStringValue(null, String);
+                }
+            }
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="string"/>
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class Stream_timed : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="bool"/></summary>
+            public bool? Boolean { get; set; }
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? String { get; set; }
+#nullable restore
+#else
+            public string String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_timed"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_timed CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var result = new global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_timed();
+                if(parseNode.GetBoolValue() is bool booleanValue)
+                {
+                    result.Boolean = booleanValue;
+                }
+                else if(parseNode.GetStringValue() is string stringValue)
+                {
+                    result.String = stringValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(Boolean != null)
+                {
+                    writer.WriteBoolValue(null, Boolean);
+                }
+                else if(String != null)
+                {
+                    writer.WriteStringValue(null, String);
+                }
+            }
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="string"/>
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class Stream_transient : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="bool"/></summary>
+            public bool? Boolean { get; set; }
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? String { get; set; }
+#nullable restore
+#else
+            public string String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_transient"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_transient CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var result = new global::Soenneker.Plex.OpenApiClient.Models.StreamObject.Stream_transient();
                 if(parseNode.GetBoolValue() is bool booleanValue)
                 {
                     result.Boolean = booleanValue;

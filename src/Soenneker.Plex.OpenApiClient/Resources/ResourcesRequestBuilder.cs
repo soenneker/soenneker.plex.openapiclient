@@ -111,7 +111,7 @@ namespace Soenneker.Plex.OpenApiClient.Resources
             [QueryParameter("includeIPv6")]
             public string IncludeIPv6 { get; set; }
 #endif
-            /// <summary>Include Relay addresses in the results E.g: https://10-0-0-25.bbf8e10c7fa20447cacee74cd9914cde.plex.direct:32400</summary>
+            /// <summary>Include Relay addresses in the resultsE.g: https://10-0-0-25.bbf8e10c7fa20447cacee74cd9914cde.plex.direct:32400</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("includeRelay")]
