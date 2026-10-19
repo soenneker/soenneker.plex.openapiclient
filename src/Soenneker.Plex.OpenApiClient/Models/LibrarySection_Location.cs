@@ -20,10 +20,10 @@ namespace Soenneker.Plex.OpenApiClient.Models
         /// <summary>The path of where this directory exists on disk</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Path { get; set; }
+        public string? Path { get; set; }
 #nullable restore
 #else
-        public UntypedNode Path { get; set; }
+        public string Path { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Plex.OpenApiClient.Models.LibrarySection_Location"/> and sets the default values.
@@ -51,7 +51,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetIntValue(); } },
-                { "path", n => { Path = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "path", n => { Path = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Plex.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("id", Id);
-            writer.WriteObjectValue<UntypedNode>("path", Path);
+            writer.WriteStringValue("path", Path);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

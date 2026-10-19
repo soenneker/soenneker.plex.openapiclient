@@ -12,6 +12,14 @@ namespace Soenneker.Plex.OpenApiClient.Models
     public partial class MediaContainerWithMetadata_MediaContainer : global::Soenneker.Plex.OpenApiClient.Models.MediaContainer, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Navigation folders or metadata items returned under the Directory element.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Metadata>? Directory { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Metadata> Directory { get; set; }
+#endif
         /// <summary>The Metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -19,6 +27,22 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.Plex.OpenApiClient.Models.Metadata> Metadata { get; set; }
+#endif
+        /// <summary>Photo items returned under the Photo element.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Metadata>? Photo { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Metadata> Photo { get; set; }
+#endif
+        /// <summary>Video items, including photo-library clips, returned under the Video element.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Metadata>? Video { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Plex.OpenApiClient.Models.Metadata> Video { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,7 +62,10 @@ namespace Soenneker.Plex.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
+                { "Directory", n => { Directory = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Metadata>(global::Soenneker.Plex.OpenApiClient.Models.Metadata.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "Metadata", n => { Metadata = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Metadata>(global::Soenneker.Plex.OpenApiClient.Models.Metadata.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Photo", n => { Photo = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Metadata>(global::Soenneker.Plex.OpenApiClient.Models.Metadata.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Video", n => { Video = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Metadata>(global::Soenneker.Plex.OpenApiClient.Models.Metadata.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -49,7 +76,10 @@ namespace Soenneker.Plex.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Metadata>("Directory", Directory);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Metadata>("Metadata", Metadata);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Metadata>("Photo", Photo);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Metadata>("Video", Video);
         }
     }
 }

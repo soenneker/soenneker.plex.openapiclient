@@ -22,7 +22,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Children
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ChildrenRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/children", pathParameters)
+        public ChildrenRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/children{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,includeMeta*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Children
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ChildrenRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/children", rawUrl)
+        public ChildrenRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/library/metadata/{ids%2Did}/children{?X%2DPlex%2DContainer%2DSize*,X%2DPlex%2DContainer%2DStart*,includeMeta*}", rawUrl)
         {
         }
         /// <summary>
-        /// Get children of a show, season, artist, or album.
+        /// Get children of a show, season, artist, or album, including a photo album.Photo album children can include both photos and video clips; omit media-type filters to retrieve all members.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -42,11 +42,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Children
         /// <exception cref="global::Soenneker.Plex.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata?> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Children.ChildrenRequestBuilder.ChildrenRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata> GetAsync(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Children.ChildrenRequestBuilder.ChildrenRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -57,17 +57,17 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Children
             return await RequestAdapter.SendAsync<global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata>(requestInfo, global::Soenneker.Plex.OpenApiClient.Models.MediaContainerWithMetadata.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get children of a show, season, artist, or album.
+        /// Get children of a show, season, artist, or album, including a photo album.Photo album children can include both photos and video clips; omit media-type filters to retrieve all members.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Children.ChildrenRequestBuilder.ChildrenRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Children.ChildrenRequestBuilder.ChildrenRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -83,6 +83,22 @@ namespace Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Children
         public global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Children.ChildrenRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Plex.OpenApiClient.Library.Metadata.Item.Children.ChildrenRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Get children of a show, season, artist, or album, including a photo album.Photo album children can include both photos and video clips; omit media-type filters to retrieve all members.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class ChildrenRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Include the Meta object in the response.</summary>
+            [QueryParameter("includeMeta")]
+            public int? IncludeMeta { get; set; }
+            /// <summary>The number of items to return. If not specified, all items will be returned.If the number of items exceeds the limit, the response will be paginated.By default this is 50</summary>
+            [QueryParameter("X%2DPlex%2DContainer%2DSize")]
+            public int? XPlexContainerSize { get; set; }
+            /// <summary>The index of the first item to return. If not specified, the first item will be returned.If the number of items exceeds the limit, the response will be paginated.By default this is 0</summary>
+            [QueryParameter("X%2DPlex%2DContainer%2DStart")]
+            public int? XPlexContainerStart { get; set; }
         }
     }
 }

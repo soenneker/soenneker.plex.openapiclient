@@ -29,6 +29,7 @@ using Soenneker.Plex.OpenApiClient.Library.Sections.Item.EmptyTrash;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Episodes;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Filters;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters;
+using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Folder;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Hubs;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Indexes;
 using Soenneker.Plex.OpenApiClient.Library.Sections.Item.Intros;
@@ -198,6 +199,11 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.Item
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersRequestBuilder FirstCharacters
         {
             get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.FirstCharacters.FirstCharactersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The folder property</summary>
+        public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Folder.FolderRequestBuilder Folder
+        {
+            get => new global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Folder.FolderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The hubs property</summary>
         public global::Soenneker.Plex.OpenApiClient.Library.Sections.Item.Hubs.HubsRequestBuilder Hubs

@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -246,6 +245,8 @@ namespace Soenneker.Plex.OpenApiClient.Models
         public long? LastViewedAt { get; set; }
         /// <summary>For shows and seasons, contains the number of total episodes.</summary>
         public int? LeafCount { get; set; }
+        /// <summary>The library section containing this metadata item, when reported by the server.</summary>
+        public long? LibrarySectionID { get; set; }
         /// <summary>The Media property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -272,8 +273,14 @@ namespace Soenneker.Plex.OpenApiClient.Models
 #endif
         /// <summary>Analysis version for music items.</summary>
         public int? MusicAnalysisVersion { get; set; }
-        /// <summary>When present, in the format YYYY-MM-DD [HH:MM:SS] (the hours/minutes/seconds part is not always present). The air date, or a higher resolution release date for an item, depending on type. For example, episodes usually have air date like 1979-08-10 (we don&apos;t use epoch seconds because media existed prior to 1970). In some cases, recorded over-the-air content has higher resolution air date which includes a time component. Albums and movies may have day-resolution release dates as well.</summary>
-        public Date? OriginallyAvailableAt { get; set; }
+        /// <summary>The original release or capture date as reported by the server.Values can be a date (YYYY-MM-DD), a date with a time (YYYY-MM-DD HH:MM:SS), or an ISO 8601 timestamp.Preserve the string representation so higher-resolution timestamps are not reduced to a date-only value.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OriginallyAvailableAt { get; set; }
+#nullable restore
+#else
+        public string OriginallyAvailableAt { get; set; }
+#endif
         /// <summary>When present, used to indicate an item&apos;s original title, e.g. a movie&apos;s foreign title.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -588,12 +595,13 @@ namespace Soenneker.Plex.OpenApiClient.Models
                 { "lastRatedAt", n => { LastRatedAt = n.GetIntValue(); } },
                 { "lastViewedAt", n => { LastViewedAt = n.GetLongValue(); } },
                 { "leafCount", n => { LeafCount = n.GetIntValue(); } },
+                { "librarySectionID", n => { LibrarySectionID = n.GetLongValue(); } },
                 { "Media", n => { Media = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Media>(global::Soenneker.Plex.OpenApiClient.Models.Media.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "Guid", n => { MetadataGuid = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Metadata_Guid>(global::Soenneker.Plex.OpenApiClient.Models.Metadata_Guid.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "Rating", n => { MetadataRating = n.GetCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Tag>(global::Soenneker.Plex.OpenApiClient.Models.Tag.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "musicAnalysisVersion", n => { MusicAnalysisVersion = n.GetIntValue(); } },
                 { "originalTitle", n => { OriginalTitle = n.GetStringValue(); } },
-                { "originallyAvailableAt", n => { OriginallyAvailableAt = n.GetDateValue(); } },
+                { "originallyAvailableAt", n => { OriginallyAvailableAt = n.GetStringValue(); } },
                 { "parentGuid", n => { ParentGuid = n.GetStringValue(); } },
                 { "parentHero", n => { ParentHero = n.GetStringValue(); } },
                 { "parentIndex", n => { ParentIndex = n.GetIntValue(); } },
@@ -681,11 +689,12 @@ namespace Soenneker.Plex.OpenApiClient.Models
             writer.WriteIntValue("lastRatedAt", LastRatedAt);
             writer.WriteLongValue("lastViewedAt", LastViewedAt);
             writer.WriteIntValue("leafCount", LeafCount);
+            writer.WriteLongValue("librarySectionID", LibrarySectionID);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Media>("Media", Media);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Metadata_Guid>("Guid", MetadataGuid);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Plex.OpenApiClient.Models.Tag>("Rating", MetadataRating);
             writer.WriteIntValue("musicAnalysisVersion", MusicAnalysisVersion);
-            writer.WriteDateValue("originallyAvailableAt", OriginallyAvailableAt);
+            writer.WriteStringValue("originallyAvailableAt", OriginallyAvailableAt);
             writer.WriteStringValue("originalTitle", OriginalTitle);
             writer.WriteStringValue("parentGuid", ParentGuid);
             writer.WriteStringValue("parentHero", ParentHero);
