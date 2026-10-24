@@ -33,6 +33,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item
         /// <summary>Gets an item from the Soenneker.Plex.OpenApiClient.playlists.item.items.item.item collection</summary>
         /// <param name="position">The metadata item ID to act on</param>
         /// <returns>A <see cref="global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.Item.WithMetadataItemRequestBuilder"/></returns>
+        [global::System.Runtime.CompilerServices.IndexerName("ItemByKey")]
         public global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.Item.WithMetadataItemRequestBuilder this[int position]
         {
             get
