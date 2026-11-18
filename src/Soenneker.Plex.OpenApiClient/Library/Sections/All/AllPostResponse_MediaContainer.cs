@@ -120,7 +120,7 @@ namespace Soenneker.Plex.OpenApiClient.Library.Sections.All
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(14)
             {
                 { "allowSync", n => { AllowSync = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Library.Sections.All.AllPostResponse_MediaContainer.AllPostResponse_MediaContainer_allowSync>(global::Soenneker.Plex.OpenApiClient.Library.Sections.All.AllPostResponse_MediaContainer.AllPostResponse_MediaContainer_allowSync.CreateFromDiscriminatorValue); } },
                 { "art", n => { Art = n.GetStringValue(); } },

@@ -60,7 +60,7 @@ namespace Soenneker.Plex.OpenApiClient.Security.Resources
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "Device", n => { Device = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Models.ConnectionInfo>(global::Soenneker.Plex.OpenApiClient.Models.ConnectionInfo.CreateFromDiscriminatorValue); } },
                 { "identifier", n => { Identifier = n.GetStringValue(); } },

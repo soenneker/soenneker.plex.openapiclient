@@ -117,7 +117,7 @@ namespace Soenneker.Plex.OpenApiClient.Users.Signin
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(15)
             {
                 { "billing", n => { Billing = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostResponse_pastSubscriptions_billing>(global::Soenneker.Plex.OpenApiClient.Users.Signin.SigninPostResponse_pastSubscriptions_billing.CreateFromDiscriminatorValue); } },
                 { "canConvert", n => { CanConvert = n.GetBoolValue(); } },

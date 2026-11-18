@@ -47,7 +47,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "itemsCompleteCount", n => { ItemsCompleteCount = n.GetIntValue(); } },
                 { "itemsCount", n => { ItemsCount = n.GetIntValue(); } },

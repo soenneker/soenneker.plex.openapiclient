@@ -107,7 +107,7 @@ namespace Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(11)
             {
                 { "composite", n => { Composite = n.GetStringValue(); } },
                 { "Device", n => { Device = n.GetObjectValue<global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorGetResponse_MediaContainer_Item_Device>(global::Soenneker.Plex.OpenApiClient.Playlists.Item.Items.Item.GeneratorGetResponse_MediaContainer_Item_Device.CreateFromDiscriminatorValue); } },
